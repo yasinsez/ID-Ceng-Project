@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Automatic power off</title>
+  <link rel="stylesheet" href="../assets/mockup.css" />
+</head>
+<body>
+  <div class="app-shell no-tabs">
+    <header class="screen-header">
+      <a class="icon-btn" href="device-detail.html" aria-label="Back">◀</a>
+      <span class="title">Auto power off</span>
+      <span class="icon-btn placeholder" aria-hidden="true">·</span>
+    </header>
+
+    <main class="content">
+      <div class="card" style="margin-bottom: 1rem;">
+        <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">
+          <strong style="color: var(--text);">Info about automatic power-off</strong><br />
+          Earphones can turn off after a period of inactivity to save battery. Choose a duration below (mock).
+        </p>
+      </div>
+
+      <div class="card">
+        <button type="button" class="list-row" style="width: 100%; border: none; background: none; font: inherit; cursor: pointer; text-align: left;">
+          <span><strong>30 minutes</strong></span><span style="color: var(--accent);">✓</span>
+        </button>
+        <div class="list-row"><span>1 hour</span><span></span></div>
+        <div class="list-row"><span style="color: var(--text-muted);">Never</span><span></span></div>
+        <div class="list-row"><span style="color: var(--text-muted);">— placeholder</span><span></span></div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

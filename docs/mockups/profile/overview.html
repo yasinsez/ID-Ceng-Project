@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile — After login</title>
+  <link rel="stylesheet" href="../assets/mockup.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="screen-header">
+      <a class="icon-btn" href="../home/populated.html" aria-label="Back">◀</a>
+      <span class="title">Account</span>
+      <span class="icon-btn" title="Settings" aria-label="Settings">⚙</span>
+    </header>
+
+    <main class="content">
+      <div style="text-align: center; margin-bottom: 1.25rem;">
+        <div class="profile-avatar" style="margin-bottom: 0.5rem;" aria-hidden="true"></div>
+        <strong>Jane Doe</strong>
+        <div style="font-size: 0.85rem; color: var(--text-muted);">jane@example.com</div>
+      </div>
+
+      <h2 class="section-title">Account info</h2>
+      <div class="card">
+        <div class="list-row"><span>Email</span><span style="color: var(--text-muted);">verified</span></div>
+        <div class="list-row"><span>Password</span><span style="color: var(--accent);">Change</span></div>
+      </div>
+
+      <h2 class="section-title" style="margin-top: 1.25rem;">My devices</h2>
+      <div class="card">
+        <a class="list-row" href="../home/populated.html" style="text-decoration: none; color: inherit;"><span>Aurora Buds Pro</span><span style="color: var(--text-muted);">›</span></a>
+        <div class="list-row"><span style="color: var(--text-muted);">—</span><span style="color: var(--text-muted);">placeholder</span></div>
+      </div>
+
+      <p class="link-row" style="margin-top: 1.5rem;"><a href="menu.html">Alternate layout: menu list</a></p>
+    </main>
+
+    <nav class="tab-bar" aria-label="Main">
+      <a href="../home/populated.html"><span class="tab-icon" aria-hidden="true">⌂</span>Home</a>
+      <a href="../sound/equalizer.html"><span class="tab-icon" aria-hidden="true">♪</span>Sound</a>
+      <a href="../noise/modes.html"><span class="tab-icon" aria-hidden="true">◎</span>Noise</a>
+      <a class="active" href="overview.html"><span class="tab-icon" aria-hidden="true">👤</span>Profile</a>
+    </nav>
+  </div>
+</body>
+</html>

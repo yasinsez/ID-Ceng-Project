@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile — Login</title>
+  <link rel="stylesheet" href="../assets/mockup.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="screen-header">
+      <a class="icon-btn" href="../home/empty.html" aria-label="Back">◀</a>
+      <span class="title">Profile</span>
+      <span class="icon-btn" title="Settings" aria-label="Settings">⚙</span>
+    </header>
+
+    <main class="content" style="text-align: center;">
+      <div class="profile-avatar" aria-hidden="true"></div>
+
+      <div class="card" style="text-align: left;">
+        <div class="field">
+          <label for="user">User name / email</label>
+          <input id="user" type="text" autocomplete="username" placeholder="you@example.com" />
+        </div>
+        <div class="field">
+          <label for="pass">Password</label>
+          <input id="pass" type="password" autocomplete="current-password" placeholder="••••••••" />
+        </div>
+        <div style="text-align: right; margin-bottom: 1rem;">
+          <a href="forgot-password.html">Forgot password</a>
+        </div>
+        <a class="btn-primary" href="overview.html">Log in</a>
+      </div>
+
+      <p class="link-row">No account? <a href="register.html">Register</a></p>
+    </main>
+
+    <nav class="tab-bar" aria-label="Main">
+      <a href="../home/empty.html"><span class="tab-icon" aria-hidden="true">⌂</span>Home</a>
+      <a href="../sound/equalizer.html"><span class="tab-icon" aria-hidden="true">♪</span>Sound</a>
+      <a href="../noise/modes.html"><span class="tab-icon" aria-hidden="true">◎</span>Noise</a>
+      <a class="active" href="login.html"><span class="tab-icon" aria-hidden="true">👤</span>Profile</a>
+    </nav>
+  </div>
+</body>
+</html>

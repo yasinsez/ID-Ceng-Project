@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Noise — Listening mode</title>
+  <link rel="stylesheet" href="../assets/mockup.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="screen-header">
+      <a class="icon-btn" href="../home/populated.html" aria-label="Back">◀</a>
+      <span class="title">Noise</span>
+      <span class="icon-btn placeholder" aria-hidden="true">·</span>
+    </header>
+
+    <main class="content">
+      <p class="section-title">Listening mode</p>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0 0 1rem;">
+        Maps to the paper device control: noise cancellation, normal, transparency.
+      </p>
+
+      <div class="mode-options" role="radiogroup" aria-label="Noise mode">
+        <button type="button" class="mode-option selected">
+          <span class="radio" aria-hidden="true"></span>
+          <span><strong>Noise cancellation</strong><br /><small style="color: var(--text-muted);">Reduce ambient sound</small></span>
+        </button>
+        <button type="button" class="mode-option">
+          <span class="radio" aria-hidden="true"></span>
+          <span><strong>Normal</strong><br /><small style="color: var(--text-muted);">Passive / off</small></span>
+        </button>
+        <button type="button" class="mode-option">
+          <span class="radio" aria-hidden="true"></span>
+          <span><strong>Transparency</strong><br /><small style="color: var(--text-muted);">Hear surroundings</small></span>
+        </button>
+      </div>
+    </main>
+
+    <nav class="tab-bar" aria-label="Main">
+      <a href="../home/populated.html"><span class="tab-icon" aria-hidden="true">⌂</span>Home</a>
+      <a href="../sound/equalizer.html"><span class="tab-icon" aria-hidden="true">♪</span>Sound</a>
+      <a class="active" href="modes.html"><span class="tab-icon" aria-hidden="true">◎</span>Noise</a>
+      <a href="../profile/overview.html"><span class="tab-icon" aria-hidden="true">👤</span>Profile</a>
+    </nav>
+  </div>
+</body>
+</html>

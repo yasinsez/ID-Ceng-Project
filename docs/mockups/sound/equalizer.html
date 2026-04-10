@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sound — Equalizer</title>
+  <link rel="stylesheet" href="../assets/mockup.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="screen-header">
+      <a class="icon-btn" href="../home/populated.html" aria-label="Back">◀</a>
+      <span class="title">Sound</span>
+      <span class="icon-btn placeholder" aria-hidden="true">·</span>
+    </header>
+
+    <main class="content">
+      <p class="section-title">Presets</p>
+      <div class="preset-pills" role="group" aria-label="EQ presets">
+        <button type="button" class="preset-pill">Bass Boost</button>
+        <button type="button" class="preset-pill">Balanced</button>
+        <button type="button" class="preset-pill">Podcast</button>
+        <button type="button" class="preset-pill active">Custom</button>
+      </div>
+
+      <p class="section-title">Manual</p>
+      <div class="card">
+        <div class="slider-row">
+          <label><span>Bass</span><span>+2</span></label>
+          <input type="range" min="-6" max="6" value="2" />
+        </div>
+        <div class="slider-row">
+          <label><span>Mid</span><span>0</span></label>
+          <input type="range" min="-6" max="6" value="0" />
+        </div>
+        <div class="slider-row">
+          <label><span>Treble</span><span>-1</span></label>
+          <input type="range" min="-6" max="6" value="-1" />
+        </div>
+      </div>
+
+      <button type="button" class="btn-primary" style="margin-top: 1rem;">Save</button>
+      <p class="mock-note">Figma v3: Custom + Bass / Mid / Treble + Save. Presets are static in this HTML mock.</p>
+    </main>
+
+    <nav class="tab-bar" aria-label="Main">
+      <a href="../home/populated.html"><span class="tab-icon" aria-hidden="true">⌂</span>Home</a>
+      <a class="active" href="equalizer.html"><span class="tab-icon" aria-hidden="true">♪</span>Sound</a>
+      <a href="../noise/modes.html"><span class="tab-icon" aria-hidden="true">◎</span>Noise</a>
+      <a href="../profile/overview.html"><span class="tab-icon" aria-hidden="true">👤</span>Profile</a>
+    </nav>
+  </div>
+</body>
+</html>
