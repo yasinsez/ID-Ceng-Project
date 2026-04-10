@@ -11,7 +11,7 @@ Structured notes derived from the uploaded sketches. Use this as a single refere
 
 - **Paper wireframes (Version 1):** Bottom navigation uses **two** tabs — **devices** and **profile** (sometimes labeled “Profile”).
 - **Figma digital wireframes (Version 3):** Bottom navigation uses **four** tabs — **Home**, **Sound**, **Noise**, **Profile**. Design notes say the **Home** screen was revised to carry connection status, device info, current mode, a live equalizer visualization, and quick stats; redundant controls were moved into the tab bar (see `figma-v3/` assets).
-- **Canonical product flow:** Treat **[`docs/page-flows.md`](../page-flows.md)** as the single merged story: **Home** = paper “devices” hub + gear settings; **Sound** / **Noise** = split of paper device control (EQ vs modes); **Profile** = paper auth. Do not maintain separate “v1 only” vs “v3 only” user journeys in documentation.
+- **Canonical product flow:** Treat **[`docs/page-flows.md`](../page-flows.md)** as the single merged story. It folds in the **nine-screen companion flowsheet**: **Splash** → **Home** hub with pairing (**Add Device → Searching → Connected successfully**), bottom nav **Home · Volume · Settings · Profile**, **Key configurations**, and **Device details** (disconnect / forget). **Volume** carries Figma-style **presets + EQ**; **listening mode** (ANC / normal / transparency) stays explicit in the flow. Older two-tab paper and Figma **Sound / Noise** labels are **aliases** for Volume / mode—not separate products.
 - **Header patterns:** Back control (left), optional **settings / gear** (often top-right on paper flows); Figma **Sound** screen uses back + title **Sound**.
 - **Course metadata** appears on paper sheets: e.g. CENG318–ID322, Spring 2026, group identifiers, “Version 1”.
 
@@ -107,6 +107,7 @@ Screens captured from the Figma file (prototype route **`/sound`** on the varian
 
 ### Flow notes (Version 3)
 
+- **Canonical mapping:** In [`docs/page-flows.md`](../page-flows.md), Figma’s **Sound** tab is folded into the **Volume** tab from the nine-screen sheet (same preset + slider behavior).
 - **Entry to Sound:** Tap **Sound** in the bottom bar from **Home**, **Noise**, or **Profile**.
 - **Within Sound:** Choose preset; if **Custom**, adjust **Bass / Mid / Treble**; **Save** where present to persist.
 - **Exit:** Back from header, or switch tab via bottom nav.
@@ -173,18 +174,48 @@ Vertical strip:
 2. **Automatic power off** — info + list including `30 minutes` (“when clicked automatic power off”).
 3. **Empty phone frames** — placeholders for future steps.
 
+### `flowsheets/flowsheet-nine-screen-home-volume-settings-profile.jpeg`
+
+Single page with **nine** phone frames (hand-drawn). Bottom nav on main chrome: **Home**, **Volume** (or “Volume/Controls”), **Settings**, **Profile**.
+
+| # | Screen | Summary |
+|---|--------|---------|
+| 1 | **Splash / landing** | Logo, slogan, “Welcome!”, **Get Started**. |
+| 2 | **Add device** | Large **ADD DEVICE** (+); bottom nav present. |
+| 3 | **Searching** | Concentric / radar motif, copy **Searching for a Device…**. |
+| 4 | **Success** | Checkmark, **Connected Successfully!**. |
+| 5 | **Home (dashboard)** | **Connected** + battery (e.g. 85%); headphone + product name placeholder; **Current Mode: ANC ON**; **Volume %65**; **Preset: Balanced**; button **Key Configurations**; **Home** tab active. |
+| 6 | **Settings** | Title **Settings** + gear; **Dark Mode** toggle; **Notifications** toggle; **Language** (e.g. English + globe); **Settings** tab active. |
+| 7 | **Profile** | Avatar placeholder, name placeholder; rows **My Devices**, **Statistics**, **Hakkında** (About), **Yardım ve Geri Bild.** (Help & feedback); **Profile** tab active. |
+| 8 | **Device details** | Same control summary as Home (mode, volume, preset, Key Configurations) plus **Disconnect** and **Forget Device**. |
+| 9 | **Key configurations** | Back + title **Key Conf.**; headphone visual; **Double tap** — Left → “Next Song”, Right → “Pause”; **Microphone** selector **Auto**; bottom nav. |
+
+**Flow logic:** Splash → Get Started → Add Device → Searching → Success → Home. From Home or device screen → Key Configurations. From Profile → My Devices → Device details. Disconnect / Forget → return toward unpaired / add-device state. Cross-nav among Home, Volume, Settings, Profile via tab bar.
+
+---
+
+## Reference (`reference/`)
+
+### `reference/flowsheet-learnify-elearning-grid.jpeg`
+
+- **Content (per review):** ~20 low-fidelity screens for an app branded **LEARNIFY** (onboarding, sign-in, course catalog, cart, checkout, course player, quizzes, progress, etc.) in a grid.
+- **Scope:** **Not** part of the Bluetooth earphone companion product. Kept under `reference/` in case the file was added by mistake or for course comparison—**do not** merge into [`docs/page-flows.md`](../page-flows.md) or implementation.
+
 ---
 
 ## Suggested flow relationships (for implementation / Mermaid)
 
 Use **one** diagram: **[`docs/page-flows.md`](../page-flows.md)** (section *Single app flow*). Summary:
 
-- **Home hub:** Add Device → Bluetooth “looking” → return to Home (list may be populated); **Settings gear** → general → device detail → automatic power-off picker.
-- **Sound tab:** Presets → **Custom** → Bass / Mid / Treble sliders → **Save** (where applicable) → back to Home.
-- **Noise tab:** Modes **cancellation · normal · transparency** → back to Home.
-- **Profile tab:** Login → register / forgot password / log in → after-login profile → Home.
+- **Cold start:** Launch → **Splash** (Welcome / Get Started) → **Home**.
+- **Pairing:** Home → **Add Device** → **Searching** → **Connected successfully** → Home.
+- **Home hub:** Status, mode, volume/preset summary, **Key configurations** entry.
+- **Volume tab:** Deeper **level + preset + EQ** (presets → Custom → Bass / Mid / Treble → Save) → back to Home.
+- **Listening mode:** **Noise** path (cancellation · normal · transparency) ↔ Home.
+- **Settings:** Tab or gear → **General settings** → device detail → automatic power-off picker → back to Home.
+- **Profile tab:** Login → register / forgot password / log in → after-login profile; **My Devices** and **Open device** → **Device details** → Disconnect / Forget → Home.
 
-Treat **flowsheets** as authoritative for **screen order** where captions exist; **single-screen** files as layout reference. Older “two-tab only” or “four-tab only” wording in asset filenames does not imply separate user journeys—the **merged** flow is canonical.
+Treat **flowsheets** as authoritative for **screen order** where captions exist; the **nine-screen** sheet is the newest full-journey map for companion UX. **`reference/`** Learnify asset is excluded from scope.
 
 ---
 
@@ -195,3 +226,4 @@ Treat **flowsheets** as authoritative for **screen order** where captions exist;
 | 2026-04-10 | Initial analysis from uploaded low-fi JPEGs; filenames aligned with `profile/`, `devices/`, `settings/`, `flowsheets/`. |
 | 2026-04-10 | Added Figma **Version 3** **Sound** screens under `figma-v3/`; documented four-tab chrome (Home, Sound, Noise, Profile) and relation to paper v1. |
 | 2026-04-10 | **`docs/page-flows.md`** reduced to **one** merged flow (Home hub + Sound + Noise + Profile + settings); analysis updated to match. |
+| 2026-04-10 | Added **nine-screen** companion flowsheet; merged **Splash**, **Success**, **Volume/Settings/Profile** tabs, **Key Conf**, **Device details** into canonical flow. **Learnify** grid moved to `reference/` as out-of-scope. |
