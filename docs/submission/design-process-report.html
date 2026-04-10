@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design Choices and Process Report</title>
+  <style>
+    @page { size: A4; margin: 22mm 18mm; }
+    body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #1c1f24; line-height: 1.45; font-size: 11pt; }
+    h1, h2, h3 { color: #0d2a45; margin: 0 0 8px 0; }
+    h1 { font-size: 20pt; }
+    h2 { font-size: 14pt; margin-top: 18px; border-bottom: 1px solid #d7dce2; padding-bottom: 4px; }
+    h3 { font-size: 12pt; margin-top: 12px; }
+    p { margin: 0 0 8px 0; }
+    ul { margin: 0 0 8px 18px; }
+    li { margin-bottom: 4px; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0 14px 0; font-size: 10.5pt; }
+    th, td { border: 1px solid #ccd3dc; padding: 6px 8px; vertical-align: top; }
+    th { background: #eef3f8; text-align: left; }
+    .muted { color: #5d6773; }
+  </style>
+</head>
+<body>
+  <h1>Bluetooth Earphone Companion App</h1>
+  <p class="muted">Design Choices and Process Report (CENG + ID, Spring 2026)</p>
+
+  <h2>1. Concept Description</h2>
+  <h3>Product Purpose</h3>
+  <p>The product is a Bluetooth earphone companion app that helps users connect, monitor, and personalize earphones with minimal friction across daily listening scenarios.</p>
+  <h3>User Needs</h3>
+  <ul>
+    <li>Quick and understandable Bluetooth pairing and connection feedback.</li>
+    <li>At-a-glance battery/device state from a central home view.</li>
+    <li>Fast sound tuning through presets or simple manual EQ controls.</li>
+    <li>Immediate access to listening mode changes (NC/Normal/Transparency).</li>
+    <li>Simple account and settings flows for device and profile management.</li>
+  </ul>
+  <h3>Key Functions</h3>
+  <ul>
+    <li>Bluetooth pairing and success/failure state messaging.</li>
+    <li>Home dashboard with device status and quick actions.</li>
+    <li>Sound presets and bass/mid/treble custom sliders with save.</li>
+    <li>Noise mode switching and device settings configuration.</li>
+    <li>Authentication (login/register/forgot password) and profile overview.</li>
+  </ul>
+
+  <h2>2. Information Architecture and Main Flow</h2>
+  <p>We merged paper wireframes, flow sheets, and Figma v3 into one canonical flow:</p>
+  <ul>
+    <li>Launch/Splash -> Home.</li>
+    <li>Home -> Add Device -> Bluetooth Pairing -> Success -> Home.</li>
+    <li>Home -> Sound/Volume -> Presets -> Custom sliders -> Save.</li>
+    <li>Home -> Noise mode screen.</li>
+    <li>Home -> Settings -> Device Detail -> Automatic Power-Off.</li>
+    <li>Home -> Profile (auth flows + post-login pages).</li>
+  </ul>
+  <p>Primary references: <strong>docs/page-flows.md</strong> and <strong>docs/wireframes/WIREFRAME-ANALYSIS.md</strong>.</p>
+
+  <h2>3. Annotated Wireframes</h2>
+  <table>
+    <thead>
+      <tr><th>Asset</th><th>Annotation Summary</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>docs/wireframes/devices/wireframe-devices-home-empty.jpeg</td><td>Empty-state entry and add-device clarity.</td></tr>
+      <tr><td>docs/wireframes/devices/wireframe-devices-list-populated.jpeg</td><td>Connected-device card and list behavior.</td></tr>
+      <tr><td>docs/wireframes/devices/wireframe-device-control-equalizer.jpeg</td><td>Device control hierarchy and equalizer placement.</td></tr>
+      <tr><td>docs/wireframes/flowsheets/flowsheet-bluetooth-pairing.jpeg</td><td>Pairing state transition logic.</td></tr>
+      <tr><td>docs/wireframes/figma-v3/wireframe-sound-equalizer-four-presets.jpeg</td><td>Preset-first model and tab structure.</td></tr>
+      <tr><td>docs/wireframes/figma-v3/wireframe-sound-equalizer-custom-save.jpeg</td><td>Custom EQ sliders and explicit save action.</td></tr>
+      <tr><td>docs/wireframes/profile/wireframe-login.jpeg</td><td>Simple login hierarchy.</td></tr>
+      <tr><td>docs/wireframes/profile/wireframe-register.jpeg</td><td>Registration flow and field set.</td></tr>
+      <tr><td>docs/wireframes/profile/wireframe-profile-overview.jpeg</td><td>Post-login account overview layout.</td></tr>
+      <tr><td>docs/wireframes/settings/wireframe-settings-general.jpeg</td><td>Global settings grouping and routing.</td></tr>
+      <tr><td>docs/wireframes/settings/wireframe-settings-device-detail.jpeg</td><td>Device metadata and deep settings.</td></tr>
+      <tr><td>docs/wireframes/settings/wireframe-settings-automatic-power-off.jpeg</td><td>Single-goal power-off duration selection.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>4. Low-Fidelity Prototype (Photos)</h2>
+  <p>Low-fidelity prototype evidence is represented by the photo/export files in:</p>
+  <ul>
+    <li>docs/wireframes/devices/</li>
+    <li>docs/wireframes/profile/</li>
+    <li>docs/wireframes/settings/</li>
+    <li>docs/wireframes/flowsheets/</li>
+    <li>docs/wireframes/figma-v3/</li>
+  </ul>
+
+  <h2>5. Reflection</h2>
+  <h3>Choices and Alternatives</h3>
+  <ul>
+    <li>Home was chosen as a central operational hub to reduce navigation overhead.</li>
+    <li>Preset-first sound control was kept for speed; custom sliders are secondary.</li>
+    <li>Alternative considered: merge noise controls fully into Sound. Rejected for discoverability reasons.</li>
+  </ul>
+  <h3>Challenges</h3>
+  <ul>
+    <li>Different tab logic across early paper and later digital assets.</li>
+    <li>Potential duplication of intent between similar screens in multiple artifacts.</li>
+    <li>Need for clear state mapping in Bluetooth flow (empty/searching/success/connected).</li>
+  </ul>
+  <h3>User Considerations</h3>
+  <ul>
+    <li>Frequent tasks should be reachable in 1-2 taps.</li>
+    <li>First-time users need direct and visible add-device onboarding.</li>
+    <li>Status feedback should always be explicit and consistent.</li>
+  </ul>
+
+  <h2>6. Conclusion</h2>
+  <p>The resulting UI architecture aligns connection tasks, sound personalization, and profile/settings management in one coherent flow suitable for iterative refinement in high-fidelity stages.</p>
+</body>
+</html>
