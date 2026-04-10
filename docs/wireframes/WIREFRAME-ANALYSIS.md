@@ -11,7 +11,7 @@ Structured notes derived from the uploaded sketches. Use this as a single refere
 
 - **Paper wireframes (Version 1):** Bottom navigation uses **two** tabs — **devices** and **profile** (sometimes labeled “Profile”).
 - **Figma digital wireframes (Version 3):** Bottom navigation uses **four** tabs — **Home**, **Sound**, **Noise**, **Profile**. Design notes say the **Home** screen was revised to carry connection status, device info, current mode, a live equalizer visualization, and quick stats; redundant controls were moved into the tab bar (see `figma-v3/` assets).
-- **Canonical product flow:** Treat **[`docs/page-flows.md`](../page-flows.md)** as the single merged story. It folds in the **nine-screen companion flowsheet**: **Splash** → **Home** hub with pairing (**Add Device → Searching → Connected successfully**), bottom nav **Home · Volume · Settings · Profile**, **Key configurations**, and **Device details** (disconnect / forget). **Volume** carries Figma-style **presets + EQ**; **listening mode** (ANC / normal / transparency) stays explicit in the flow. Older two-tab paper and Figma **Sound / Noise** labels are **aliases** for Volume / mode—not separate products.
+- **Canonical product flow:** Treat **[`docs/page-flows.md`](../page-flows.md)** as the single merged story. It folds in the **nine-screen** sheet, **five-screen** stats/bud sheet, and **hand-drawn** Sound + volume overlay: **Splash** → **Home**; pairing; **Volume overlay**; **Audio tab** → **Statistics** → **Listening history** and **Sound & EQ**; **Settings** → **My Devices** → **Left/Right bud** (with **Key configurations** overlap); **Profile** and **Device details** as documented in the Mermaid diagram.
 - **Header patterns:** Back control (left), optional **settings / gear** (often top-right on paper flows); Figma **Sound** screen uses back + title **Sound**.
 - **Course metadata** appears on paper sheets: e.g. CENG318–ID322, Spring 2026, group identifiers, “Version 1”.
 
@@ -115,6 +115,27 @@ Screens captured from the Figma file (prototype route **`/sound`** on the varian
 
 ---
 
+## Hand-drawn (`hand-drawn/`)
+
+Additional pencil / ink screens that align with the **four-tab** chrome (**Home · speaker · settings · profile**) used on the Sound sheet below.
+
+### `hand-drawn/wireframe-sound-equalizer-presets-sliders.jpeg`
+
+- **Title:** **Sound** (top left).
+- **Presets:** Stacked buttons **Bass Boost**, **Balanced**, **Podcast**, **Custom**.
+- **EQ:** Horizontal sliders **Bass**, **Mid**, **Treble** (thumb ~center).
+- **CTA:** **save**.
+- **Bottom nav:** **Home** | **Sound/speaker** (current) | **Settings** | **Profile**.
+- **Flow:** Same role as Figma **Sound** / canonical **Sound & EQ** node; pairs with **`flowsheet-statistics-history-mydevices-bud-controls.jpeg`**, where the speaker tab opens **Statistics** first—implementation chooses order or combines into one tab with sections.
+
+### `hand-drawn/wireframe-volume-overlay-vertical.jpeg`
+
+- **Pattern:** Modal / overlay on blurred app chrome (header, content blocks, four-tab bar visible underneath).
+- **Content:** Speaker icon above a **vertical capsule** fill (level from bottom); handwritten **%65** as current value.
+- **Flow:** Ephemeral **volume adjustment** on top of Home or other screens; dismiss → return to underlying route.
+
+---
+
 ## Settings (`settings/`)
 
 ### `settings/wireframe-settings-general.jpeg`
@@ -192,6 +213,20 @@ Single page with **nine** phone frames (hand-drawn). Bottom nav on main chrome: 
 
 **Flow logic:** Splash → Get Started → Add Device → Searching → Success → Home. From Home or device screen → Key Configurations. From Profile → My Devices → Device details. Disconnect / Forget → return toward unpaired / add-device state. Cross-nav among Home, Volume, Settings, Profile via tab bar.
 
+### `flowsheets/flowsheet-statistics-history-mydevices-bud-controls.jpeg`
+
+Five phone frames in one row. Shared bottom nav: **Home**, **Audio/speaker**, **Settings/gear**, **Profile**.
+
+| # | Screen | Summary |
+|---|--------|---------|
+| 1 | **Listening history** | Back, title **Listening Hist**, **+**; filters **D · W · M · 6M · Y**; **Toplam 4h 32m** / **Today**; 24h bar chart (00, 06, 12, 18). |
+| 2 | **Statistics** | Back, **Statistics**; card **Listening History** + **4h 32m**; tiles **Güvenli** (Safe, ear icon) and placeholder **?**. |
+| 3 | **My Devices** | Back, **My Devices**; rows **Name / Connected**, **Name / Not Connected**; **+ Add Device**. |
+| 4 | **Left** | Back, **Left**; list **Pause**, **Next Song** ✓, **Previous Song**, **Closed** (left earbud gesture mapping). |
+| 5 | **Right** | Back, **Right**; **Pause** ✓, **Next Song**, **Previous Song**, **Closed** (right earbud). |
+
+**Flow logic:** **Audio tab** → **Statistics**; **Listening History** card → detailed **Listening Hist**. **Settings tab** → **My Devices**; **Add Device** ties to pairing; device row → **Left** / **Right** configuration. Maps to canonical **Statistics**, **Listening history**, **My Devices**, and **Left/Right bud** nodes (and overlaps **Key configurations** from the nine-panel sheet).
+
 ---
 
 ## Reference (`reference/`)
@@ -209,13 +244,13 @@ Use **one** diagram: **[`docs/page-flows.md`](../page-flows.md)** (section *Sing
 
 - **Cold start:** Launch → **Splash** (Welcome / Get Started) → **Home**.
 - **Pairing:** Home → **Add Device** → **Searching** → **Connected successfully** → Home.
-- **Home hub:** Status, mode, volume/preset summary, **Key configurations** entry.
-- **Volume tab:** Deeper **level + preset + EQ** (presets → Custom → Bass / Mid / Treble → Save) → back to Home.
+- **Home hub:** Status, mode, volume/preset summary, **Key configurations** entry; **Volume overlay** for quick level change.
+- **Audio · Volume tab:** **Statistics** → **Listening history**; **Sound & EQ** (presets → Custom → Bass / Mid / Treble → Save) → back to Statistics / Home.
 - **Listening mode:** **Noise** path (cancellation · normal · transparency) ↔ Home.
-- **Settings:** Tab or gear → **General settings** → device detail → automatic power-off picker → back to Home.
-- **Profile tab:** Login → register / forgot password / log in → after-login profile; **My Devices** and **Open device** → **Device details** → Disconnect / Forget → Home.
+- **Settings:** Tab or gear → **General settings** → **My Devices** (Add Device, Left/Right bud actions) and/or **Device detail** → automatic power-off → back.
+- **Profile tab:** Login → register / forgot password / log in → after-login profile; **My Devices** / **Open device** → **Device details** → Disconnect / Forget → Home.
 
-Treat **flowsheets** as authoritative for **screen order** where captions exist; the **nine-screen** sheet is the newest full-journey map for companion UX. **`reference/`** Learnify asset is excluded from scope.
+Treat **flowsheets** as authoritative for **screen order** where captions exist; **nine-screen** + **five-screen** sheets together cover onboarding, tabs, stats, and bud mapping. **`reference/`** Learnify asset is excluded from scope.
 
 ---
 
@@ -227,3 +262,4 @@ Treat **flowsheets** as authoritative for **screen order** where captions exist;
 | 2026-04-10 | Added Figma **Version 3** **Sound** screens under `figma-v3/`; documented four-tab chrome (Home, Sound, Noise, Profile) and relation to paper v1. |
 | 2026-04-10 | **`docs/page-flows.md`** reduced to **one** merged flow (Home hub + Sound + Noise + Profile + settings); analysis updated to match. |
 | 2026-04-10 | Added **nine-screen** companion flowsheet; merged **Splash**, **Success**, **Volume/Settings/Profile** tabs, **Key Conf**, **Device details** into canonical flow. **Learnify** grid moved to `reference/` as out-of-scope. |
+| 2026-04-10 | Added **hand-drawn** Sound + **volume overlay**; **five-screen** flowsheet (statistics, history, my devices, left/right bud); canonical flow updated (Statistics branch, overlay, Settings → My Devices → LB/RB, MD → DD). |

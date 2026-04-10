@@ -2,14 +2,14 @@
 
 Wireframes and notes live under `docs/wireframes/`; element-level detail is in [`wireframes/WIREFRAME-ANALYSIS.md`](wireframes/WIREFRAME-ANALYSIS.md).
 
-There is **exactly one canonical flow** below. It merges earlier paper + Figma work with the **nine-screen companion flowsheet** (`flowsheets/flowsheet-nine-screen-home-volume-settings-profile.jpeg`):
+There is **exactly one canonical flow** below. It merges earlier paper + Figma + **nine-screen** flows with newer hand-drawn screens:
 
-- **Splash** → **Get Started** → **Home** for a cold start.
-- **Home** is the dashboard: connection status, battery, device identity, **current listening mode** (e.g. ANC on), **volume / preset** summary, and **Key configurations**.
-- **Bottom navigation (this sheet):** **Home · Volume · Settings · Profile**. The **Volume** tab holds deeper **preset + EQ** steps (aligned with Figma **Sound**). **Listening mode** (noise cancellation · normal · transparency) is reachable from Home / Volume as in the merged diagram.
-- **Bluetooth:** Add Device → Searching → **Connected successfully** → Home.
-- **Settings** (tab or gear where sketched): app preferences (e.g. dark mode, notifications, language) and the **device settings** stack (detail, automatic power-off) from older wires.
-- **Profile:** auth (login / register / forgot password) and post-login menu; **My Devices** leads to **Device details** (disconnect / forget).
+- **Splash** → **Home**; pairing **Add Device → Searching → Connected successfully** → Home.
+- **Volume overlay** (capsule slider, %) can appear over Home / audio surfaces when adjusting level.
+- **Audio · Volume tab:** lands on **Statistics**; **Listening history** drill-in; **Sound & EQ** (presets, Bass/Mid/Treble, **save**) from that branch (see `hand-drawn/` + `flowsheets/` assets).
+- **Key configurations** (nine-panel) aligns with **Left / Right bud** tap lists (five-panel) — one implementation surface.
+- **Settings:** general preferences **and** **My Devices** list → **Add Device** (same Bluetooth spine), **Left** / **Right** bud actions, and (where sketched) **device detail** / power-off stack.
+- **Profile** auth and **My Devices** / **Open device** → **Device details** as before.
 
 A file under [`reference/`](wireframes/reference/) is **not** part of this product (e-learning UI); see analysis.
 
@@ -27,20 +27,34 @@ flowchart TD
     BT --> OK[Connected successfully]
     OK --> HOME
 
+    HOME -->|Volume overlay| VOV[Volume overlay — level %]
+    VOV --> HOME
+
     HOME -->|Key configurations| KC[Key Conf — taps & microphone]
     KC --> HOME
 
-    HOME -->|Volume tab| VOL[Volume & sound — level + preset]
-    VOL --> SP[Presets — Bass Boost · Balanced · Podcast · Custom]
+    HOME -->|Audio · Volume tab| STAT[Statistics]
+    STAT -->|Listening history| LH[Listening history — D W M 6M Y]
+    LH -->|Back| STAT
+    STAT -->|Sound & EQ| SP[Presets — Bass Boost · Balanced · Podcast · Custom]
     SP -->|Custom| SL[Sliders — Bass · Mid · Treble]
     SL --> SV[Save]
-    SV -->|After save| VOL
-    VOL -->|Home tab / Back| HOME
+    SV -->|After save| SP
+    SP -->|Back| STAT
+    STAT -->|Home tab / Back| HOME
 
     HOME -->|Listening mode| NZ[Noise — cancellation · normal · transparency]
     NZ -->|Back / Home| HOME
 
     HOME -->|Settings tab or gear| F[General settings]
+    F -->|My Devices| MD[My Devices — list + Add Device]
+    MD -->|Add Device| BT
+    MD -->|Select device| DD[Device details — disconnect / forget]
+    MD -->|Left bud| LB[Left bud — tap actions]
+    MD -->|Right bud| RB[Right bud — tap actions]
+    LB -->|Back| MD
+    RB -->|Back| MD
+    MD -->|Back| F
     F -->|Device settings| G[Device detail — serial, updates]
     G -->|Automatic power off| H[Power-off duration picker]
     H -->|Back| G
@@ -55,17 +69,18 @@ flowchart TD
     FP -->|Done / cancel| P
     PL -->|Home tab| HOME
 
-    HOME -->|Open device| DD[Device details — disconnect / forget]
-    PL -->|My Devices| DD
+    PL -->|My Devices| MD
+    HOME -->|Open device| DD
     DD -->|Back| HOME
+    DD -->|Back to list| MD
     DD -->|Disconnect / Forget| HOME
 ```
 
 **Notes**
 
-- **Home** combines empty / connected / disconnected **states** (after **Forget** or **Disconnect**, user is back toward **Add Device** as needed).
-- **Volume tab** + **Noise** together cover what older wires split across device-control and Figma **Sound** / **Noise** tabs—one implementation can use either tab labels or a single “Sound” tab if you collapse UI.
-- **`reference/flowsheet-learnify-elearning-grid.jpeg`** is stored only as a labeled reference; it does **not** define this app’s flow.
+- **Statistics ↔ Sound:** Some sketches use the **speaker tab** only for EQ; others use it for **Statistics** first—this diagram orders **Statistics** then **Sound & EQ** as a drill-in; you may flatten to one tab with segments if you prefer.
+- **Key conf vs bud screens:** **KC** and **LB/RB** describe the same product behavior (per-bud gestures); implement once.
+- **`reference/flowsheet-learnify-elearning-grid.jpeg`** is out of scope for this app.
 
 ---
 
@@ -88,9 +103,12 @@ flowchart TD
 | `flowsheets/` | `flowsheet-auth-and-profile.jpeg` | Vertical flow: login → register → profile → forgot password |
 | `flowsheets/` | `flowsheet-bluetooth-pairing.jpeg` | Bluetooth “looking” → my devices |
 | `flowsheets/` | `flowsheet-device-settings-and-power-off.jpeg` | Device detail → automatic power off (+ placeholders) |
-| `flowsheets/` | `flowsheet-nine-screen-home-volume-settings-profile.jpeg` | Nine-panel: splash → pair → home, Volume/Settings/Profile tabs, key config, device details |
-| `figma-v3/` | `wireframe-sound-equalizer-four-presets.jpeg` | Figma **Sound** — four presets, Custom + Bass/Mid/Treble, 4-tab nav |
-| `figma-v3/` | `wireframe-sound-equalizer-custom-save.jpeg` | Figma **Sound** — presets + sliders + **Save**, 4-tab nav |
-| `reference/` | `flowsheet-learnify-elearning-grid.jpeg` | **Out of scope** — e-learning app grid (LEARNIFY); not earphone UX |
+| `flowsheets/` | `flowsheet-nine-screen-home-volume-settings-profile.jpeg` | Nine-panel: splash → pair → home, tabs, key config, device details |
+| `flowsheets/` | `flowsheet-statistics-history-mydevices-bud-controls.jpeg` | Five-panel: statistics, listening history, my devices, left/right bud |
+| `hand-drawn/` | `wireframe-sound-equalizer-presets-sliders.jpeg` | **Sound** — four presets, Bass/Mid/Treble, save, 4-tab nav |
+| `hand-drawn/` | `wireframe-volume-overlay-vertical.jpeg` | Volume capsule overlay, %65, blurred chrome behind |
+| `figma-v3/` | `wireframe-sound-equalizer-four-presets.jpeg` | Figma **Sound** — four presets, Custom + sliders |
+| `figma-v3/` | `wireframe-sound-equalizer-custom-save.jpeg` | Figma **Sound** — presets + sliders + **Save** |
+| `reference/` | `flowsheet-learnify-elearning-grid.jpeg` | **Out of scope** — LEARNIFY e-learning grid |
 
 Paths are relative to `docs/wireframes/`.

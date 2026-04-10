@@ -64,7 +64,7 @@ Adjust folder names to match your course submission requirements.
 |----------|---------|
 | [`docs/page-flows.md`](docs/page-flows.md) | **Canonical user journey:** one Mermaid diagram for launch → Home (devices + settings) → Sound / Noise / Profile, plus a table mapping to wireframe JPEG paths. |
 | [`docs/wireframes/WIREFRAME-ANALYSIS.md`](docs/wireframes/WIREFRAME-ANALYSIS.md) | **Low-fi reference:** headers, fields, bottom-nav variants, nine-screen companion sheet, and how they merge into the single flow. |
-| `docs/wireframes/*` | **Source imagery:** paper sketches, Figma exports (`figma-v3/`), flowsheets (incl. nine-screen Home·Volume·Settings·Profile), and `reference/` (out-of-scope uploads labeled in analysis). |
+| `docs/wireframes/*` | **Source imagery:** paper sketches, `hand-drawn/`, Figma (`figma-v3/`), flowsheets (nine-screen + stats/bud five-panel), and `reference/` (out-of-scope uploads). |
 | [`docs/mockups/`](docs/mockups/) | **Mid-fi HTML mockups:** mobile-width pages with linked navigation; useful for reviews before implementation. Start from `welcome.html` or `index.html`. |
 
 ---
