@@ -9,15 +9,25 @@ Structured notes derived from the uploaded sketches. Use this as a single refere
 
 ## Conventions observed across screens
 
-- **Paper wireframes (Version 1):** Bottom navigation uses **two** tabs — **devices** and **profile** (sometimes labeled “Profile”).
-- **Figma digital wireframes (Version 3):** Bottom navigation uses **four** tabs — **Home**, **Sound**, **Noise**, **Profile**. Design notes say the **Home** screen was revised to carry connection status, device info, current mode, a live equalizer visualization, and quick stats; redundant controls were moved into the tab bar (see `figma-v3/` assets).
-- **Canonical product flow:** Treat **[`docs/page-flows.md`](../page-flows.md)** as the single merged story. It folds in the **nine-screen** sheet, **five-screen** stats/bud sheet, and **hand-drawn** Sound + volume overlay: **Splash** → **Home**; pairing; **Volume overlay**; **Audio tab** → **Statistics** → **Listening history** and **Sound & EQ**; **Settings** → **My Devices** → **Left/Right bud** (with **Key configurations** overlap); **Profile** and **Device details** as documented in the Mermaid diagram.
-- **Header patterns:** Back control (left), optional **settings / gear** (often top-right on paper flows); Figma **Sound** screen uses back + title **Sound**.
-- **Course metadata** appears on paper sheets: e.g. CENG318–ID322, Spring 2026, group identifiers, “Version 1”.
+- **Version map:** The project materials resolve into **two** wireframe versions. The earlier **paper** screens are the unlabelled first pass; the later bundle is explicitly marked **Version 2**.
+- **Paper wireframes (Version 1):** Bottom navigation uses **two** tabs — **devices** and **profile** (sometimes labeled `Profile`).
+- **Version 2 digital wireframes:** Bottom navigation expands to **four** tabs. The surviving Version 2 assets use **Home**, **Sound**, **Settings**, **Profile** and move more audio/status information into top-level navigation.
+- **Canonical product flow:** Treat **[`docs/page-flows.md`](../page-flows.md)** as the source of truth for the current app story: **Launch** → **Splash** → **Home (empty state / Add Device)** → **Searching for a Device** → **Connected Successfully** → **Home (connected state)**. From there, the Version 2 shell branches into **Sound**, **Settings**, **Profile**, **Device details**, **Key Configurations**, and the **Volume overlay**.
+- **Header patterns:** Back control (left), optional **settings / gear** (often top-right on paper flows); the hand-drawn **Sound** screen uses a simple title-led header.
+- **Course metadata** appears on paper sheets: e.g. CENG318-ID322, Spring 2026, group identifiers. Not every early sheet is explicitly version-tagged, but the report groups that paper set as **Version 1**.
 
 ---
 
-## Profile (`profile/`)
+## Scope note
+
+The sections below still document both wireframe generations for traceability, but only the **Version 2** assets are part of the canonical flow in **[`docs/page-flows.md`](../page-flows.md)**.
+
+- **Included in the current flow:** `Wireframes-Complete-Version2.pdf`, `flowsheets/flowsheet-nine-screen-home-volume-settings-profile.jpeg`, `flowsheets/flowsheet-statistics-history-mydevices-bud-controls.jpeg`, `hand-drawn/wireframe-sound-equalizer-presets-sliders.jpeg`, and `hand-drawn/wireframe-volume-overlay-vertical.jpeg`.
+- **Reference only:** the older paper `profile/`, `devices/`, and `settings/` sheets remain useful for UI detail, but they should not override the Version 2 navigation structure.
+
+---
+
+## Profile (`profile/`) - Version 1 reference only
 
 ### `profile/wireframe-login.jpeg`
 
@@ -57,7 +67,7 @@ Structured notes derived from the uploaded sketches. Use this as a single refere
 
 ---
 
-## Devices (`devices/`)
+## Devices (`devices/`) - Version 1 reference only
 
 ### `devices/wireframe-devices-home-empty.jpeg`
 
@@ -83,41 +93,9 @@ Structured notes derived from the uploaded sketches. Use this as a single refere
 
 ---
 
-## Figma Version 3 (`figma-v3/`)
-
-Screens captured from the Figma file (prototype route **`/sound`** on the variant with Save). Same product, **updated information architecture** vs paper v1.
-
-### `figma-v3/wireframe-sound-equalizer-four-presets.jpeg`
-
-- **Intent:** **Sound** top-level tab — equalizer presets and manual bands.
-- **Header:** Back (returns to prior context; design discussion implies **Home** as main hub).
-- **Title:** `Sound`.
-- **Presets (pill / large buttons):** `Bass Boost`, `Balanced`, `Podcast`, `Custom` — **Custom** shown selected (blue).
-- **Manual controls:** Horizontal sliders **Bass**, **Mid**, **Treble** (Treble partially clipped in export); implied interaction: tuning when **Custom** is active.
-- **Chrome:** Bottom nav — **Home** | **Sound** (active) | **Noise** | **Profile**.
-- **Sidebar context (Figma):** Feedback to add equalizer and rework **Home** because main actions moved to bottom navigation; labeled **Version 3**.
-
-### `figma-v3/wireframe-sound-equalizer-custom-save.jpeg`
-
-- **Intent:** Same **Sound** tab, alternate state / iteration.
-- **Presets shown:** `Balanced`, `Podcast`, `Custom` (**Custom** selected); no **Bass Boost** row in this crop (may be scroll or layout variant).
-- **Sliders:** **Bass**, **Mid**, **Treble** — thumbs at mid position in this shot.
-- **Primary CTA:** Full-width blue **`Save`** below sliders (commit custom EQ).
-- **Chrome:** Same four-tab bottom nav; **Sound** active.
-
-### Flow notes (Version 3)
-
-- **Canonical mapping:** In [`docs/page-flows.md`](../page-flows.md), Figma’s **Sound** tab is folded into the **Volume** tab from the nine-screen sheet (same preset + slider behavior).
-- **Entry to Sound:** Tap **Sound** in the bottom bar from **Home**, **Noise**, or **Profile**.
-- **Within Sound:** Choose preset; if **Custom**, adjust **Bass / Mid / Treble**; **Save** where present to persist.
-- **Exit:** Back from header, or switch tab via bottom nav.
-- **Relationship to v1:** Paper **device control** screen combines model image, **modes** (NC / normal / transparency), and a large vertical EQ; v3 **splits** concerns so **Sound** is its own tab and **Noise** is separate. The merged flow in **`docs/page-flows.md`** adopts that split while keeping paper pairing, settings, and profile paths under **Home** / **Profile**.
-
----
-
 ## Hand-drawn (`hand-drawn/`)
 
-Additional pencil / ink screens that align with the **four-tab** chrome (**Home · speaker · settings · profile**) used on the Sound sheet below.
+Additional pencil / ink screens that align with the surviving **Version 2** four-tab chrome (**Home · speaker · settings · profile**) used on the Sound sheet below.
 
 ### `hand-drawn/wireframe-sound-equalizer-presets-sliders.jpeg`
 
@@ -126,7 +104,7 @@ Additional pencil / ink screens that align with the **four-tab** chrome (**Home 
 - **EQ:** Horizontal sliders **Bass**, **Mid**, **Treble** (thumb ~center).
 - **CTA:** **save**.
 - **Bottom nav:** **Home** | **Sound/speaker** (current) | **Settings** | **Profile**.
-- **Flow:** Same role as Figma **Sound** / canonical **Sound & EQ** node; pairs with **`flowsheet-statistics-history-mydevices-bud-controls.jpeg`**, where the speaker tab opens **Statistics** first—implementation chooses order or combines into one tab with sections.
+- **Flow:** Version 2 **Sound / EQ** screen; in the canonical flow, the **Sound** tab lands on **Statistics** first and then drills into this EQ surface.
 
 ### `hand-drawn/wireframe-volume-overlay-vertical.jpeg`
 
@@ -136,7 +114,7 @@ Additional pencil / ink screens that align with the **four-tab** chrome (**Home 
 
 ---
 
-## Settings (`settings/`)
+## Settings (`settings/`) - Version 1 reference only
 
 ### `settings/wireframe-settings-general.jpeg`
 
@@ -200,7 +178,7 @@ Vertical strip:
 Single page with **nine** phone frames (hand-drawn). Bottom nav on main chrome: **Home**, **Volume** (or “Volume/Controls”), **Settings**, **Profile**.
 
 | # | Screen | Summary |
-|---|--------|---------|
+| --- | ------ | ------- |
 | 1 | **Splash / landing** | Logo, slogan, “Welcome!”, **Get Started**. |
 | 2 | **Add device** | Large **ADD DEVICE** (+); bottom nav present. |
 | 3 | **Searching** | Concentric / radar motif, copy **Searching for a Device…**. |
@@ -211,21 +189,21 @@ Single page with **nine** phone frames (hand-drawn). Bottom nav on main chrome: 
 | 8 | **Device details** | Same control summary as Home (mode, volume, preset, Key Configurations) plus **Disconnect** and **Forget Device**. |
 | 9 | **Key configurations** | Back + title **Key Conf.**; headphone visual; **Double tap** — Left → “Next Song”, Right → “Pause”; **Microphone** selector **Auto**; bottom nav. |
 
-**Flow logic:** Splash → Get Started → Add Device → Searching → Success → Home. From Home or device screen → Key Configurations. From Profile → My Devices → Device details. Disconnect / Forget → return toward unpaired / add-device state. Cross-nav among Home, Volume, Settings, Profile via tab bar.
+**Flow logic:** The raw sheet separates **Add Device** from the dashboard, but in the final information architecture it is treated as **Home (empty state)**. The canonical path is **Launch** → **Splash** → **Home (empty state / Add Device)** → **Searching for a Device** → **Connected Successfully** → **Home (connected state)**. From **Home** or **Device details** → **Key Configurations**. From **Profile** → **My Devices** / **Statistics**. From **Device details** → **Disconnect / Forget** → return toward **Home (empty state)**. Cross-nav among **Home**, **Sound**, **Settings**, and **Profile** via the four-tab shell.
 
 ### `flowsheets/flowsheet-statistics-history-mydevices-bud-controls.jpeg`
 
 Five phone frames in one row. Shared bottom nav: **Home**, **Audio/speaker**, **Settings/gear**, **Profile**.
 
 | # | Screen | Summary |
-|---|--------|---------|
+| --- | ------ | ------- |
 | 1 | **Listening history** | Back, title **Listening Hist**, **+**; filters **D · W · M · 6M · Y**; **Toplam 4h 32m** / **Today**; 24h bar chart (00, 06, 12, 18). |
 | 2 | **Statistics** | Back, **Statistics**; card **Listening History** + **4h 32m**; tiles **Güvenli** (Safe, ear icon) and placeholder **?**. |
 | 3 | **My Devices** | Back, **My Devices**; rows **Name / Connected**, **Name / Not Connected**; **+ Add Device**. |
 | 4 | **Left** | Back, **Left**; list **Pause**, **Next Song** ✓, **Previous Song**, **Closed** (left earbud gesture mapping). |
 | 5 | **Right** | Back, **Right**; **Pause** ✓, **Next Song**, **Previous Song**, **Closed** (right earbud). |
 
-**Flow logic:** **Audio tab** → **Statistics**; **Listening History** card → detailed **Listening Hist**. **Settings tab** → **My Devices**; **Add Device** ties to pairing; device row → **Left** / **Right** configuration. Maps to canonical **Statistics**, **Listening history**, **My Devices**, and **Left/Right bud** nodes (and overlaps **Key configurations** from the nine-panel sheet).
+**Flow logic:** **Sound tab** → **Statistics**; **Listening History** card → detailed **Listening Hist**. **My Devices** stays part of the current Version 2 flow as a shared destination from **Settings** and **Profile**; **Add Device** ties back into pairing; device row → **Left** / **Right** configuration. Maps to canonical **Statistics**, **Listening history**, **My Devices**, and **Left/Right bud** nodes (and overlaps **Key configurations** from the nine-panel sheet).
 
 ---
 
@@ -242,24 +220,26 @@ Five phone frames in one row. Shared bottom nav: **Home**, **Audio/speaker**, **
 
 Use **one** diagram: **[`docs/page-flows.md`](../page-flows.md)** (section *Single app flow*). Summary:
 
-- **Cold start:** Launch → **Splash** (Welcome / Get Started) → **Home**.
-- **Pairing:** Home → **Add Device** → **Searching** → **Connected successfully** → Home.
-- **Home hub:** Status, mode, volume/preset summary, **Key configurations** entry; **Volume overlay** for quick level change.
-- **Audio · Volume tab:** **Statistics** → **Listening history**; **Sound & EQ** (presets → Custom → Bass / Mid / Treble → Save) → back to Statistics / Home.
-- **Listening mode:** **Noise** path (cancellation · normal · transparency) ↔ Home.
-- **Settings:** Tab or gear → **General settings** → **My Devices** (Add Device, Left/Right bud actions) and/or **Device detail** → automatic power-off → back.
-- **Profile tab:** Login → register / forgot password / log in → after-login profile; **My Devices** / **Open device** → **Device details** → Disconnect / Forget → Home.
+- **Cold start and pairing:** **Launch** → **Splash** → **Home (empty state / Add Device)** → **Searching for a Device** → **Connected Successfully** → **Home (connected state)**.
+- **Home hub:** Home is modeled in two states. The empty state exposes **Add Device** as the main call to action; the connected state shows connection state, ANC mode, volume, preset summary, and a **Key Configurations** entry. The **Volume overlay** is a temporary layer on top of Home.
+- **Sound branch:** **Sound tab** → **Statistics** → **Listening History**; **Statistics** also drills into **Sound / EQ** with presets, **Custom**, **Bass / Mid / Treble**, and **Save**.
+- **Settings branch:** **Settings tab** → settings overview (**Dark Mode**, **Notifications**, **Language**) → **My Devices** (post-pairing device management) → **Searching for a Device** (optional additional pairing) or **Left / Right** bud actions or **Device details**.
+- **Profile branch:** **Profile tab** opens the avatar/menu surface with **My Devices**, **Statistics**, **About**, and **Help**; **My Devices** and **Statistics** link into the same shared screens used elsewhere in Version 2.
+- **Device branch:** **Home** or **My Devices** → **Device details** → **Key Configurations** or **Disconnect / Forget** → return toward **Home (empty state)**.
 
-Treat **flowsheets** as authoritative for **screen order** where captions exist; **nine-screen** + **five-screen** sheets together cover onboarding, tabs, stats, and bud mapping. **`reference/`** Learnify asset is excluded from scope.
+Treat **flowsheets** as authoritative for **screen order** where captions exist; the **nine-screen** and **five-screen** sheets together define the canonical Version 2 path. Older paper screens remain as background reference only. **`reference/`** Learnify asset is excluded from scope.
 
 ---
 
 ## Changelog
 
 | Date | Note |
-|------|------|
+| ---- | ---- |
 | 2026-04-10 | Initial analysis from uploaded low-fi JPEGs; filenames aligned with `profile/`, `devices/`, `settings/`, `flowsheets/`. |
-| 2026-04-10 | Added Figma **Version 3** **Sound** screens under `figma-v3/`; documented four-tab chrome (Home, Sound, Noise, Profile) and relation to paper v1. |
-| 2026-04-10 | **`docs/page-flows.md`** reduced to **one** merged flow (Home hub + Sound + Noise + Profile + settings); analysis updated to match. |
+| 2026-04-10 | **`docs/page-flows.md`** reduced to **one** merged flow (Home hub + audio + profile + settings); analysis updated to match. |
 | 2026-04-10 | Added **nine-screen** companion flowsheet; merged **Splash**, **Success**, **Volume/Settings/Profile** tabs, **Key Conf**, **Device details** into canonical flow. **Learnify** grid moved to `reference/` as out-of-scope. |
 | 2026-04-10 | Added **hand-drawn** Sound + **volume overlay**; **five-screen** flowsheet (statistics, history, my devices, left/right bud); canonical flow updated (Statistics branch, overlay, Settings → My Devices → LB/RB, MD → DD). |
+| 2026-04-12 | Corrected version framing: the analysis now reflects **two** wireframe versions only, with the earlier unlabelled paper set treated as **Version 1** and the surviving hand-drawn / flowsheet assets treated as **Version 2**. |
+| 2026-04-12 | Removed deleted Figma wireframe references from the analysis and kept only the screens still present in `docs/wireframes/`. |
+| 2026-04-12 | Synced the analysis with the Version 2-only Mermaid flow: pairing now starts at **Splash** and continues through **Add Device**, **Searching**, **Connected Successfully**, then into the four-tab shell (**Home / Sound / Settings / Profile**). |
+| 2026-04-12 | Refined the canonical information architecture so **Add Device** is treated as the **empty state of Home**, and simplified the Mermaid flow to focus on primary paths rather than every back arrow. |

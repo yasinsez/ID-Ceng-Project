@@ -195,11 +195,50 @@ The bottom navigation bar changed across the two prototype versions:
     \midrule
     Version 1 & Devices \textbar{} Profile
       & Two tabs; all controls accessed through the gear icon \\
-    Version 2 & Home \textbar{} Sound \textbar{} Noise \textbar{} Profile
-      & Four tabs; audio controls made directly visible \\
+    Version 2 & Home \textbar{} Sound \textbar{} Settings \textbar{} Profile
+      & Four tabs; pairing, sound, device management, and profile areas made directly visible \\
     \bottomrule
   \end{tabular}
 \end{center}
+
+\section{Information Architecture}
+
+Figure~\ref{fig:info-architecture} presents the final Version 2 information
+architecture as one readable flow. It starts with onboarding and pairing, then
+continues into Home and the four-tab navigation. In the final architecture,
+Add Device is treated as the empty state of Home rather than as a completely
+separate page. Shared screens such as My Devices, Device Details, and Key
+Configurations are drawn only once so the overall structure is easier to
+understand.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{../page-flows.png}
+  \caption{Final Version 2 information architecture and single app flow. The
+    journey moves from Launch and Splash to Home in its empty-state Add Device
+    form, then through Searching for a Device and Connected Successfully into
+    Home in its connected state. Colour groups distinguish onboarding, pairing,
+    Home, Sound, Settings, Profile, and device-specific screens.}
+  \label{fig:info-architecture}
+\end{figure}
+
+The final structure used in this report is:
+\begin{itemize}
+  \item \textbf{Onboarding and pairing:} Launch $\to$ Splash $\to$ Home
+    (empty state / Add Device) $\to$ Searching for a Device $\to$ Connected
+    Successfully $\to$ Home (connected state).
+  \item \textbf{Home:} the main status hub in two states. Before pairing it
+    exposes Add Device; after pairing it shows connection state, ANC mode,
+    volume, preset, and the Key Configurations shortcut.
+  \item \textbf{Sound:} Statistics as the summary view, Listening History as the
+    drill-down, and Sound / EQ for presets plus Bass, Mid, and Treble sliders.
+  \item \textbf{Settings and Profile:} shared entry points to My Devices and
+    related secondary screens without duplicating the same destinations.
+    My Devices is the post-pairing management area and may include Add Device
+    for adding another device later.
+  \item \textbf{Device actions:} Device Details, Left / Right bud mapping, and
+    Key Configurations remain part of the same device-management branch.
+\end{itemize}
 
 \section{Screen Inventory}
 
@@ -247,10 +286,6 @@ Paths are relative to \texttt{docs/wireframes/}.
      & Sound tab with presets, sliders, and Save \\[2pt]
   v2 & \path{hand-drawn/wireframe-volume-overlay-vertical.jpeg}
      & Volume capsule overlay \\[2pt]
-  v2 & \path{figma-v3/wireframe-sound-equalizer-four-presets.jpeg}
-     & Figma Sound screen with four presets and Custom \\[2pt]
-  v2 & \path{figma-v3/wireframe-sound-equalizer-custom-save.jpeg}
-     & Figma Sound screen with presets, sliders, and Save \\[2pt]
   v2 & \path{flowsheets/flowsheet-nine-screen-home-volume-settings-profile.jpeg}
      & Nine-panel flow from splash to home and related screens \\[2pt]
   v2 & \path{flowsheets/flowsheet-statistics-history-mydevices-bud-controls.jpeg}
@@ -471,9 +506,9 @@ who wanted a quick mode change had to visually compete with equalizer sliders, a
 users who wanted sound adjustment had to look past the mode controls.
 
 \begin{highlight}
-Decision: The combined screen was split into two dedicated tabs, Sound for presets
-and EQ sliders, and Noise for listening mode selection. This gave each function its
-own clearer space.
+Decision: The combined screen was split into clearer, smaller surfaces. Sound
+received its own branch for presets and EQ sliders, while status and device actions
+were redistributed across Home, Settings, and Device Details.
 \end{highlight}
 
 \section{Issue: Two-Tab Navigation Was Too Sparse}
@@ -483,8 +518,8 @@ actions were hidden behind a gear icon or a device card tap. This made the path 
 common audio functions less obvious.
 
 \begin{highlight}
-Decision: The navigation was expanded to four tabs, Home, Sound, Noise, and
-Profile, so the most frequent audio actions would stay close at hand.
+Decision: The navigation was expanded to four tabs, Home, Sound, Settings, and
+Profile, so the main product areas would stay visible and easy to reach.
 \end{highlight}
 
 \section{Issue: No Volume Quick-Access}
@@ -531,16 +566,16 @@ screen lists the available actions and shows the current selection with a checkm
 \end{highlight}
 
 % ============================================================
-\chapter{Version 2: Hand-Drawn Digital \& Figma Wireframes}
+\chapter{Version 2: Hand-Drawn Digital Wireframes}
 % ============================================================
 
 \section{Overview}
 
-Version 2 introduced two parallel workstreams: hand-drawn digital screens
-drawn on a tablet, and Figma wireframes. Both follow the four-tab navigation that
-came out of the Version 1 review. Version 2 also added consolidated flow sheets,
-including a nine-screen overview and a five-panel statistics and bud controls sheet,
-to check the full navigation hierarchy before moving to high-fidelity work.
+Version 2 introduced a more structured digital wireframe set built around the
+four-tab navigation that came out of the Version 1 review. This version also added
+consolidated flow sheets, including a nine-screen overview and a five-panel
+statistics and bud controls sheet, to check the full navigation hierarchy before
+moving to high-fidelity work.
 
 % -------------------------------------------------------
 \section{Hand-Drawn Digital Screens}
@@ -568,36 +603,6 @@ to check the full navigation hierarchy before moving to high-fidelity work.
     closes the overlay and returns the user to the previous screen.}
   \label{fig:v2-hand-volume}
 \end{figure}
-
-% -------------------------------------------------------
-\section{Figma Digital Wireframes}
-% -------------------------------------------------------
-
-\subsection{Sound Tab: Four Presets State}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[angle=90, width=0.50\textwidth]{figma-v3/wireframe-sound-equalizer-four-presets.jpeg}
-  \caption{Figma v3 Sound screen showing preset selection. The screen includes
-    Bass Boost, Balanced, Podcast, and Custom buttons, with Bass, Mid, and Treble
-    sliders below. Bottom navigation:
-    Home \textbar{} Sound (active) \textbar{} Noise \textbar{} Profile.}
-  \label{fig:v2-figma-presets}
-\end{figure}
-
-\subsection{Sound Tab: Custom Preset with Save}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[angle=90, width=0.50\textwidth]{figma-v3/wireframe-sound-equalizer-custom-save.jpeg}
-  \caption{Figma v3 Sound screen with the Custom preset active and a full-width
-    Save button under the sliders. This button stores the custom EQ profile.}
-  \label{fig:v2-figma-save}
-\end{figure}
-
-The two Figma screens refine the hand-drawn version. The tab names are finalised as
-Home, Sound, Noise, and Profile, while the hand-drawn version still used Settings
-instead of Noise as the third tab. The Save action is also made more visually clear.
 
 % -------------------------------------------------------
 \section{Version 2 Flowsheets}
@@ -686,12 +691,12 @@ users can choose a preset in one tap, while users who want manual control can
 select Custom and adjust the three-band EQ. The separate Save button prevents
 accidental overwrite of a saved profile.
 
-\subsection{Noise Mode as a Separate Tab}
+\subsection{Settings as a Dedicated Top-Level Area}
 
-Combining noise mode with the Sound tab was considered and rejected. Switching noise
-cancellation on and off is a frequent and context-dependent action, for example when
-entering a noisy environment or taking a call, so it was given its own tab instead
-of being hidden inside another screen.
+Version 1 placed most secondary actions behind a gear icon or deep drill-downs.
+In Version 2, Settings became a top-level tab so that language, notifications, and
+device-management entry points would be easier to discover without overloading Home
+or Profile.
 
 \subsection{Progressive Disclosure in Settings}
 
@@ -703,10 +708,9 @@ of accidental changes to less frequently used preferences.
 \section{Challenges}
 
 \begin{enumerate}
-  \item \textbf{Inconsistent tab labels across iterations.} Version 2 hand-drawn
-    screens used Home / Sound / Settings / Profile, while Figma finalised Home /
-    Sound / Noise / Profile. Resolving this required explicit agreement before
-    high-fidelity work begins.
+  \item \textbf{Inconsistent tab labels across iterations.} Version 2 screens and
+    flowsheets needed to be normalised into one stable structure. The report now
+    uses Home / Sound / Settings / Profile consistently.
   \item \textbf{Density of the Version 1 device-control screen.} Deciding which
     controls belong on the main card and which should move to dedicated tabs took
     two review rounds.
@@ -735,7 +739,7 @@ of accidental changes to less frequently used preferences.
     sections without memorising complex paths.
   \item Important system states, such as connection and pairing status, are shown
     clearly to reduce uncertainty.
-  \item Common actions like checking battery level, switching noise mode, and
+  \item Common actions like checking battery level, changing listening mode, and
     selecting a sound preset are reachable in one or two steps.
 \end{itemize}
 
@@ -752,8 +756,8 @@ usage statistics, and earbud gesture configuration.
     profile and authentication area, and settings screens, using paper drawings and
     flowsheets to test transitions.
   \item Version 2 addressed the main gaps identified during review. The audio area
-    was split into Sound and Noise tabs, the combined device-control screen was
-    separated into clearer parts, volume control became a quick overlay, and
+    was reorganised around the Home and Sound branches, the combined device-control
+    screen was separated into clearer parts, volume control became a quick overlay, and
     statistics and bud controls were added.
   \item The overall design is based on the idea that frequent actions, such as
     pairing, mode switching, and preset selection, should be reachable in one or

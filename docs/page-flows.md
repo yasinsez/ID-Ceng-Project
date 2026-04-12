@@ -2,14 +2,14 @@
 
 Wireframes and notes live under `docs/wireframes/`; element-level detail is in [`wireframes/WIREFRAME-ANALYSIS.md`](wireframes/WIREFRAME-ANALYSIS.md).
 
-There is **exactly one canonical flow** below. It merges earlier paper + Figma + **nine-screen** flows with newer hand-drawn screens:
+This page now reflects **Version 2 only**. The flow below is based on the surviving **four-tab** wireframes and `Wireframes-Complete-Version2.pdf`, so the older **Version 1** two-tab auth and paper settings flows are intentionally excluded.
 
-- **Splash** → **Home**; pairing **Add Device → Searching → Connected successfully** → Home.
-- **Volume overlay** (capsule slider, %) can appear over Home / audio surfaces when adjusting level.
-- **Audio · Volume tab:** lands on **Statistics**; **Listening history** drill-in; **Sound & EQ** (presets, Bass/Mid/Treble, **save**) from that branch (see `hand-drawn/` + `flowsheets/` assets).
-- **Key configurations** (nine-panel) aligns with **Left / Right bud** tap lists (five-panel) — one implementation surface.
-- **Settings:** general preferences **and** **My Devices** list → **Add Device** (same Bluetooth spine), **Left** / **Right** bud actions, and (where sketched) **device detail** / power-off stack.
-- **Profile** auth and **My Devices** / **Open device** → **Device details** as before.
+- **Onboarding / pairing:** **Splash** leads to **Home (empty state)**, where **Add Device** is the primary call to action. Pairing then moves through **Searching for a Device** → **Connected Successfully** → **Home (connected state)**.
+- **Shared V2 shell:** primary navigation is **Home**, **Sound**, **Settings**, **Profile**.
+- **Sound tab:** **Statistics** is the summary view; **Listening History** drills deeper; **Sound / EQ** holds presets plus **Bass / Mid / Treble** sliders and **Save**.
+- **Settings / Profile overlap:** V2 sheets place **My Devices** and **Statistics** in slightly different tabs, but they point to the same product surfaces, so they are modeled as shared destinations.
+- **Two add-device contexts:** first pairing happens from **Home (empty state)**; later device management happens in **My Devices**.
+- **Device controls:** **Key Configurations** and the **Left / Right** bud action screens describe the same gesture-mapping area at different zoom levels.
 
 A file under [`reference/`](wireframes/reference/) is **not** part of this product (e-learning UI); see analysis.
 
@@ -18,97 +18,78 @@ A file under [`reference/`](wireframes/reference/) is **not** part of this produ
 ## Single app flow
 
 ```mermaid
-%%{init: {"flowchart": {"curve": "stepAfter"}}}%%
+%%{init: {"flowchart": {"curve": "basis", "nodeSpacing": 40, "rankSpacing": 65}, "themeVariables": {"lineColor": "#475569", "fontSize": "14px"}}}%%
 flowchart TD
+    classDef start fill:#e8f1ff,stroke:#3563e9,color:#102a56,stroke-width:1.5px;
+    classDef pairing fill:#eafaf1,stroke:#2f855a,color:#163826,stroke-width:1.5px;
+    classDef home fill:#fff4db,stroke:#dd8a00,color:#5c3b00,stroke-width:1.5px;
+    classDef sound fill:#f3e8ff,stroke:#805ad5,color:#3b1f63,stroke-width:1.5px;
+    classDef settings fill:#e6fffb,stroke:#0f766e,color:#134e4a,stroke-width:1.5px;
+    classDef profile fill:#ffe8ef,stroke:#db2777,color:#6b2149,stroke-width:1.5px;
+    classDef device fill:#f1f5f9,stroke:#475569,color:#1e293b,stroke-width:1.5px;
+
     A[Launch] --> SPL[Splash — Welcome / Get Started]
-    SPL --> HOME[Home — status, mode, volume, key config]
+    SPL --> HE[Home — empty state / Add Device CTA]
+    HE -->|Pair device| SRCH[Searching for a Device]
+    SRCH --> OK[Connected Successfully]
+    OK --> HC[Home — connected status, ANC mode, volume, preset]
 
-    HOME -->|Add Device| BT[Bluetooth — Searching]
-    BT --> OK[Connected successfully]
-    OK --> HOME
+    HC --> VOV[Volume overlay — level %]
+    HC --> KC[Key Configurations — taps & microphone]
+    HC --> STAT[Statistics]
+    HC --> F[Settings — Dark Mode · Notifications · Language]
+    HC --> P[Profile — avatar, My Devices, Statistics, About, Help]
+    HC --> DD[Device details — status, mode, volume, preset]
 
-    HOME -->|Volume overlay| VOV[Volume overlay — level %]
-    VOV --> HOME
-
-    HOME -->|Key configurations| KC[Key Conf — taps & microphone]
-    KC --> HOME
-
-    HOME -->|Audio · Volume tab| STAT[Statistics]
-    STAT -->|Listening history| LH[Listening history — D W M 6M Y]
-    LH -->|Back| STAT
-    STAT -->|Sound & EQ| SP[Presets — Bass Boost · Balanced · Podcast · Custom]
-    SP -->|Custom| SL[Sliders — Bass · Mid · Treble]
+    STAT --> LH[Listening history — D W M 6M Y]
+    STAT --> SP[Sound — Bass Boost · Balanced · Podcast · Custom]
+    SP --> SL[Sliders — Bass · Mid · Treble]
     SL --> SV[Save]
-    SV -->|After save| SP
-    SP -->|Back| STAT
-    STAT -->|Home tab / Back| HOME
 
-    HOME -->|Listening mode| NZ[Noise — cancellation · normal · transparency]
-    NZ -->|Back / Home| HOME
+    F --> MD[My Devices — manage paired devices, Add Device]
+    P --> MD
+    P --> STAT
 
-    HOME -->|Settings tab or gear| F[General settings]
-    F -->|My Devices| MD[My Devices — list + Add Device]
-    MD -->|Add Device| BT
-    MD -->|Select device| DD[Device details — disconnect / forget]
-    MD -->|Left bud| LB[Left bud — tap actions]
-    MD -->|Right bud| RB[Right bud — tap actions]
-    LB -->|Back| MD
-    RB -->|Back| MD
-    MD -->|Back| F
-    F -->|Device settings| G[Device detail — serial, updates]
-    G -->|Automatic power off| H[Power-off duration picker]
-    H -->|Back| G
-    G -->|Back| F
-    F -->|Back| HOME
+    MD -->|Add Device| SRCH
+    MD --> LB[Left bud — tap actions]
+    MD --> RB[Right bud — tap actions]
+    MD --> DD
 
-    HOME -->|Profile tab| P[Login]
-    P -->|Register| R[Register]
-    P -->|Forgot password| FP[Forgot password — confirmation email]
-    P -->|Log in| PL[Profile — after login]
-    R -->|Register| PL
-    FP -->|Done / cancel| P
-    PL -->|Home tab| HOME
+    DD --> KC
+    DD -->|Disconnect / Forget| HE
 
-    PL -->|My Devices| MD
-    HOME -->|Open device| DD
-    DD -->|Back| HOME
-    DD -->|Back to list| MD
-    DD -->|Disconnect / Forget| HOME
+    class A,SPL start
+    class HE,SRCH,OK pairing
+    class HC,VOV home
+    class STAT,LH,SP,SL,SV sound
+    class F,MD settings
+    class P profile
+    class DD,KC,LB,RB device
 ```
 
-**Notes**
+## Notes
 
-- **Statistics ↔ Sound:** Some sketches use the **speaker tab** only for EQ; others use it for **Statistics** first—this diagram orders **Statistics** then **Sound & EQ** as a drill-in; you may flatten to one tab with segments if you prefer.
-- **Key conf vs bud screens:** **KC** and **LB/RB** describe the same product behavior (per-bud gestures); implement once.
+- **Version scope:** This diagram excludes the older **Version 1** paper-only screens such as **Login / Register / Forgot password** and the older serial / automatic-power-off device-settings stack.
+- **Home and Add Device:** the wireframes show **Add Device** as a prominent standalone frame, but for information architecture it is modeled as the **empty state of Home** for first-time pairing.
+- **Colors:** blue = launch, green = pairing, amber = Home, purple = Sound, teal = Settings, pink = Profile, gray = device-specific screens.
+- **Arrow clarity:** this is a simplified information architecture diagram, so it emphasizes primary paths and drill-down relationships instead of drawing every possible back-navigation arrow.
+- **My Devices meaning:** **My Devices** represents post-pairing management. It can still include an **Add Device** action to add another device later.
+- **Statistics ↔ Sound:** One V2 sheet opens the speaker tab on **Statistics** and another shows a dedicated **Sound** EQ page; this diagram keeps both under the same **Sound** branch.
+- **Settings ↔ Profile shortcuts:** V2 places **My Devices** and **Statistics** in different tabs across different sheets. They are treated here as shared destinations rather than separate duplicate screens.
+- **Key conf vs bud screens:** **KC** and **LB/RB** describe the same gesture-mapping behavior (per-bud actions) at different levels of detail.
 - **`reference/flowsheet-learnify-elearning-grid.jpeg`** is out of scope for this app.
 
 ---
 
-## Wireframe assets
+## Version 2 source assets
 
 | Folder | File | Notes |
-|--------|------|--------|
-| `devices/` | `wireframe-devices-home-empty.jpeg` | My devices — empty state, Add Device |
-| `devices/` | `wireframe-devices-list-populated.jpeg` | My devices — device card added |
-| `devices/` | `wireframe-device-control-equalizer.jpeg` | Model, battery, modes, equalizer |
-| `profile/` | `wireframe-login.jpeg` | Login (profile tab) |
-| `profile/` | `wireframe-register.jpeg` | Registration form |
-| `profile/` | `wireframe-profile-overview.jpeg` | After login — account info / my devices |
-| `profile/` | `wireframe-profile-menu.jpeg` | After login — profile menu list |
-| `profile/` | `wireframe-forgot-password-and-login.jpeg` | Forgot password + login (combined sheet) |
-| `settings/` | `wireframe-settings-general.jpeg` | Language, theme, device settings entry |
-| `settings/` | `wireframe-settings-device-detail.jpeg` | Device image, serial, power off, software update |
-| `settings/` | `wireframe-settings-automatic-power-off.jpeg` | Auto power-off duration picker |
-| `flowsheets/` | `flowsheet-add-device-and-settings.jpeg` | Vertical flow: empty home → Bluetooth → list → settings |
-| `flowsheets/` | `flowsheet-auth-and-profile.jpeg` | Vertical flow: login → register → profile → forgot password |
-| `flowsheets/` | `flowsheet-bluetooth-pairing.jpeg` | Bluetooth “looking” → my devices |
-| `flowsheets/` | `flowsheet-device-settings-and-power-off.jpeg` | Device detail → automatic power off (+ placeholders) |
-| `flowsheets/` | `flowsheet-nine-screen-home-volume-settings-profile.jpeg` | Nine-panel: splash → pair → home, tabs, key config, device details |
-| `flowsheets/` | `flowsheet-statistics-history-mydevices-bud-controls.jpeg` | Five-panel: statistics, listening history, my devices, left/right bud |
-| `hand-drawn/` | `wireframe-sound-equalizer-presets-sliders.jpeg` | **Sound** — four presets, Bass/Mid/Treble, save, 4-tab nav |
-| `hand-drawn/` | `wireframe-volume-overlay-vertical.jpeg` | Volume capsule overlay, %65, blurred chrome behind |
-| `figma-v3/` | `wireframe-sound-equalizer-four-presets.jpeg` | Figma **Sound** — four presets, Custom + sliders |
-| `figma-v3/` | `wireframe-sound-equalizer-custom-save.jpeg` | Figma **Sound** — presets + sliders + **Save** |
+| ------ | ---- | ----- |
+| `.` | `Wireframes-Complete-Version2.pdf` | Combined PDF reference for the V2 screens; used to confirm which flows remain in scope |
+| `flowsheets/` | `flowsheet-nine-screen-home-volume-settings-profile.jpeg` | Splash, Add Device, Searching, Success, Home, Settings, Profile, Device details, Key Configurations |
+| `flowsheets/` | `flowsheet-statistics-history-mydevices-bud-controls.jpeg` | Statistics, Listening History, My Devices, Left bud, Right bud |
+| `hand-drawn/` | `wireframe-sound-equalizer-presets-sliders.jpeg` | V2 **Sound / EQ** screen with presets, Bass/Mid/Treble, Save, 4-tab nav |
+| `hand-drawn/` | `wireframe-volume-overlay-vertical.jpeg` | V2 volume overlay with level percentage over the shared app chrome |
 | `reference/` | `flowsheet-learnify-elearning-grid.jpeg` | **Out of scope** — LEARNIFY e-learning grid |
 
 Paths are relative to `docs/wireframes/`.
