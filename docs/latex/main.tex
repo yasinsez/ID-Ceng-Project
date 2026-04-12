@@ -106,12 +106,14 @@
   {\large
     \begin{tabular}{ll}
       \toprule
-      \textbf{Name} & \textbf{Role} \\
+      Name & Student No. \\
       \midrule
-      Member 1 & Team Coordinator \\
-      Member 2 & UX Flow \& Wireframe Lead \\
-      Member 3 & Prototype \& Mockup Lead \\
-      Member 4 & Report \& Presentation Lead \\
+      Zeynep Ertuğrul & 300303004 \\
+      Yasin Sezgin & 300201007 \\
+      Ufuk Işık & 310201111 \\
+      Mehmet Özpaçacı & 310201004 \\
+      Seda Güven & 300201064 \\
+      Ezgi Ayriç & 290303051 \\
       \bottomrule
     \end{tabular}
   }\par
@@ -240,61 +242,6 @@ The final structure used in this report is:
     Key Configurations remain part of the same device-management branch.
 \end{itemize}
 
-\section{Screen Inventory}
-
-The table below lists every wireframe asset with its version, location, and role.
-Paths are relative to \texttt{docs/wireframes/}.
-
-\begin{center}
-\small
-\begin{longtable}{p{1.5cm} p{5.8cm} p{5.5cm}}
-  \toprule
-  \textbf{Ver.} & \textbf{File path} & \textbf{Role in flow} \\
-  \midrule
-  \endhead
-  v1 & \path{devices/wireframe-devices-home-empty.jpeg}
-     & Home empty state, Add Device CTA \\[2pt]
-  v1 & \path{devices/wireframe-devices-list-populated.jpeg}
-     & Home with a paired device card \\[2pt]
-  v1 & \path{devices/wireframe-device-control-equalizer.jpeg}
-     & Per-device screen with model, battery, modes, and EQ \\[2pt]
-  v1 & \path{profile/wireframe-login.jpeg}
-     & Login entry from the Profile tab \\[2pt]
-  v1 & \path{profile/wireframe-register.jpeg}
-     & New account creation \\[2pt]
-  v1 & \path{profile/wireframe-profile-overview.jpeg}
-     & After-login account summary \\[2pt]
-  v1 & \path{profile/wireframe-profile-menu.jpeg}
-     & After-login menu list layout \\[2pt]
-  v1 & \path{profile/wireframe-forgot-password-and-login.jpeg}
-     & Forgot password and login composite \\[2pt]
-  v1 & \path{settings/wireframe-settings-general.jpeg}
-     & Language, theme, and device settings entry \\[2pt]
-  v1 & \path{settings/wireframe-settings-device-detail.jpeg}
-     & Device image, serial number, power-off, and updates \\[2pt]
-  v1 & \path{settings/wireframe-settings-automatic-power-off.jpeg}
-     & Automatic power-off duration picker \\[2pt]
-  v1 & \path{flowsheets/flowsheet-add-device-and-settings.jpeg}
-     & Flow: empty home $\to$ BT $\to$ list $\to$ settings \\[2pt]
-  v1 & \path{flowsheets/flowsheet-auth-and-profile.jpeg}
-     & Flow: login $\to$ register $\to$ profile $\to$ forgot password \\[2pt]
-  v1 & \path{flowsheets/flowsheet-bluetooth-pairing.jpeg}
-     & BT searching $\to$ My Devices transition \\[2pt]
-  v1 & \path{flowsheets/flowsheet-device-settings-and-power-off.jpeg}
-     & Device detail $\to$ automatic power-off \\[6pt]
-  v2 & \path{hand-drawn/wireframe-sound-equalizer-presets-sliders.jpeg}
-     & Sound tab with presets, sliders, and Save \\[2pt]
-  v2 & \path{hand-drawn/wireframe-volume-overlay-vertical.jpeg}
-     & Volume capsule overlay \\[2pt]
-  v2 & \path{flowsheets/flowsheet-nine-screen-home-volume-settings-profile.jpeg}
-     & Nine-panel flow from splash to home and related screens \\[2pt]
-  v2 & \path{flowsheets/flowsheet-statistics-history-mydevices-bud-controls.jpeg}
-     & Five-panel flow for statistics, history, devices, and bud controls \\
-  \bottomrule
-  \caption{Complete wireframe asset inventory}
-\end{longtable}
-\end{center}
-
 % ============================================================
 \chapter{Version 1: Paper Wireframe Prototypes}
 % ============================================================
@@ -377,34 +324,20 @@ split into more focused tabs in Version 2.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[angle=90, width=0.55\textwidth]{profile/wireframe-forgot-password-and-login.jpeg}
+  \includegraphics[angle=270, width=0.55\textwidth]{profile/wireframe-forgot-password-and-login.jpeg}
   \caption{Composite sheet showing the Forgot Password screen at the top,
     with an email input and a Send Confirmation Mail button, and the Login screen
     at the bottom for context.}
   \label{fig:v1-forgot-pw}
 \end{figure}
 
-\subsection{Profile Overview \& Profile Menu}
+\subsection{Profile Overview}
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{profile/wireframe-profile-overview.jpeg}
-    \caption{Profile overview layout.}
-    \label{fig:v1-profile-overview}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.45\textwidth}
-    \centering
-    \includegraphics[angle=90, width=\textwidth]{profile/wireframe-profile-menu.jpeg}
-    \caption{Profile menu list layout.}
-    \label{fig:v1-profile-menu}
-  \end{subfigure}
-  \caption{Two after-login profile layouts explored in Version 1.
-    The overview on the left uses sections, while the menu on the right uses a
-    simple vertical list. The menu layout was preferred because it is easier to scan
-    and expand later.}
+  \includegraphics[width=0.55\textwidth]{profile/wireframe-profile-overview.jpeg}
+  \caption{After-login profile overview screen used in Version 1. The layout
+    groups account information and key profile actions in one simple structure.}
   \label{fig:v1-profile-both}
 \end{figure}
 
@@ -453,7 +386,7 @@ states are coherent before moving to the next design version.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.82\textwidth]{flowsheets/flowsheet-add-device-and-settings.jpeg}
+  \includegraphics[angle=90, width=0.82\textwidth]{flowsheets/flowsheet-add-device-and-settings.jpeg}
   \caption{Four-frame flowsheet: (1) empty home $\to$ (2) Bluetooth searching
     $\to$ (3) populated home $\to$ (4) General Settings. Handwritten notes
     explain each transition.}
@@ -464,7 +397,7 @@ states are coherent before moving to the next design version.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.82\textwidth]{flowsheets/flowsheet-auth-and-profile.jpeg}
+  \includegraphics[angle=90, width=0.82\textwidth]{flowsheets/flowsheet-auth-and-profile.jpeg}
   \caption{Four-frame authentication and profile flowsheet:
     (1) Login $\to$ (2) Register $\to$ (3) Profile after login $\to$
     (4) Forgot Password.}
@@ -485,7 +418,7 @@ states are coherent before moving to the next design version.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.82\textwidth]{flowsheets/flowsheet-device-settings-and-power-off.jpeg}
+  \includegraphics[angle=90, width=0.82\textwidth]{flowsheets/flowsheet-device-settings-and-power-off.jpeg}
   \caption{Settings drill-down flow: Device Detail $\to$ Automatic Power-Off picker
     $\to$ placeholder frames for future steps.}
   \label{fig:v1-flow-settings}
@@ -566,7 +499,7 @@ screen lists the available actions and shows the current selection with a checkm
 \end{highlight}
 
 % ============================================================
-\chapter{Version 2: Hand-Drawn Digital Wireframes}
+\chapter{Hand-Drawn Digital Wireframes and Final Wireframes}
 % ============================================================
 
 \section{Overview}
@@ -612,7 +545,7 @@ moving to high-fidelity work.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[angle=90, width=0.72\textwidth]{flowsheets/flowsheet-nine-screen-home-volume-settings-profile.jpeg}
+  \includegraphics[angle=-90, width=0.72\textwidth]{flowsheets/flowsheet-nine-screen-home-volume-settings-profile.jpeg}
   \caption{Nine-panel flow sheet covering the main user journey:
     Splash $\to$ Add Device $\to$ Searching $\to$ Connected $\to$
     Home dashboard $\to$ Settings $\to$ Profile $\to$ Device Details $\to$
@@ -646,7 +579,7 @@ moving to high-fidelity work.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[angle=90, width=0.72\textwidth]{flowsheets/flowsheet-statistics-history-mydevices-bud-controls.jpeg}
+  \includegraphics[angle=-90, width=0.72\textwidth]{flowsheets/flowsheet-statistics-history-mydevices-bud-controls.jpeg}
   \caption{Five-panel flow showing (1) Listening History chart,
     (2) Statistics card, (3) My Devices list, (4) Left bud gesture map,
     and (5) Right bud gesture map. Bottom navigation:
@@ -670,6 +603,80 @@ moving to high-fidelity work.
     \bottomrule
   \end{tabular}
 \end{center}
+
+% -------------------------------------------------------
+\section{Final Wireframes (Complete Version 2)}
+% -------------------------------------------------------
+
+\subsection{Home Dashboard and Profile Access}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[page=1, width=0.90\textwidth]{../wireframes/Wireframes-Complete-Version2.pdf}
+  \caption{Home-focused final wireframes showing connected-state dashboard cards,
+    quick controls, and a profile menu entry structure.}
+  \label{fig:v2-final-page-1}
+\end{figure}
+
+\subsection{Volume Overlay Interaction}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[page=2, width=0.90\textwidth]{../wireframes/Wireframes-Complete-Version2.pdf}
+  \caption{Modal volume control overlay with blurred background and a centered
+    vertical slider for quick in-context audio adjustment.}
+  \label{fig:v2-final-page-2}
+\end{figure}
+
+\subsection{Settings, Key Configuration, and Welcome}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[page=3, width=0.90\textwidth]{../wireframes/Wireframes-Complete-Version2.pdf}
+  \caption{General settings controls, key configuration mapping, and the welcome
+    onboarding screen presented as one consolidated final sheet.}
+  \label{fig:v2-final-page-3}
+\end{figure}
+
+\subsection{Dark Mode Settings and Sound Presets}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[page=4, width=0.90\textwidth]{../wireframes/Wireframes-Complete-Version2.pdf}
+  \caption{Dark-theme settings variants with language options and a Sound page
+    preset selection state including Custom mode.}
+  \label{fig:v2-final-page-4}
+\end{figure}
+
+\subsection{Pairing States and Equalizer Controls}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[page=5, width=0.90\textwidth]{../wireframes/Wireframes-Complete-Version2.pdf}
+  \caption{Device search and successful connection feedback screens together with
+    the Sound Custom equalizer sliders and Save action.}
+  \label{fig:v2-final-page-5}
+\end{figure}
+
+\subsection{Earbud Gesture Mapping and Add Device}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[page=6, width=0.90\textwidth]{../wireframes/Wireframes-Complete-Version2.pdf}
+  \caption{Right and Left earbud action assignment screens with selected actions,
+    plus the Add Device entry card for onboarding new hardware.}
+  \label{fig:v2-final-page-6}
+\end{figure}
+
+\subsection{My Devices and Listening Statistics}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[page=7, width=0.90\textwidth]{../wireframes/Wireframes-Complete-Version2.pdf}
+  \caption{Device list management, listening history timeline, and statistics
+    summary cards shown together for usage tracking and device overview.}
+  \label{fig:v2-final-page-7}
+\end{figure}
 
 % ============================================================
 \chapter{Design Reflection}
