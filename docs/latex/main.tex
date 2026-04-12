@@ -227,17 +227,16 @@ understand.
 The final structure used in this report is:
 \begin{itemize}
   \item \textbf{Onboarding and pairing:} Launch $\to$ Splash $\to$ Home
-    (empty state / Add Device) $\to$ Searching for a Device $\to$ Connected
+    (empty state with Add Device) $\to$ Searching for a Device $\to$ Connected
     Successfully $\to$ Home (connected state).
   \item \textbf{Home:} the main status hub in two states. Before pairing it
     exposes Add Device; after pairing it shows connection state, ANC mode,
     volume, preset, and the Key Configurations shortcut.
-  \item \textbf{Sound:} Statistics as the summary view, Listening History as the
-    drill-down, and Sound / EQ for presets plus Bass, Mid, and Treble sliders.
-  \item \textbf{Settings and Profile:} shared entry points to My Devices and
-    related secondary screens without duplicating the same destinations.
-    My Devices is the post-pairing management area and may include Add Device
-    for adding another device later.
+  \item \textbf{Sound:} preset and equalizer controls, including Bass, Mid, and
+    Treble adjustment.
+  \item \textbf{Settings:} shared entry points to device configuration including
+    language, dark mode, and notification preferences.
+  \item \textbf{Profile:} My Devices, Statistics, Listening History, About, and Help.
   \item \textbf{Device actions:} Device Details, Left / Right bud mapping, and
     Key Configurations remain part of the same device-management branch.
 \end{itemize}
@@ -473,7 +472,7 @@ were staying within safer listening levels. Feedback suggested that this informa
 would be useful.
 
 \begin{highlight}
-Decision: A statistics screen was added under the Sound area. It shows total
+Decision: A statistics screen was added under the Profile area. It shows total
 listening time, a historical chart with day, week, and month filters, and a safe
 listening indicator.
 \end{highlight}
@@ -496,6 +495,19 @@ Next Song, to individual earbuds.
 \begin{highlight}
 Decision: Separate Left bud and Right bud screens were added under My Devices. Each
 screen lists the available actions and shows the current selection with a checkmark.
+\end{highlight}
+
+\section{Issue: Authentication Screens Were Not Part of the Main Usage Path}
+
+Version 1 explored login, register, and forgot password screens in order to test
+a possible account-based flow. During the transition to Version 2, these screens
+were not prioritised in the main low-fidelity usage path because the core
+interaction focus shifted to device connection, sound control, settings, and
+device management.
+
+\begin{highlight}
+Decision: Authentication screens were treated as an early exploratory branch in
+Version 1 and were not included in the final Version 2 wireframe set.
 \end{highlight}
 
 \section{Additional Rationale from the Version 2 Refinement}
@@ -596,7 +608,7 @@ moving to high-fidelity work.
   \centering
   \includegraphics[width=0.72\textwidth]{flowsheets/flowsheet-nine-screen-home-volume-settings-profile.jpeg}
   \caption{Nine-panel flow sheet covering the main user journey:
-    Splash $\to$ Add Device $\to$ Searching $\to$ Connected $\to$
+    Splash $\to$ Home (empty state with Add Device) $\to$ Searching $\to$ Connected $\to$
     Home dashboard $\to$ Settings $\to$ Profile $\to$ Device Details $\to$
     Key Configurations.}
   \label{fig:v2-nine-screen}
@@ -611,7 +623,7 @@ moving to high-fidelity work.
     \textbf{\#} & \textbf{Screen} & \textbf{Key Content} \\
     \midrule
     1 & Splash / Landing   & Logo, slogan, ``Welcome!'', Get Started \\
-    2 & Add Device         & Large Add Device (+), four-tab navigation \\
+    2 & Home (empty state) & Large Add Device (+), four-tab navigation \\
     3 & Searching          & Radar motif, ``Searching for a Device\ldots'' \\
     4 & Connected          & Checkmark, ``Connected Successfully!'' \\
     5 & Home (Dashboard)   & Status, 85\% battery, ANC ON, Volume 65\%, Preset: Balanced,
@@ -632,7 +644,7 @@ moving to high-fidelity work.
   \caption{Five-panel flow showing (1) Listening History chart,
     (2) Statistics card, (3) My Devices list, (4) Left bud gesture map,
     and (5) Right bud gesture map. Bottom navigation:
-    Home / Audio / Settings / Profile.}
+    Home / Sound / Settings / Profile.}
   \label{fig:v2-five-screen}
 \end{figure}
 
