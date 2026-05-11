@@ -22,7 +22,7 @@ Structured notes derived from the uploaded sketches. Use this as a single refere
 
 The sections below still document both wireframe generations for traceability, but only the **Version 2** assets are part of the canonical flow in **[`docs/page-flows.md`](../page-flows.md)**.
 
-- **Included in the current flow:** `Wireframes-Complete-Version2.pdf`, `flowsheets/flowsheet-nine-screen-home-volume-settings-profile.jpeg`, `flowsheets/flowsheet-statistics-history-mydevices-bud-controls.jpeg`, `hand-drawn/wireframe-sound-equalizer-presets-sliders.jpeg`, and `hand-drawn/wireframe-volume-overlay-vertical.jpeg`.
+- **Included in the current flow:** `Wireframes-Complete-Version2.pdf`, `flowsheets/flowsheet-nine-screen-home-volume-settings-profile.jpeg`, `flowsheets/flowsheet-statistics-history-mydevices-bud-controls.jpeg`, `hand-drawn/wireframe-sound-equalizer-presets-sliders.jpeg`, `hand-drawn/wireframe-volume-overlay-vertical.jpeg`, and `smartwatch/wireframe-smartwatch-high-fidelity.jpeg`.
 - **Reference only:** the older paper `profile/`, `devices/`, and `settings/` sheets remain useful for UI detail, but they should not override the Version 2 navigation structure.
 
 ---
@@ -216,6 +216,29 @@ Five phone frames in one row. Shared bottom nav: **Home**, **Audio/speaker**, **
 
 ---
 
+## Smartwatch (`smartwatch/`) - High-fidelity Prototype
+
+### `smartwatch/wireframe-smartwatch-high-fidelity.jpeg`
+
+- **Intent:** High-fidelity visual prototype for the smartwatch companion interface (Vestel brand).
+- **Platform:** Smartwatch (rectangular face with rounded corners).
+- **Screens included:**
+    - **Search/Pairing:** "Cihaz aranıyor..." (Searching...) with radar motif.
+    - **Success:** "Başarıyla bağlandı" (Connected successfully) with checkmark.
+    - **Device Control:** ANC toggle and headphone visual ("Bağlı").
+    - **Main Menu:** Grid layout with icons for Cihazlar (Devices), İstatistikler (Statistics), Ayarlar (Settings), and Yardım (Help).
+    - **Device List:** "Cihazlarım" (My Devices) with status dots.
+    - **Volume:** "Ses Seviyesi" (Volume Level) with circular progress bar and +/- buttons.
+    - **Sound Modes:** "Ses" (Sound) with presets: Dengeli (Balanced), Bas Güçlendirme (Bass Boost), Podcast, Özel (Custom).
+    - **Equalizer:** Vertical sliders for Bas (Bass), Orta (Mid), and Tiz (Treble) with +/- controls.
+    - **Settings:** "Ayarlar" (Settings) with toggles for Karanlık Mod (Dark Mode), Bildirimler (Notifications), and Dil (Language).
+    - **Button Settings:** "Tuş Ayarları" (Key Settings) for Sol (Left) and Sağ (Right) interactions.
+    - **Media Controls:** "Sol" (Left) player controls (Duraklat, Sonraki Şarkı, etc.).
+    - **Statistics:** "İstatistikler" (Statistics) showing "Bugün 4sa 32dk" (Today 4h 32m) with bar chart.
+    - **History:** "Dinleme Geçmişi" (Listening History) with daily/weekly summaries.
+
+---
+
 ## Suggested flow relationships (for implementation / Mermaid)
 
 Use **one** diagram: **[`docs/page-flows.md`](../page-flows.md)** (section *Single app flow*). Summary:
@@ -243,3 +266,4 @@ Treat **flowsheets** as authoritative for **screen order** where captions exist;
 | 2026-04-12 | Removed deleted Figma wireframe references from the analysis and kept only the screens still present in `docs/wireframes/`. |
 | 2026-04-12 | Synced the analysis with the Version 2-only Mermaid flow: pairing now starts at **Splash** and continues through **Add Device**, **Searching**, **Connected Successfully**, then into the four-tab shell (**Home / Sound / Settings / Profile**). |
 | 2026-04-12 | Refined the canonical information architecture so **Add Device** is treated as the **empty state of Home**, and simplified the Mermaid flow to focus on primary paths rather than every back arrow. |
+| 2026-05-11 | Added **smartwatch high-fidelity prototype** asset; documented 15+ smartwatch screens covering pairing, control, settings, and statistics. |

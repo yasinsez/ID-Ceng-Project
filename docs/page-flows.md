@@ -90,6 +90,7 @@ flowchart TD
 | `flowsheets/` | `flowsheet-statistics-history-mydevices-bud-controls.jpeg` | Statistics, Listening History, My Devices, Left bud, Right bud |
 | `hand-drawn/` | `wireframe-sound-equalizer-presets-sliders.jpeg` | V2 **Sound / EQ** screen with presets, Bass/Mid/Treble, Save, 4-tab nav |
 | `hand-drawn/` | `wireframe-volume-overlay-vertical.jpeg` | V2 volume overlay with level percentage over the shared app chrome |
+| `smartwatch/` | `wireframe-smartwatch-high-fidelity.jpeg` | High-fidelity smartwatch prototype for Vestel watch interface |
 | `reference/` | `flowsheet-learnify-elearning-grid.jpeg` | **Out of scope** — LEARNIFY e-learning grid |
 
 Paths are relative to `docs/wireframes/`.
