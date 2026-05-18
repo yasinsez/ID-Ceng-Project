@@ -21,15 +21,17 @@ import { EarbudRightScreen }  from './src/screens/EarbudRightScreen';
 import { DeviceDetailScreen } from './src/screens/DeviceDetailScreen';
 
 export default function App() {
-  const [screen, setScreen]     = useState<Screen>('splash');
-  const [volume, setVolume]     = useState(72);
-  const [ambient, setAmbient]   = useState<AmbientMode>('nc');
-  const [preset, setPreset]     = useState<Preset>('default');
-  const [eq, setEq]             = useState<EQValues>({ bass: 60, mid: 50, treble: 45 });
-  const [darkMode, setDarkMode] = useState(true);
+  const [screen, setScreen]       = useState<Screen>('splash');
+  const [volume, setVolume]       = useState(72);
+  const [ambient, setAmbient]     = useState<AmbientMode>('nc');
+  const [preset, setPreset]       = useState<Preset>('default');
+  const [eq, setEq]               = useState<EQValues>({ bass: 60, mid: 50, treble: 45 });
+  const [darkMode, setDarkMode]   = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
 
-  const nav = (s: Screen) => setScreen(s);
-  const shared = { onNavigate: nav };
+  const nav        = (s: Screen) => setScreen(s);
+  const shared     = { onNavigate: nav };
+  const togglePlay = () => setIsPlaying((p) => !p);
 
   return (
     <SafeAreaView className="flex-1 bg-[#0d0d0f]">
@@ -40,8 +42,21 @@ export default function App() {
       {screen === 'add-device'    && <AddDeviceScreen    {...shared} />}
       {screen === 'searching'     && <SearchingScreen    {...shared} />}
       {screen === 'connected'     && <ConnectedScreen    {...shared} />}
-      {screen === 'home'          && <HomeScreen         {...shared} volume={volume} onVolumeChange={setVolume} ambient={ambient} onAmbientChange={setAmbient} />}
-      {screen === 'sound'         && <SoundScreen        {...shared} preset={preset} onPresetChange={setPreset} />}
+      {screen === 'home'          && (
+        <HomeScreen
+          {...shared}
+          volume={volume}          onVolumeChange={setVolume}
+          ambient={ambient}        onAmbientChange={setAmbient}
+          isPlaying={isPlaying}    onPlayPauseToggle={togglePlay}
+        />
+      )}
+      {screen === 'sound'         && (
+        <SoundScreen
+          {...shared}
+          preset={preset}          onPresetChange={setPreset}
+          isPlaying={isPlaying}    onPlayPauseToggle={togglePlay}
+        />
+      )}
       {screen === 'eq'            && <EQScreen           {...shared} eq={eq} onEQChange={setEq} />}
       {screen === 'settings'      && <SettingsScreen     {...shared} darkMode={darkMode} onDarkModeChange={setDarkMode} />}
       {screen === 'profile'       && <ProfileScreen      {...shared} />}

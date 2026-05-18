@@ -7,16 +7,18 @@ interface Props { onNavigate: (s: Screen) => void; }
 
 export function ProfileScreen({ onNavigate }: Props) {
   const menu = [
-    { icon: '📱', label: 'My Devices',       screen: 'devices'  as Screen },
-    { icon: '📻', label: 'Listening History', screen: 'history'  as Screen },
-    { icon: '📊', label: 'Statistics',        screen: 'stats'    as Screen },
-    { icon: 'ℹ️', label: 'About',             screen: null },
-    { icon: '❓', label: 'Help & Support',    screen: null },
+    { icon: '📱', label: 'My Devices',        screen: 'devices' as Screen },
+    { icon: '📻', label: 'Listening History',  screen: 'history' as Screen },
+    { icon: '📊', label: 'Statistics',         screen: 'stats'   as Screen },
+    { icon: 'ℹ️', label: 'About',              screen: null },
+    { icon: '❓', label: 'Help & Support',     screen: null },
   ];
 
   return (
     <View className="flex-1 bg-[#0d0d0f]">
       <StatusBar />
+
+      {/* Avatar + name */}
       <View className="items-center pt-6 pb-4">
         <View className="w-[72px] h-[72px] rounded-full bg-[#2563eb] items-center justify-center mb-2">
           <Text className="text-3xl font-bold text-white">Z</Text>
@@ -26,12 +28,14 @@ export function ProfileScreen({ onNavigate }: Props) {
       </View>
 
       <ScrollView className="flex-1 px-4" showsVerticalScrollIndicator={false}>
+        {/* Menu items — use index to skip border on last item */}
         <View className="bg-[#1a1a1f] border border-[#2e2e38] rounded-2xl overflow-hidden mb-3">
-          {menu.map((item) => (
+          {menu.map((item, i) => (
             <TouchableOpacity
               key={item.label}
               onPress={() => item.screen && onNavigate(item.screen)}
-              className="flex-row items-center gap-3.5 px-4 py-3.5 border-b border-[#2e2e38] last:border-b-0"
+              style={{ borderBottomWidth: i < menu.length - 1 ? 1 : 0, borderBottomColor: '#2e2e38' }}
+              className="flex-row items-center gap-3.5 px-4 py-3.5"
             >
               <Text className="text-lg w-6 text-center">{item.icon}</Text>
               <Text className="flex-1 text-[15px] font-medium text-white">{item.label}</Text>
@@ -40,6 +44,7 @@ export function ProfileScreen({ onNavigate }: Props) {
           ))}
         </View>
 
+        {/* Log out */}
         <View className="bg-[#1a1a1f] border border-[rgba(239,68,68,0.3)] rounded-2xl overflow-hidden mb-4">
           <TouchableOpacity
             onPress={() => onNavigate('welcome')}
