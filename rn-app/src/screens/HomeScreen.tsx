@@ -44,14 +44,67 @@ export function HomeScreen({ onNavigate, volume, onVolumeChange, ambient, onAmbi
       <ScrollView className="flex-1 px-4" showsVerticalScrollIndicator={false}>
         {/* Hero card — earbud + battery + ambient */}
         <View className="bg-[#1a1a1f] border border-[#2e2e38] rounded-3xl p-5 mb-3">
-          <View className="items-center mb-4">
-            <Text className="text-7xl mb-3">🎧</Text>
-            <View className="flex-row gap-2">
-              <BatteryPill label="L 100%" color="green" />
-              <BatteryPill label="R 100%" color="green" />
+          {/* Tappable L / R earbuds */}
+          <View className="flex-row justify-center items-end gap-6 mb-4">
+            <TouchableOpacity
+              onPress={() => onNavigate('earbud-left')}
+              activeOpacity={0.75}
+              style={{ alignItems: 'center', gap: 6 }}
+            >
+              <View style={{
+                width: 72, height: 72, borderRadius: 36,
+                backgroundColor: '#222228', borderWidth: 2, borderColor: '#2563eb',
+                alignItems: 'center', justifyContent: 'center',
+              }}>
+                <Text style={{ fontSize: 32 }}>🎧</Text>
+              </View>
+              <BatteryPill label="L  100%" color="green" />
+              <Text style={{ fontSize: 10, color: '#6b7280', fontWeight: '600' }}>LEFT</Text>
+            </TouchableOpacity>
+
+            {/* Case battery in the middle */}
+            <View style={{ alignItems: 'center', gap: 6, paddingBottom: 28 }}>
+              <View style={{
+                width: 48, height: 48, borderRadius: 12,
+                backgroundColor: '#222228', borderWidth: 1, borderColor: '#2e2e38',
+                alignItems: 'center', justifyContent: 'center',
+              }}>
+                <Text style={{ fontSize: 22 }}>📦</Text>
+              </View>
               <BatteryPill label="Case 80%" color="blue" />
             </View>
+
+            <TouchableOpacity
+              onPress={() => onNavigate('earbud-right')}
+              activeOpacity={0.75}
+              style={{ alignItems: 'center', gap: 6 }}
+            >
+              <View style={{
+                width: 72, height: 72, borderRadius: 36,
+                backgroundColor: '#222228', borderWidth: 2, borderColor: '#2563eb',
+                alignItems: 'center', justifyContent: 'center',
+              }}>
+                <Text style={{ fontSize: 32 }}>🎧</Text>
+              </View>
+              <BatteryPill label="R  100%" color="green" />
+              <Text style={{ fontSize: 10, color: '#6b7280', fontWeight: '600' }}>RIGHT</Text>
+            </TouchableOpacity>
           </View>
+
+          {/* Device Details button */}
+          <TouchableOpacity
+            onPress={() => onNavigate('device-detail')}
+            activeOpacity={0.8}
+            style={{
+              flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+              backgroundColor: '#111115', borderWidth: 1, borderColor: '#2e2e38',
+              borderRadius: 10, paddingVertical: 8, marginBottom: 14, gap: 6,
+            }}
+          >
+            <Text style={{ fontSize: 13, color: '#9ca3af' }}>◻</Text>
+            <Text style={{ fontSize: 12, fontWeight: '600', color: '#9ca3af' }}>Device Details</Text>
+            <Text style={{ fontSize: 13, color: '#6b7280' }}>›</Text>
+          </TouchableOpacity>
 
           {/* Ambient mode picker */}
           <View className="flex-row bg-[#111115] rounded-xl p-1 gap-1">

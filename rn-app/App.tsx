@@ -1,6 +1,7 @@
 import './global.css';
 import { useState } from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import type { Screen, AmbientMode, Preset, EQValues } from './src/types';
 
 import { SplashScreen }       from './src/screens/SplashScreen';
@@ -26,7 +27,6 @@ export default function App() {
   const [ambient, setAmbient]     = useState<AmbientMode>('nc');
   const [preset, setPreset]       = useState<Preset>('default');
   const [eq, setEq]               = useState<EQValues>({ bass: 60, mid: 50, treble: 45 });
-  const [darkMode, setDarkMode]   = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
 
   const nav        = (s: Screen) => setScreen(s);
@@ -34,6 +34,7 @@ export default function App() {
   const togglePlay = () => setIsPlaying((p) => !p);
 
   return (
+    <SafeAreaProvider>
     <SafeAreaView className="flex-1 bg-[#0d0d0f]">
       <StatusBar barStyle="light-content" backgroundColor="#0d0d0f" />
 
@@ -58,7 +59,7 @@ export default function App() {
         />
       )}
       {screen === 'eq'            && <EQScreen           {...shared} eq={eq} onEQChange={setEq} />}
-      {screen === 'settings'      && <SettingsScreen     {...shared} darkMode={darkMode} onDarkModeChange={setDarkMode} />}
+      {screen === 'settings'      && <SettingsScreen     {...shared} />}
       {screen === 'profile'       && <ProfileScreen      {...shared} />}
       {screen === 'devices'       && <DevicesScreen      {...shared} />}
       {screen === 'stats'         && <StatsScreen        {...shared} />}
@@ -67,5 +68,6 @@ export default function App() {
       {screen === 'earbud-right'  && <EarbudRightScreen  {...shared} />}
       {screen === 'device-detail' && <DeviceDetailScreen {...shared} />}
     </SafeAreaView>
+    </SafeAreaProvider>
   );
 }

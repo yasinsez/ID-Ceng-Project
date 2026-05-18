@@ -16,7 +16,7 @@ export function EarbudLeftScreen({ onNavigate }: Props) {
     <View className="flex-1 bg-[#0d0d0f]">
       <StatusBar />
       <View className="flex-row items-center gap-3 px-4 py-2">
-        <TouchableOpacity onPress={() => onNavigate('settings')} className="w-8 h-8 items-center justify-center bg-[#222228] rounded-full">
+        <TouchableOpacity onPress={() => onNavigate('home')} className="w-8 h-8 items-center justify-center bg-[#222228] rounded-full">
           <Text className="text-white text-base">‹</Text>
         </TouchableOpacity>
         <Text className="text-xl font-bold text-white">Earbud Controls</Text>

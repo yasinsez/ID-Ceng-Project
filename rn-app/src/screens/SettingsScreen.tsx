@@ -2,10 +2,9 @@ import type { ReactNode } from 'react';
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { StatusBar } from '../components/StatusBar';
 import { NavBar } from '../components/NavBar';
-import { Toggle } from '../components/Toggle';
 import type { Screen } from '../types';
 
-interface Props { onNavigate: (s: Screen) => void; darkMode: boolean; onDarkModeChange: (v: boolean) => void; }
+interface Props { onNavigate: (s: Screen) => void; }
 
 interface RowProps {
   icon: string;
@@ -29,7 +28,7 @@ function Row({ icon, title, right, onPress, isLast }: RowProps) {
   );
 }
 
-export function SettingsScreen({ onNavigate, darkMode, onDarkModeChange }: Props) {
+export function SettingsScreen({ onNavigate }: Props) {
   return (
     <View className="flex-1 bg-[#0d0d0f]">
       <StatusBar />
@@ -48,7 +47,6 @@ export function SettingsScreen({ onNavigate, darkMode, onDarkModeChange }: Props
 
         {/* Preferences section */}
         <View className="bg-[#1a1a1f] border border-[#2e2e38] rounded-2xl overflow-hidden mb-4">
-          <Row icon="🌙" title="Dark Mode"     right={<Toggle on={darkMode} onChange={onDarkModeChange} />} />
           <Row icon="⏰" title="Auto Power-Off" right={<Text className="text-xs text-[#9ca3af] mr-2">30 min</Text>} />
           <Row icon="🌐" title="Language"       right={<Text className="text-xs text-[#9ca3af] mr-2">English</Text>} />
           <Row icon="ℹ️" title="About" isLast />

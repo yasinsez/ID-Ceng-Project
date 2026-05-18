@@ -1,4 +1,5 @@
 import { View, Text, TouchableOpacity } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { Screen } from '../types';
 
 interface Props { active: string; onNavigate: (s: Screen) => void; }
@@ -13,13 +14,14 @@ const tabs: { id: Screen; label: string; icon: string; activeIcon: string }[] = 
 ];
 
 export function NavBar({ active, onNavigate }: Props) {
+  const insets = useSafeAreaInsets();
   return (
     <View style={{
       flexDirection: 'row',
       backgroundColor: '#111115',
       borderTopWidth: 1,
       borderTopColor: '#2e2e38',
-      paddingBottom: 20,
+      paddingBottom: insets.bottom + 8,
       paddingTop: 8,
     }}>
       {tabs.map((t) => {
