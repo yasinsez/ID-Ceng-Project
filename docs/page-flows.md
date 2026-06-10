@@ -2,16 +2,16 @@
 
 Wireframes and notes live under `docs/wireframes/`; element-level detail is in [`wireframes/WIREFRAME-ANALYSIS.md`](wireframes/WIREFRAME-ANALYSIS.md).
 
-This page now reflects **Version 2 only**. The flow below is based on the surviving **four-tab** wireframes and `Wireframes-Complete-Version2.pdf`, so the older **Version 1** two-tab auth and paper settings flows are intentionally excluded.
+This diagram reflects the **implemented React Native app** (`rn-app/`). All screens listed below exist as `.tsx` files under `rn-app/src/screens/`.
 
-- **Onboarding / pairing:** **Splash** leads to **Home (empty state)**, where **Add Device** is the primary call to action. Pairing then moves through **Searching for a Device** → **Connected Successfully** → **Home (connected state)**.
-- **Shared V2 shell:** primary navigation is **Home**, **Sound**, **Settings**, **Profile**.
-- **Sound tab:** **Statistics** is the summary view; **Listening History** drills deeper; **Sound / EQ** holds presets plus **Bass / Mid / Treble** sliders and **Save**.
-- **Settings / Profile overlap:** V2 sheets place **My Devices** and **Statistics** in slightly different tabs, but they point to the same product surfaces, so they are modeled as shared destinations.
-- **Two add-device contexts:** first pairing happens from **Home (empty state)**; later device management happens in **My Devices**.
-- **Device controls:** **Key Configurations** and the **Left / Right** bud action screens describe the same gesture-mapping area at different zoom levels.
-
-A file under [`reference/`](wireframes/reference/) is **not** part of this product (e-learning UI); see analysis.
+- **Onboarding:** **Splash** → **Welcome (Login / Sign Up)** → **Home**.
+- **Pairing flow:** Home → **Add Device** → **Searching** → **Connected** → Home (connected state).
+- **Bottom nav tabs:** Home · Sound · Devices · Settings · Profile (5 tabs).
+- **Sound tab:** Preset selection + volume; drill into **Custom EQ** (per-band sliders).
+- **Settings tab:** Dark Mode toggle · Notifications · Auto Power-Off · About · User Guide · Log Out; drill into **Earbud Controls** (Left / Right bud gesture mapping).
+- **Devices tab:** paired device list; drill into **Device Detail** → **Remove Device** or **Earbud Controls**.
+- **Profile tab:** avatar + stats summary; drill into **My Devices**, **Listening History**, **Statistics** (Day/Week/Month/Year tabs), **Help & Support**, **Log Out**.
+- **Auth screens:** Login and Sign Up are reachable from Welcome; Log Out returns to Welcome.
 
 ---
 
@@ -20,64 +20,96 @@ A file under [`reference/`](wireframes/reference/) is **not** part of this produ
 ```mermaid
 %%{init: {"flowchart": {"curve": "basis", "nodeSpacing": 40, "rankSpacing": 65}, "themeVariables": {"lineColor": "#475569", "fontSize": "14px"}}}%%
 flowchart TD
-    classDef start fill:#e8f1ff,stroke:#3563e9,color:#102a56,stroke-width:1.5px;
+    classDef start   fill:#e8f1ff,stroke:#3563e9,color:#102a56,stroke-width:1.5px;
+    classDef auth    fill:#fef9c3,stroke:#ca8a04,color:#451a03,stroke-width:1.5px;
     classDef pairing fill:#eafaf1,stroke:#2f855a,color:#163826,stroke-width:1.5px;
-    classDef home fill:#fff4db,stroke:#dd8a00,color:#5c3b00,stroke-width:1.5px;
-    classDef sound fill:#f3e8ff,stroke:#805ad5,color:#3b1f63,stroke-width:1.5px;
-    classDef settings fill:#e6fffb,stroke:#0f766e,color:#134e4a,stroke-width:1.5px;
+    classDef home    fill:#fff4db,stroke:#dd8a00,color:#5c3b00,stroke-width:1.5px;
+    classDef sound   fill:#f3e8ff,stroke:#805ad5,color:#3b1f63,stroke-width:1.5px;
+    classDef devices fill:#e6fffb,stroke:#0f766e,color:#134e4a,stroke-width:1.5px;
+    classDef settings fill:#f0fdf4,stroke:#16a34a,color:#14532d,stroke-width:1.5px;
     classDef profile fill:#ffe8ef,stroke:#db2777,color:#6b2149,stroke-width:1.5px;
-    classDef device fill:#f1f5f9,stroke:#475569,color:#1e293b,stroke-width:1.5px;
 
-    A[Launch] --> SPL[Splash — Welcome / Get Started]
-    SPL --> HE[Home — empty state / Add Device CTA]
-    HE -->|Pair device| SRCH[Searching for a Device]
-    SRCH --> OK[Connected Successfully]
-    OK --> HC[Home — connected status, ANC mode, volume, preset]
+    A[Launch] --> SPL[Splash]
+    SPL -->|auto after 2.4s| WEL[Welcome]
 
-    HC --> VOV[Volume overlay — level %]
-    HC --> KC[Key Configurations — taps & microphone]
-    HC --> STAT[Statistics]
-    HC --> F[Settings — Dark Mode · Notifications · Language]
-    HC --> P[Profile — avatar, My Devices, Statistics, About, Help]
-    HC --> DD[Device details — status, mode, volume, preset]
+    WEL --> LGN[Login]
+    WEL --> SGN[Sign Up]
+    WEL -->|Get Started| AD[Add Device]
 
-    STAT --> LH[Listening history — D W M 6M Y]
-    STAT --> SP[Sound — Bass Boost · Balanced · Podcast · Custom]
-    SP --> SL[Sliders — Bass · Mid · Treble]
-    SL --> SV[Save]
+    LGN -->|Sign In| HC[Home]
+    LGN --> SGN
+    SGN -->|Create Account| HC
+    SGN --> LGN
 
-    F --> MD[My Devices — manage paired devices, Add Device]
-    P --> MD
-    P --> STAT
+    AD --> PH[Pairing Help]
+    AD --> SRCH[Searching for Device]
+    SRCH --> CON[Connected Successfully]
+    CON --> HC
 
-    MD -->|Add Device| SRCH
-    MD --> LB[Left bud — tap actions]
-    MD --> RB[Right bud — tap actions]
-    MD --> DD
+    HC -->|profile icon| P[Profile]
 
-    DD --> KC
-    DD -->|Disconnect / Forget| HE
+    HC -.- NAV(( Bottom Nav\nHome·Sound·Devices·Settings·Profile ))
+    NAV -.-> HC
+    NAV -.-> SND[Sound — presets · volume]
+    NAV -.-> DEV[Devices]
+    NAV -.-> SET[Settings]
+    NAV -.-> P
+
+    SND --> EQ[Custom EQ — per-band sliders]
+    EQ -->|back| SND
+
+    DEV -->|＋| AD
+    DEV --> DD[Device Detail]
+    DD --> EBL[Left Bud — gesture mapping]
+    EBL <-->|tab switch| EBR[Right Bud — gesture mapping]
+    EBL -->|back| SET
+    EBR -->|back| SET
+    DD --> RMV[Remove Device]
+    RMV -->|Confirm| DEV
+    RMV -->|Cancel| DD
+
+    SET --> SND
+    SET --> EBL
+    SET --> APO[Auto Power-Off]
+    SET --> ABT[About]
+    APO -->|back| SET
+    ABT -->|back| SET
+
+    P --> MD[My Devices]
+    P --> LH[Listening History]
+    P --> STAT[Statistics — Day · Week · Month · Year]
+    P --> ABT
+    P --> HLP[Help & Support]
+    P --> LGO[Log Out]
+    MD -->|back| P
+    LH -->|back| P
+    STAT -->|back| P
+    HLP -->|back| P
+    LGO -->|Confirm| WEL
+    LGO -->|Cancel| P
 
     class A,SPL start
-    class HE,SRCH,OK pairing
-    class HC,VOV home
-    class STAT,LH,SP,SL,SV sound
-    class F,MD settings
-    class P profile
-    class DD,KC,LB,RB device
+    class WEL,LGN,SGN auth
+    class AD,PH,SRCH,CON pairing
+    class HC home
+    class SND,EQ sound
+    class DEV,DD,EBL,EBR,RMV devices
+    class SET,APO,ABT settings
+    class P,MD,LH,STAT,HLP,LGO profile
 ```
 
 ## Notes
 
-- **Version scope:** This diagram excludes the older **Version 1** paper-only screens such as **Login / Register / Forgot password** and the older serial / automatic-power-off device-settings stack.
-- **Home and Add Device:** the wireframes show **Add Device** as a prominent standalone frame, but for information architecture it is modeled as the **empty state of Home** for first-time pairing.
-- **Colors:** blue = launch, green = pairing, amber = Home, purple = Sound, teal = Settings, pink = Profile, gray = device-specific screens.
-- **Arrow clarity:** this is a simplified information architecture diagram, so it emphasizes primary paths and drill-down relationships instead of drawing every possible back-navigation arrow.
-- **My Devices meaning:** **My Devices** represents post-pairing management. It can still include an **Add Device** action to add another device later.
-- **Statistics ↔ Sound:** One V2 sheet opens the speaker tab on **Statistics** and another shows a dedicated **Sound** EQ page; this diagram keeps both under the same **Sound** branch.
-- **Settings ↔ Profile shortcuts:** V2 places **My Devices** and **Statistics** in different tabs across different sheets. They are treated here as shared destinations rather than separate duplicate screens.
-- **Key conf vs bud screens:** **KC** and **LB/RB** describe the same gesture-mapping behavior (per-bud actions) at different levels of detail.
-- **`reference/flowsheet-learnify-elearning-grid.jpeg`** is out of scope for this app.
+- **5-tab nav:** Home · Sound · Devices · Settings · Profile. Dashed lines show bottom-nav reachability from any tab screen.
+- **Get Started vs Login:** Welcome offers both paths — "Get Started" goes straight to Add Device (pairing) without an account; Login/Sign Up go to Home.
+- **Pairing Help:** accessible from Add Device as a "How to Pair?" link; back returns to Add Device.
+- **Earbud Controls:** reachable from both Settings and Devices → Device Detail. Back button always returns to Settings.
+- **About:** reachable from both Settings and Profile.
+- **Remove Device:** Confirm → Devices list; Cancel → back to Device Detail.
+- **Log Out:** Confirm → Welcome; Cancel → back to Profile.
+- **Dark mode:** toggled via Settings → Dark Mode switch; applies globally via `ThemeContext`.
+- **Statistics tabs:** Day / Week / Month / Year each display distinct listening time, trend, bar chart, and genre breakdown.
+- **Colors:** blue = launch, yellow = auth, green = pairing, amber = Home, purple = Sound, teal = Devices, light-green = Settings, pink = Profile.
 
 ---
 
