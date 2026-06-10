@@ -1,71 +1,36 @@
-import { useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, Animated } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { BatteryPill } from '../components/BatteryPill';
+import { Icon } from '../components/Icon';
+import { useTheme } from '../ThemeContext';
 import type { Screen } from '../types';
 
 interface Props { onNavigate: (s: Screen) => void; }
-
 export function ConnectedScreen({ onNavigate }: Props) {
-  const scale    = useRef(new Animated.Value(0)).current;
-  const opacity  = useRef(new Animated.Value(0)).current;
-  const slideUp  = useRef(new Animated.Value(30)).current;
-
-  useEffect(() => {
-    // Checkmark springs in
-    Animated.spring(scale, {
-      toValue: 1, tension: 70, friction: 6, useNativeDriver: true,
-    }).start();
-
-    // Text / battery / button fade + slide up
-    Animated.sequence([
-      Animated.delay(300),
-      Animated.parallel([
-        Animated.timing(opacity,  { toValue: 1,  duration: 400, useNativeDriver: true }),
-        Animated.timing(slideUp,  { toValue: 0,  duration: 400, useNativeDriver: true }),
-      ]),
-    ]).start();
-
-    // Auto-navigate to home after 2.5 s
-    const timer = setTimeout(() => onNavigate('home'), 2500);
-    return () => clearTimeout(timer);
-  }, []);
-
+  const { theme } = useTheme();
   return (
-    <View className="flex-1 bg-[#0d0d0f] items-center justify-center px-8">
-      {/* Animated checkmark ring */}
-      <Animated.View style={{ transform: [{ scale }], marginBottom: 28 }}>
-        <View style={{
-          width: 128, height: 128, borderRadius: 64,
-          borderWidth: 3, borderColor: '#22c55e',
-          backgroundColor: 'rgba(34,197,94,0.08)',
-          alignItems: 'center', justifyContent: 'center',
-        }}>
-          <Text style={{ fontSize: 52, color: '#22c55e' }}>✓</Text>
+    <View style={{ flex: 1, backgroundColor: theme.bg, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32 }}>
+      <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain', marginBottom: 32, tintColor: theme.muted }} />
+      <View style={{ width: 90, height: 90, borderRadius: 45, borderWidth: 3, borderColor: theme.green, alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
+        <Icon name="check" size={44} color={theme.green} />
+      </View>
+      <Text style={{ fontSize: 22, fontWeight: '800', color: theme.text, marginBottom: 6 }}>Connected!</Text>
+      <Text style={{ fontSize: 14, color: theme.muted, marginBottom: 32 }}>SoundWave Buds are ready.</Text>
+      <View style={{ backgroundColor: theme.card, borderRadius: 16, padding: 16, width: '100%', borderWidth: 1, borderColor: theme.line, flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 32 }}>
+        <View style={{ width: 44, height: 44, borderRadius: 10, backgroundColor: theme.subBg, alignItems: 'center', justifyContent: 'center' }}>
+          <Icon name="headphones" size={22} color={theme.blue} />
         </View>
-      </Animated.View>
-
-      {/* Info */}
-      <Animated.View
-        style={{ opacity, transform: [{ translateY: slideUp }], alignItems: 'center', width: '100%' }}
-      >
-        <Text className="text-2xl font-bold text-white mb-1">Connected!</Text>
-        <Text className="text-sm text-[#9ca3af] text-center mb-4">SoundWave Buds</Text>
-
-        <View className="flex-row gap-2 mb-10">
-          <BatteryPill label="L 100%" color="green" />
-          <BatteryPill label="R 100%" color="green" />
-          <BatteryPill label="Case 80%" color="blue" />
+        <View style={{ flex: 1 }}>
+          <Text style={{ fontSize: 15, fontWeight: '700', color: theme.text, marginBottom: 6 }}>SoundWave Buds</Text>
+          <View style={{ flexDirection: 'row', gap: 6 }}>
+            <BatteryPill label="L 100%" color="green" />
+            <BatteryPill label="R 100%" color="green" />
+            <BatteryPill label="Case 80%" color="blue" />
+          </View>
         </View>
-
-        <TouchableOpacity
-          onPress={() => onNavigate('home')}
-          className="w-full bg-[#2563eb] rounded-2xl py-4 items-center"
-        >
-          <Text className="text-white text-base font-bold">Go to Dashboard</Text>
-        </TouchableOpacity>
-
-        <Text className="text-xs text-[#6b7280] mt-4">Taking you there automatically…</Text>
-      </Animated.View>
+      </View>
+      <TouchableOpacity onPress={() => onNavigate('home')} style={{ width: '100%', backgroundColor: theme.blue, borderRadius: 16, paddingVertical: 16, alignItems: 'center' }}>
+        <Text style={{ color: '#fff', fontSize: 16, fontWeight: '700' }}>Go to Home</Text>
+      </TouchableOpacity>
     </View>
   );
 }

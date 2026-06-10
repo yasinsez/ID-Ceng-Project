@@ -36,25 +36,24 @@ Details (exact BLE services, chipsets, and app stores) will be documented here a
 
 ```
 .
-├── README.md                      # Project overview, docs map, how to run things
+├── README.md                               # Project overview, docs map, how to run things
 ├── docs/
-│   ├── page-flows.md              # Merged app flow (Home · Sound · Noise · Profile) + wireframe file index
-│   ├── wireframes/                # Paper + Figma JPEGs; structured notes below
-│   │   └── WIREFRAME-ANALYSIS.md  # Screen-by-screen labels, chrome, and flow relationships
-│   └── mockups/                   # Static HTML prototypes (browser-openable)
-│       ├── index.html             # Links to every mock page
-│       ├── welcome.html           # Start / splash with logo → home
-│       ├── assets/mockup.css      # Shared styles for all mockups
-│       ├── home/                  # Devices hub: empty, populated, Bluetooth pairing
-│       ├── sound/                 # Equalizer presets + sliders + save
-│       ├── noise/                 # Listening modes (NC / normal / transparency)
-│       ├── profile/               # Login, register, forgot password, after-login views
-│       └── settings/              # General, device detail, auto power-off
-├── hardware/ or design/           # ID assets — CAD, exports (optional; add when used)
-└── app/                           # Mobile application source (to be added)
+│   ├── page-flows.md                       # Merged app flow + wireframe file index
+│   ├── wireframes/
+│   │   └── WIREFRAME-ANALYSIS.md           # Screen-by-screen labels and flow relationships
+│   └── submission/                         # Course submission documents
+├── soundwave_separate_html_screens/        # Mid-fi HTML mockups (browser-openable, no build step)
+├── react-app/                              # React web prototype
+└── rn-app/                                 # React Native Expo app (primary implementation)
+    ├── App.tsx                             # Root with ThemeProvider + SafeAreaProvider
+    ├── assets/vestel-logo.png
+    └── src/
+        ├── theme.ts                        # Light/dark token definitions
+        ├── ThemeContext.tsx                # Global dark mode state via React Context
+        ├── types.ts                        # Screen union type and shared types
+        ├── components/                     # Icon, NavBar, BatteryPill, StatusBar
+        └── screens/                        # One file per screen (~20 screens)
 ```
-
-Adjust folder names to match your course submission requirements.
 
 ---
 
@@ -69,42 +68,35 @@ Adjust folder names to match your course submission requirements.
 
 ---
 
-## Tech stack (TBD)
+## Tech stack
 
-| Layer | Planned / options |
-|--------|-------------------|
-| Mobile | *e.g. React Native, Flutter, or native iOS/Android — to be chosen* |
-| Bluetooth | BLE (GATT) for typical consumer audio accessories |
-| Backend | Optional — only if the product needs accounts, OTA, or cloud features |
-
-The **HTML mockups** are plain static files (no build step). Update this table once the team locks the real app stack.
+| Layer | Tech |
+|--------|------|
+| Mobile | React Native (Expo ~54) + TypeScript |
+| Navigation | Custom `Screen` union type — no React Navigation dependency |
+| Theming | React Context (`ThemeContext`) with light/dark token system |
+| Icons | `react-native-svg` via custom `Icon` component |
+| Sliders | `@react-native-community/slider` |
+| Safe areas | `react-native-safe-area-context` |
+| Bluetooth | BLE (GATT) — to be integrated |
 
 ---
 
 ## Getting started
 
-### HTML mockups (available now)
+### HTML mockups
 
-No install required. Open in a browser:
+No install required — open any file in `soundwave_separate_html_screens/` directly in a browser.
 
-1. **`docs/mockups/welcome.html`** — splash / logo, then **Get started** to the empty home screen.  
-2. **`docs/mockups/index.html`** — directory of all mock pages with short descriptions.
-
-You can also serve the folder locally if you prefer clean URLs:
+### React Native app
 
 ```bash
-cd docs/mockups && python3 -m http.server 8080
-# Visit http://localhost:8080/welcome.html
+cd rn-app
+npm install
+npx expo start
 ```
 
-### Mobile app (when `app/` exists)
-
-Prerequisites and run commands will be added here once the application codebase is in the repository.
-
-```bash
-# Placeholder — replace with real steps, e.g.:
-# cd app && npm install && npm run ios
-```
+Then scan the QR code with **Expo Go** on your phone, or press `i` for iOS Simulator / `a` for Android Emulator.
 
 ---
 

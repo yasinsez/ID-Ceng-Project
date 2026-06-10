@@ -1,58 +1,48 @@
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
-import { StatusBar } from '../components/StatusBar';
 import { NavBar } from '../components/NavBar';
 import { BatteryPill } from '../components/BatteryPill';
+import { Icon } from '../components/Icon';
+import { useTheme } from '../ThemeContext';
 import type { Screen } from '../types';
 
 interface Props { onNavigate: (s: Screen) => void; }
-
 const devices = [
-  { name: 'SoundWave Buds',      sub: 'Connected',               connected: true,  bats: [['L 100%','green'],['R 100%','green'],['Case 80%','blue']] as const },
+  { name: 'SoundWave Buds',      sub: 'Connected',                 connected: true,  bats: [['L 100%','green'],['R 100%','green'],['Case 80%','blue']] as const },
   { name: 'SoundWave Buds Pro',  sub: 'Last connected 3 days ago', connected: false, bats: [['L 90%','green'],['R 90%','green'],['Case 70%','blue']] as const },
   { name: 'SoundWave Buds Lite', sub: 'Last connected 1 week ago', connected: false, bats: [['L 80%','green'],['R 80%','green'],['Case 60%','blue']] as const },
 ];
 
 export function DevicesScreen({ onNavigate }: Props) {
+  const { theme } = useTheme();
   return (
-    <View className="flex-1 bg-[#0d0d0f]">
-      <StatusBar />
-      <View className="flex-row items-center justify-between px-4 py-2">
-        <Text className="text-2xl font-bold text-white">My Devices</Text>
-        <TouchableOpacity className="w-8 h-8 items-center justify-center bg-[#222228] rounded-full">
-          <Text className="text-[#9ca3af] text-lg">＋</Text>
+    <View style={{ flex: 1, backgroundColor: theme.bg }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, paddingVertical: 16 }}>
+        <Text style={{ fontSize: 22, fontWeight: '800', color: theme.text }}>My Devices</Text>
+        <TouchableOpacity onPress={() => onNavigate('add-device')} style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: theme.blue, alignItems: 'center', justifyContent: 'center' }}>
+          <Icon name="plus" size={18} color="#fff" />
         </TouchableOpacity>
       </View>
-
-      <ScrollView className="flex-1 px-4" showsVerticalScrollIndicator={false}>
-        {devices.map((dev) => (
-          <TouchableOpacity
-            key={dev.name}
-            onPress={() => onNavigate('device-detail')}
-            className="w-full bg-[#1a1a1f] border border-[#2e2e38] rounded-2xl p-4 flex-row items-center gap-3.5 mb-2.5"
-          >
-            <Text className="text-4xl">🎧</Text>
-            <View className="flex-1">
-              <Text className="text-[15px] font-semibold text-white mb-1">{dev.name}</Text>
-              <Text className={`text-xs mb-2 ${dev.connected ? 'text-[#22c55e]' : 'text-[#9ca3af]'}`}>{dev.sub}</Text>
-              <View className="flex-row gap-1.5 flex-wrap">
-                {dev.bats.map(([label, color]) => (
-                  <BatteryPill key={label} label={label} color={color} />
-                ))}
+      <ScrollView style={{ flex: 1, paddingHorizontal: 16 }} showsVerticalScrollIndicator={false}>
+        {devices.map(dev => (
+          <TouchableOpacity key={dev.name} onPress={() => onNavigate('device-detail')} style={{ backgroundColor: theme.card, borderRadius: 14, padding: 14, flexDirection: 'row', alignItems: 'center', gap: 14, marginBottom: 10, borderWidth: 1, borderColor: theme.line }}>
+            <View style={{ width: 44, height: 44, borderRadius: 10, backgroundColor: theme.subBg, alignItems: 'center', justifyContent: 'center' }}>
+              <Icon name="headphones" size={22} color={theme.blue} />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={{ fontSize: 15, fontWeight: '700', color: theme.text, marginBottom: 3 }}>{dev.name}</Text>
+              <Text style={{ fontSize: 12, color: dev.connected ? theme.green : theme.muted, marginBottom: 6, fontWeight: dev.connected ? '600' : '400' }}>{dev.sub}</Text>
+              <View style={{ flexDirection: 'row', gap: 5, flexWrap: 'wrap' }}>
+                {dev.bats.map(([label, color]) => <BatteryPill key={label} label={label} color={color} />)}
               </View>
             </View>
-            <Text className="text-lg text-[#6b7280]">›</Text>
+            <Icon name="chevron-right" size={18} color={theme.muted} />
           </TouchableOpacity>
         ))}
-
-        <TouchableOpacity
-          onPress={() => onNavigate('add-device')}
-          className="w-full bg-[#222228] border border-dashed border-[#2e2e38] rounded-2xl p-4 flex-row items-center justify-center gap-2.5 mt-1 mb-4"
-        >
-          <Text className="text-xl text-[#3b82f6]">＋</Text>
-          <Text className="text-sm font-medium text-[#9ca3af]">Add New Device</Text>
+        <TouchableOpacity onPress={() => onNavigate('add-device')} style={{ backgroundColor: theme.card, borderRadius: 14, paddingVertical: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, marginBottom: 16, borderWidth: 1.5, borderStyle: 'dashed', borderColor: theme.blue }}>
+          <Icon name="plus" size={18} color={theme.blue} />
+          <Text style={{ fontSize: 14, fontWeight: '600', color: theme.blue }}>Add New Device</Text>
         </TouchableOpacity>
       </ScrollView>
-
       <NavBar active="devices" onNavigate={onNavigate} />
     </View>
   );

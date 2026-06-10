@@ -2,6 +2,7 @@ import './global.css';
 import { useState } from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ThemeProvider, useTheme } from './src/ThemeContext';
 import type { Screen, AmbientMode, Preset, EQValues } from './src/types';
 
 import { SplashScreen }       from './src/screens/SplashScreen';
@@ -20,8 +21,19 @@ import { HistoryScreen }      from './src/screens/HistoryScreen';
 import { EarbudLeftScreen }   from './src/screens/EarbudLeftScreen';
 import { EarbudRightScreen }  from './src/screens/EarbudRightScreen';
 import { DeviceDetailScreen } from './src/screens/DeviceDetailScreen';
+import { LoginScreen }        from './src/screens/LoginScreen';
+import { SignUpScreen }       from './src/screens/SignUpScreen';
+import { PairingHelpScreen }  from './src/screens/PairingHelpScreen';
+import { LanguageScreen }     from './src/screens/LanguageScreen';
+import { AutoPowerOffScreen } from './src/screens/AutoPowerOffScreen';
+import { AboutScreen }        from './src/screens/AboutScreen';
+import { HelpSupportScreen }  from './src/screens/HelpSupportScreen';
+import { LogOutScreen }       from './src/screens/LogOutScreen';
+import { RemoveDeviceScreen } from './src/screens/RemoveDeviceScreen';
+import { UserGuideScreen }    from './src/screens/UserGuideScreen';
 
-export default function App() {
+function AppInner() {
+  const { theme, isDark } = useTheme();
   const [screen, setScreen]       = useState<Screen>('splash');
   const [volume, setVolume]       = useState(72);
   const [ambient, setAmbient]     = useState<AmbientMode>('nc');
@@ -34,9 +46,8 @@ export default function App() {
   const togglePlay = () => setIsPlaying((p) => !p);
 
   return (
-    <SafeAreaProvider>
-    <SafeAreaView className="flex-1 bg-[#0d0d0f]">
-      <StatusBar barStyle="light-content" backgroundColor="#0d0d0f" />
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.bg }}>
+      <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} backgroundColor={theme.bg} />
 
       {screen === 'splash'        && <SplashScreen       {...shared} />}
       {screen === 'welcome'       && <WelcomeScreen      {...shared} />}
@@ -66,8 +77,28 @@ export default function App() {
       {screen === 'history'       && <HistoryScreen      {...shared} />}
       {screen === 'earbud-left'   && <EarbudLeftScreen   {...shared} />}
       {screen === 'earbud-right'  && <EarbudRightScreen  {...shared} />}
-      {screen === 'device-detail' && <DeviceDetailScreen {...shared} />}
+      {screen === 'device-detail'  && <DeviceDetailScreen  {...shared} />}
+      {screen === 'login'          && <LoginScreen          {...shared} />}
+      {screen === 'sign-up'        && <SignUpScreen          {...shared} />}
+      {screen === 'pairing-help'   && <PairingHelpScreen     {...shared} />}
+      {screen === 'language'       && <LanguageScreen        {...shared} />}
+      {screen === 'auto-power-off' && <AutoPowerOffScreen    {...shared} />}
+      {screen === 'about'          && <AboutScreen           {...shared} />}
+      {screen === 'help-support'   && <HelpSupportScreen     {...shared} />}
+      {screen === 'log-out'        && <LogOutScreen          {...shared} />}
+      {screen === 'remove-device'  && <RemoveDeviceScreen    {...shared} />}
+      {screen === 'user-guide'     && <UserGuideScreen       {...shared} />}
     </SafeAreaView>
+  );
+}
+
+
+export default function App() {
+  return (
+    <SafeAreaProvider>
+      <ThemeProvider>
+        <AppInner />
+      </ThemeProvider>
     </SafeAreaProvider>
   );
 }
