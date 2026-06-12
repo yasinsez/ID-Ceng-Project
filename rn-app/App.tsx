@@ -46,7 +46,7 @@ function AppInner() {
   const togglePlay = () => setIsPlaying((p) => !p);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: theme.bg }}>
+    <SafeAreaView edges={['top']} style={{ flex: 1, backgroundColor: theme.bg }}>
       <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} backgroundColor={theme.bg} />
 
       {screen === 'splash'        && <SplashScreen       {...shared} />}
