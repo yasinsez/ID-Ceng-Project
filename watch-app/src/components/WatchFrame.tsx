@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { VestelLogo } from './VestelLogo';
 
 interface Props {
   children: ReactNode;
@@ -35,10 +36,8 @@ export function WatchFrame({ children }: Props) {
         </div>
 
         {/* Vestel logo row — centered below status bar */}
-        <div className="flex items-center justify-center py-2 flex-shrink-0">
-          <svg width="44" height="9" viewBox="0 0 44 9" fill="none" className="text-[#EE3124] dark:text-[#EE3124]">
-            <path d="M2.4 7.2V1.8H4.2V7.2H2.4ZM7.2 7.2V1.8H10.2V3.6H7.2V7.2ZM7.2 4.2H10.2V6H7.2V4.2ZM12.6 7.2V1.8H14.4V7.2H12.6ZM17.4 7.2V1.8H19.2V5.4L21.6 1.8H23.4L20.4 5.8L23.4 7.2H21.6L19.2 5.4V7.2H17.4ZM24 7.2V1.8H26.4V3.6H24V7.2ZM24 4.2H26.4V6H24V4.2ZM30.6 7.2V1.8H32.4V7.2H30.6ZM35.4 7.2V1.8H38.4V3.6H35.4V7.2Z" fill="currentColor"/>
-          </svg>
+        <div className="flex items-center justify-center py-1 flex-shrink-0">
+          <VestelLogo />
         </div>
 
         {/* Screen slot */}
