@@ -1,7 +1,7 @@
 import './global.css';
 import { useState } from 'react';
-import { SafeAreaView, StatusBar } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { StatusBar } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { ThemeProvider, useTheme } from './src/ThemeContext';
 import type { Screen, AmbientMode, Preset, EQValues } from './src/types';
 
