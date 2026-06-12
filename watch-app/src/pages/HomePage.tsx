@@ -30,21 +30,13 @@ export default function HomePage() {
             aria-hidden
           >
             <path
-              d="M6 9c-2 0-3 2-3 5s1 5 3 5"
+              d="M3 14a9 9 0 1 1 18 0"
               stroke="currentColor"
               strokeWidth="1.5"
               strokeLinecap="round"
-              strokeLinejoin="round"
             />
-            <path
-              d="M18 9c2 0 3 2 3 5s-1 5-3 5"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <rect x="4" y="13" width="3.5" height="5" rx="1.5" fill="currentColor" fillOpacity="0.15" />
-            <rect x="16.5" y="13" width="3.5" height="5" rx="1.5" fill="currentColor" fillOpacity="0.15" />
+            <rect x="2"  y="13" width="4" height="7" rx="2" fill="currentColor" fillOpacity="0.2" stroke="currentColor" strokeWidth="1.5" />
+            <rect x="18" y="13" width="4" height="7" rx="2" fill="currentColor" fillOpacity="0.2" stroke="currentColor" strokeWidth="1.5" />
           </svg>
         </div>
 
@@ -121,22 +113,9 @@ export default function HomePage() {
               fill="none"
               aria-hidden
             >
-              <path
-                d="M6 9c-2 0-3 2-3 5s1 5 3 5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M18 9c2 0 3 2 3 5s-1 5-3 5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <rect x="4" y="13" width="3.5" height="5" rx="1.5" fill="currentColor" fillOpacity="0.15" />
-              <rect x="16.5" y="13" width="3.5" height="5" rx="1.5" fill="currentColor" fillOpacity="0.15" />
+              <path d="M3 14a9 9 0 1 1 18 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              <rect x="2"  y="13" width="4" height="7" rx="2" fill="currentColor" fillOpacity="0.2" stroke="currentColor" strokeWidth="1.5" />
+              <rect x="18" y="13" width="4" height="7" rx="2" fill="currentColor" fillOpacity="0.2" stroke="currentColor" strokeWidth="1.5" />
             </svg>
             <span className="text-[12px] font-medium text-primary">Device</span>
           </button>

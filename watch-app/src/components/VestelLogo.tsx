@@ -4,8 +4,8 @@ export function VestelLogo() {
       style={{
         color: '#EE3124',
         fontWeight: 700,
-        fontSize: '6px',
-        letterSpacing: '0.05em',
+        fontSize: '11px',
+        letterSpacing: '0.08em',
         fontFamily: 'Arial, Helvetica, sans-serif',
         lineHeight: 1,
       }}
