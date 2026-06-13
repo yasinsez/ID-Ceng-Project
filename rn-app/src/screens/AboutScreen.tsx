@@ -20,7 +20,7 @@ export function AboutScreen({ onNavigate }: Props) {
           <View style={{ width: 56, height: 56, borderRadius: 28, backgroundColor: theme.subBg, alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
             <Icon name="headphones" size={28} color={theme.blue} />
           </View>
-          <Text style={{ fontSize: 18, fontWeight: '800', color: theme.text, marginBottom: 6 }}>SoundWave Buds</Text>
+          <Text style={{ fontSize: 18, fontWeight: '800', color: theme.text, marginBottom: 6 }}>Vybex Buds</Text>
           <Text style={{ fontSize: 13, color: theme.muted, textAlign: 'center', lineHeight: 18 }}>Mobile companion app for earbuds, smartwatch control and sound personalization.</Text>
         </View>
         <View style={{ flexDirection: 'row', gap: 10 }}>

@@ -45,7 +45,7 @@ export function SearchingScreen({ onNavigate }: Props) {
             <Icon name="headphones" size={22} color={theme.blue} />
           </View>
           <View style={{ flex: 1 }}>
-            <Text style={{ fontSize: 15, fontWeight: '700', color: theme.text, marginBottom: 4 }}>SoundWave Buds</Text>
+            <Text style={{ fontSize: 15, fontWeight: '700', color: theme.text, marginBottom: 4 }}>Vybex Buds</Text>
             <View style={{ flexDirection: 'row', gap: 6 }}>
               <BatteryPill label="L 100%" color="green" />
               <BatteryPill label="R 100%" color="green" />

@@ -1,4 +1,4 @@
-export type DeviceName    = 'SoundWave Buds' | 'Earbuds Pro' | 'Sport Buds';
+export type DeviceName    = 'Vybex Buds' | 'Earbuds Pro' | 'Sport Buds';
 export type SoundPreset   = 'balanced' | 'bassBoost' | 'podcast' | 'customEq';
 export type NoiseMode     = 'anc' | 'off' | 'transparency';
 export type VolumeStep    = 1 | 5 | 10;

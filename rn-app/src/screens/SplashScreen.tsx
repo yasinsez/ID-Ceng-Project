@@ -31,7 +31,7 @@ export function SplashScreen({ onNavigate }: Props) {
           <Icon name="wave" size={36} color="#fff" />
         </View>
         <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain', marginBottom: 10 }} />
-        <Text style={{ fontSize: 28, fontWeight: '800', color: theme.text, letterSpacing: -0.5 }}>SoundWave</Text>
+        <Text style={{ fontSize: 28, fontWeight: '800', color: theme.text, letterSpacing: -0.5 }}>Vybex</Text>
         <Text style={{ fontSize: 14, color: theme.muted, marginTop: 4 }}>Sound. Your Way.</Text>
         <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 3, marginTop: 40, height: 40 }}>
           {BARS.map((h, i) => (

@@ -35,7 +35,7 @@ export function HomeScreen({ onNavigate, volume, onVolumeChange, ambient, onAmbi
         <div className="bg-[#1a1a1f] border border-[#2e2e38] rounded-2xl p-4 relative overflow-hidden">
           <div className="absolute top-[-10px] right-[-10px] w-32 h-32 rounded-full bg-[#2563eb] opacity-[0.12] blur-xl pointer-events-none" />
           <div className="absolute top-4 right-4 text-[56px] opacity-90">🎧</div>
-          <p className="text-[17px] font-bold text-white mb-1">SoundWave Buds</p>
+          <p className="text-[17px] font-bold text-white mb-1">Vybex Buds</p>
           <div className="flex items-center gap-1.5 mb-3">
             <div className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" />
             <span className="text-[12px] font-medium text-[#22c55e]">Connected</span>

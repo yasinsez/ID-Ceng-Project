@@ -25,7 +25,7 @@ export function ConnectedScreen({ onNavigate }: Props) {
         <div className="w-full bg-[#1a1a1f] border border-[#2e2e38] rounded-2xl p-4 flex items-center gap-4 text-left">
           <span className="text-[40px]">🎧</span>
           <div>
-            <p className="text-[15px] font-semibold text-white mb-2">SoundWave Buds</p>
+            <p className="text-[15px] font-semibold text-white mb-2">Vybex Buds</p>
             <div className="flex gap-2">
               <BatteryPill label="L 100%" color="green" />
               <BatteryPill label="R 100%" color="green" />

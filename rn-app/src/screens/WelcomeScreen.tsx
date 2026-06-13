@@ -14,7 +14,7 @@ export function WelcomeScreen({ onNavigate }: Props) {
           <Icon name="wave" size={40} color="#fff" />
         </View>
         <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain' }} />
-        <Text style={{ fontSize: 30, fontWeight: '800', color: theme.text, letterSpacing: -0.5 }}>SoundWave</Text>
+        <Text style={{ fontSize: 30, fontWeight: '800', color: theme.text, letterSpacing: -0.5 }}>Vybex</Text>
         <Text style={{ fontSize: 15, color: theme.muted }}>Sound. Your Way.</Text>
       </View>
       <View style={{ gap: 10 }}>

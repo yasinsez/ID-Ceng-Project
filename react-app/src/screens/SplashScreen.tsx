@@ -21,7 +21,7 @@ export function SplashScreen({ onNavigate }: Props) {
         </div>
       </div>
 
-      <h1 className="text-[28px] font-bold text-white tracking-tight mb-2 relative z-10">SoundWave</h1>
+      <h1 className="text-[28px] font-bold text-white tracking-tight mb-2 relative z-10">Vybex</h1>
       <p className="text-[16px] text-white/55 mb-12 relative z-10">Sound. Your Way.</p>
 
       <button

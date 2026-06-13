@@ -5,8 +5,8 @@ import type { Screen } from '../types';
 interface Props { onNavigate: (s: Screen) => void; }
 
 const info = [
-  { label: 'Model',           value: 'SWB-01' },
-  { label: 'Serial Number',   value: 'SWB-2026-000123' },
+  { label: 'Model',           value: 'VYB-01' },
+  { label: 'Serial Number',   value: 'VYB-2026-000123' },
   { label: 'Firmware',        value: '1.0.3' },
   { label: 'Hardware',        value: 'Rev B' },
 ];
@@ -24,7 +24,7 @@ export function DeviceDetailScreen({ onNavigate }: Props) {
         {/* Hero card */}
         <div className="bg-[#1a1a1f] border border-[#2e2e38] rounded-2xl p-5 mb-3 flex flex-col items-center">
           <div className="text-[56px] mb-3">🎧</div>
-          <p className="text-[18px] font-bold text-white mb-1">SoundWave Buds</p>
+          <p className="text-[18px] font-bold text-white mb-1">Vybex Buds</p>
           <p className="text-[13px] text-[#22c55e] mb-4">Connected</p>
           <div className="flex gap-2">
             <BatteryPill label="L 100%" color="green" />

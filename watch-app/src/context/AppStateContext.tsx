@@ -29,7 +29,7 @@ const DEFAULT_GESTURES: GestureAssignments = {
 };
 
 const AppStateContext = createContext<AppStateContextValue>({
-  connectedDevice:    'SoundWave Buds',
+  connectedDevice:    'Vybex Buds',
   pendingDevice:      null,
   volume:             72,
   volumeStep:         1,
@@ -49,7 +49,7 @@ const AppStateContext = createContext<AppStateContextValue>({
 });
 
 export function AppStateProvider({ children }: { children: ReactNode }) {
-  const [connectedDevice,    setConnectedDevice]    = useState<DeviceName>('SoundWave Buds');
+  const [connectedDevice,    setConnectedDevice]    = useState<DeviceName>('Vybex Buds');
   const [pendingDevice,      setPendingDevice]      = useState<DeviceName | null>(null);
   const [volume,             setVolume]             = useState(72);
   const [volumeStep,         setVolumeStep]         = useState<VolumeStep>(1);
@@ -59,7 +59,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const [gestureAssignments, setGestureAssignments] = useState<GestureAssignments>(DEFAULT_GESTURES);
 
   const resetToDefaults = () => {
-    setConnectedDevice('SoundWave Buds');
+    setConnectedDevice('Vybex Buds');
     setPendingDevice(null);
     setVolume(72);
     setVolumeStep(1);

@@ -22,7 +22,7 @@ export function SignUpScreen({ onNavigate }: Props) {
       </View>
       <View style={{ marginTop: 24, marginBottom: 32 }}>
         <Text style={{ fontSize: 26, fontWeight: '800', color: theme.text }}>Create account</Text>
-        <Text style={{ fontSize: 14, color: theme.muted, marginTop: 4 }}>Join SoundWave today</Text>
+        <Text style={{ fontSize: 14, color: theme.muted, marginTop: 4 }}>Join Vybex today</Text>
       </View>
       <View style={{ gap: 12 }}>
         <TextInput value={name} onChangeText={setName} placeholder="Full name" placeholderTextColor={theme.muted} style={{ backgroundColor: theme.inputBg, borderRadius: 14, paddingHorizontal: 16, paddingVertical: 14, fontSize: 15, color: theme.text, borderWidth: 1, borderColor: theme.line }} />

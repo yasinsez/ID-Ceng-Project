@@ -27,7 +27,7 @@ export function SearchingScreen({ onNavigate }: Props) {
         <div className="w-full bg-[#1a1a1f] border border-[#2e2e38] rounded-2xl p-4 text-left">
           <p className="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mb-2">Available Devices</p>
           <div className="flex items-center justify-between">
-            <span className="text-[16px] font-semibold text-white">SoundWave Buds</span>
+            <span className="text-[16px] font-semibold text-white">Vybex Buds</span>
             <div className="flex items-end gap-0.5">
               {[6, 10, 14].map((h, i) => (
                 <div key={i} className="w-1 bg-[#3b82f6] rounded-sm" style={{ height: h }} />

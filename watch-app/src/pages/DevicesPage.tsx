@@ -3,7 +3,7 @@ import { BrandHeader }  from '../components/BrandHeader';
 import { useAppState }  from '../context/AppStateContext';
 import type { DeviceName } from '../types';
 
-const DEVICES: DeviceName[] = ['SoundWave Buds', 'Earbuds Pro', 'Sport Buds'];
+const DEVICES: DeviceName[] = ['Vybex Buds', 'Earbuds Pro', 'Sport Buds'];
 
 function HeadphonesIcon() {
   return (

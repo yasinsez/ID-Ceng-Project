@@ -29,7 +29,7 @@ export function HomeScreen({ onNavigate, volume, onVolumeChange, ambient, onAmbi
           <Icon name="headphones" size={24} color={theme.blue} />
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: 15, fontWeight: '700', color: theme.text, marginBottom: 2 }}>SoundWave Buds</Text>
+          <Text style={{ fontSize: 15, fontWeight: '700', color: theme.text, marginBottom: 2 }}>Vybex Buds</Text>
           <Text style={{ fontSize: 12, color: theme.green, fontWeight: '600', marginBottom: 6 }}>Connected</Text>
           <View style={{ flexDirection: 'row', gap: 5 }}>
             <BatteryPill label="L 100%" color="green" />

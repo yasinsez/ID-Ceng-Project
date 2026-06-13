@@ -7,9 +7,9 @@ import type { Screen } from '../types';
 
 interface Props { onNavigate: (s: Screen) => void; }
 const devices = [
-  { name: 'SoundWave Buds',      sub: 'Connected',                 connected: true,  bats: [['L 100%','green'],['R 100%','green'],['Case 80%','blue']] as const },
-  { name: 'SoundWave Buds Pro',  sub: 'Last connected 3 days ago', connected: false, bats: [['L 90%','green'],['R 90%','green'],['Case 70%','blue']] as const },
-  { name: 'SoundWave Buds Lite', sub: 'Last connected 1 week ago', connected: false, bats: [['L 80%','green'],['R 80%','green'],['Case 60%','blue']] as const },
+  { name: 'Vybex Buds',      sub: 'Connected',                 connected: true,  bats: [['L 100%','green'],['R 100%','green'],['Case 80%','blue']] as const },
+  { name: 'Vybex Buds Pro',  sub: 'Last connected 3 days ago', connected: false, bats: [['L 90%','green'],['R 90%','green'],['Case 70%','blue']] as const },
+  { name: 'Vybex Buds Lite', sub: 'Last connected 1 week ago', connected: false, bats: [['L 80%','green'],['R 80%','green'],['Case 60%','blue']] as const },
 ];
 
 export function DevicesScreen({ onNavigate }: Props) {

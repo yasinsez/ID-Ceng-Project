@@ -36,7 +36,7 @@ export default function LoadingPage() {
           </svg>
         </div>
 
-        <p className="text-[13px] text-secondary">Opening SoundWave...</p>
+        <p className="text-[13px] text-secondary">Opening Vybex...</p>
       </div>
     </div>
   );

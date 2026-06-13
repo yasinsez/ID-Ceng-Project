@@ -13,7 +13,7 @@ export function RemoveDeviceScreen({ onNavigate }: Props) {
           <Icon name="trash" size={26} color={theme.danger} />
         </View>
         <Text style={{ fontSize: 20, fontWeight: '800', color: theme.text, marginBottom: 6 }}>Remove device?</Text>
-        <Text style={{ fontSize: 13, color: theme.muted, textAlign: 'center', marginBottom: 24 }}>SoundWave Buds will be removed from My Devices.</Text>
+        <Text style={{ fontSize: 13, color: theme.muted, textAlign: 'center', marginBottom: 24 }}>Vybex Buds will be removed from My Devices.</Text>
         <TouchableOpacity onPress={() => onNavigate('devices')} style={{ backgroundColor: theme.danger, borderRadius: 16, paddingVertical: 15, width: '100%', alignItems: 'center', marginBottom: 10 }}>
           <Text style={{ color: '#fff', fontWeight: '700', fontSize: 15 }}>Remove Device</Text>
         </TouchableOpacity>

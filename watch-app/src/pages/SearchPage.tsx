@@ -22,7 +22,7 @@ export default function SearchPage() {
       <div className="text-center px-5 pt-1 pb-2 flex-shrink-0">
         <h2 className="text-[18px] font-bold text-primary leading-tight">Searching</h2>
         <p className="text-[11px] text-secondary mt-1 leading-snug">
-          Searching for SoundWave Buds automatically.
+          Searching for Vybex Buds automatically.
         </p>
       </div>
 

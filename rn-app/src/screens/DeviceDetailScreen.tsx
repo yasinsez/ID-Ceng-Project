@@ -6,7 +6,7 @@ import { useTheme } from '../ThemeContext';
 import type { Screen } from '../types';
 
 interface Props { onNavigate: (s: Screen) => void; }
-const INFO = [['Model','SoundWave Buds'],['Firmware','v2.1.4'],['Serial Number','SW-2024-001'],['Bluetooth','5.3'],['Codec','AAC / SBC'],['Driver Size','10mm Dynamic'],['Frequency','20Hz – 20kHz'],['IPX Rating','IPX4']];
+const INFO = [['Model','Vybex Buds'],['Firmware','v2.1.4'],['Serial Number','VYB-2024-001'],['Bluetooth','5.3'],['Codec','AAC / SBC'],['Driver Size','10mm Dynamic'],['Frequency','20Hz – 20kHz'],['IPX Rating','IPX4']];
 
 export function DeviceDetailScreen({ onNavigate }: Props) {
   const { theme } = useTheme();
@@ -24,7 +24,7 @@ export function DeviceDetailScreen({ onNavigate }: Props) {
             <Icon name="headphones" size={28} color={theme.blue} />
           </View>
           <View style={{ flex: 1 }}>
-            <Text style={{ fontSize: 16, fontWeight: '800', color: theme.text, marginBottom: 4 }}>SoundWave Buds</Text>
+            <Text style={{ fontSize: 16, fontWeight: '800', color: theme.text, marginBottom: 4 }}>Vybex Buds</Text>
             <View style={{ flexDirection: 'row', gap: 6, flexWrap: 'wrap' }}>
               <BatteryPill label="L 100%" color="green" /><BatteryPill label="R 100%" color="green" /><BatteryPill label="Case 80%" color="blue" />
             </View>

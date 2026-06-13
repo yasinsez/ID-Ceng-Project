@@ -13,13 +13,13 @@ export function ConnectedScreen({ onNavigate }: Props) {
         <Icon name="check" size={44} color={theme.green} />
       </View>
       <Text style={{ fontSize: 22, fontWeight: '800', color: theme.text, marginBottom: 6 }}>Connected!</Text>
-      <Text style={{ fontSize: 14, color: theme.muted, marginBottom: 32 }}>SoundWave Buds are ready.</Text>
+      <Text style={{ fontSize: 14, color: theme.muted, marginBottom: 32 }}>Vybex Buds are ready.</Text>
       <View style={{ backgroundColor: theme.card, borderRadius: 16, padding: 16, width: '100%', borderWidth: 1, borderColor: theme.line, flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 32 }}>
         <View style={{ width: 44, height: 44, borderRadius: 10, backgroundColor: theme.subBg, alignItems: 'center', justifyContent: 'center' }}>
           <Icon name="headphones" size={22} color={theme.blue} />
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: 15, fontWeight: '700', color: theme.text, marginBottom: 6 }}>SoundWave Buds</Text>
+          <Text style={{ fontSize: 15, fontWeight: '700', color: theme.text, marginBottom: 6 }}>Vybex Buds</Text>
           <View style={{ flexDirection: 'row', gap: 6 }}>
             <BatteryPill label="L 100%" color="green" />
             <BatteryPill label="R 100%" color="green" />
