@@ -1,31 +1,31 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { Icon } from '../components/Icon';
+import { useTheme } from '../ThemeContext';
 import type { Screen } from '../types';
 
 interface Props { onNavigate: (s: Screen) => void; }
 
 export function WelcomeScreen({ onNavigate }: Props) {
+  const { theme } = useTheme();
   return (
-    <View className="flex-1 bg-[#0d0d0f] px-6 justify-between pb-10">
-      <View className="flex-1 items-center justify-center">
-        <Text className="text-6xl mb-6">🎧</Text>
-        <Text className="text-3xl font-bold text-white text-center mb-3">Welcome to{'\n'}SoundWave Buds</Text>
-        <Text className="text-sm text-[#9ca3af] text-center leading-5">
-          Control your earbuds, customize your sound,{'\n'}and track your listening experience.
-        </Text>
+    <View style={{ flex: 1, backgroundColor: theme.bg, paddingHorizontal: 24, justifyContent: 'space-between', paddingBottom: 40 }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12 }}>
+        <View style={{ width: 80, height: 80, borderRadius: 22, backgroundColor: theme.blue, alignItems: 'center', justifyContent: 'center', marginBottom: 8 }}>
+          <Icon name="wave" size={40} color="#fff" />
+        </View>
+        <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain', tintColor: theme.muted }} />
+        <Text style={{ fontSize: 30, fontWeight: '800', color: theme.text, letterSpacing: -0.5 }}>SoundWave</Text>
+        <Text style={{ fontSize: 15, color: theme.muted }}>Sound. Your Way.</Text>
       </View>
-
-      <View className="gap-3">
-        <TouchableOpacity
-          onPress={() => onNavigate('add-device')}
-          className="w-full bg-[#2563eb] rounded-2xl py-4 items-center"
-        >
-          <Text className="text-white text-base font-bold">Get Started</Text>
+      <View style={{ gap: 10 }}>
+        <TouchableOpacity onPress={() => onNavigate('add-device')} style={{ backgroundColor: theme.blue, borderRadius: 16, paddingVertical: 16, alignItems: 'center' }}>
+          <Text style={{ color: '#fff', fontSize: 16, fontWeight: '700' }}>Get Started</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => onNavigate('home')}
-          className="w-full bg-[#1a1a1f] border border-[#2e2e38] rounded-2xl py-4 items-center"
-        >
-          <Text className="text-white text-base font-semibold">Log In</Text>
+        <TouchableOpacity onPress={() => onNavigate('login')} style={{ backgroundColor: theme.card, borderRadius: 16, paddingVertical: 16, alignItems: 'center', borderWidth: 1, borderColor: theme.line }}>
+          <Text style={{ color: theme.text, fontSize: 16, fontWeight: '600' }}>Log In</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => onNavigate('sign-up')} style={{ alignItems: 'center', paddingVertical: 8 }}>
+          <Text style={{ color: theme.muted, fontSize: 13 }}>Don't have an account? <Text style={{ color: theme.blue, fontWeight: '700' }}>Sign Up</Text></Text>
         </TouchableOpacity>
       </View>
     </View>

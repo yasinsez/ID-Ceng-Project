@@ -1,39 +1,29 @@
 import { View, Text, TouchableOpacity } from 'react-native';
-import { StatusBar } from '../components/StatusBar';
+import { Icon } from '../components/Icon';
+import { useTheme } from '../ThemeContext';
 import type { Screen } from '../types';
 
 interface Props { onNavigate: (s: Screen) => void; }
-
 export function AddDeviceScreen({ onNavigate }: Props) {
+  const { theme } = useTheme();
   return (
-    <View className="flex-1 bg-[#0d0d0f]">
-      <StatusBar />
-      <View className="flex-row items-center gap-3 px-4 py-2">
-        <TouchableOpacity
-          onPress={() => onNavigate('welcome')}
-          className="w-8 h-8 items-center justify-center bg-[#222228] rounded-full"
-        >
-          <Text className="text-white text-base">‹</Text>
+    <View style={{ flex: 1, backgroundColor: theme.bg }}>
+      <View style={{ paddingHorizontal: 16, paddingVertical: 16 }}>
+        <TouchableOpacity onPress={() => onNavigate('welcome')} style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: theme.card, borderWidth: 1, borderColor: theme.line, alignItems: 'center', justifyContent: 'center' }}>
+          <Icon name="back" size={20} color={theme.text} />
         </TouchableOpacity>
-        <Text className="text-xl font-bold text-white">Add Device</Text>
       </View>
-
-      <View className="flex-1 items-center justify-center px-8">
-        {/* Concentric rings */}
-        <View className="w-48 h-48 rounded-full border border-[#2563eb] opacity-20 absolute" />
-        <View className="w-36 h-36 rounded-full border border-[#2563eb] opacity-40 absolute" />
-        <View className="w-24 h-24 rounded-full bg-[#1e3a5f] items-center justify-center mb-16">
-          <Text className="text-3xl">📡</Text>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32 }}>
+        <Text style={{ fontSize: 22, fontWeight: '800', color: theme.text, marginBottom: 8 }}>Add Your Device</Text>
+        <Text style={{ fontSize: 14, color: theme.muted, textAlign: 'center', lineHeight: 20, marginBottom: 48 }}>Put your earbuds in pairing mode,{'\n'}then start searching.</Text>
+        <View style={{ width: 100, height: 100, borderRadius: 50, backgroundColor: theme.subBg, alignItems: 'center', justifyContent: 'center', marginBottom: 56 }}>
+          <Icon name="headphones" size={48} color={theme.blue} />
         </View>
-        <Text className="text-2xl font-bold text-white mb-2 mt-24">Find Your Device</Text>
-        <Text className="text-sm text-[#9ca3af] text-center mb-10 leading-5">
-          Make sure your earbuds are out of the case and in pairing mode (LED flashing white).
-        </Text>
-        <TouchableOpacity
-          onPress={() => onNavigate('searching')}
-          className="w-full bg-[#2563eb] rounded-2xl py-4 items-center"
-        >
-          <Text className="text-white text-base font-bold">Start Searching</Text>
+        <TouchableOpacity onPress={() => onNavigate('searching')} style={{ width: '100%', backgroundColor: theme.blue, borderRadius: 16, paddingVertical: 16, alignItems: 'center', marginBottom: 10 }}>
+          <Text style={{ color: '#fff', fontSize: 16, fontWeight: '700' }}>Start Searching</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => onNavigate('pairing-help')} style={{ width: '100%', paddingVertical: 14, alignItems: 'center' }}>
+          <Text style={{ color: theme.blue, fontSize: 15, fontWeight: '600' }}>How to pair?</Text>
         </TouchableOpacity>
       </View>
     </View>

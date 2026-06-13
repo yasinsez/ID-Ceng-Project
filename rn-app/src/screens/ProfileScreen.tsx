@@ -1,62 +1,48 @@
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
-import { StatusBar } from '../components/StatusBar';
 import { NavBar } from '../components/NavBar';
+import { Icon } from '../components/Icon';
+import { useTheme } from '../ThemeContext';
 import type { Screen } from '../types';
+import type { ComponentProps } from 'react';
 
 interface Props { onNavigate: (s: Screen) => void; }
+type IconName = ComponentProps<typeof Icon>['name'];
+const menu: { icon: IconName; title: string; sub: string; screen: Screen; danger?: boolean }[] = [
+  { icon: 'device',   title: 'My Devices',       sub: 'Manage paired devices', screen: 'devices' },
+  { icon: 'history',  title: 'Listening History', sub: 'Recent sessions',       screen: 'history' },
+  { icon: 'stats',    title: 'Statistics',        sub: 'Weekly listening data', screen: 'stats' },
+  { icon: 'info',     title: 'About',             sub: 'App information',       screen: 'about' },
+  { icon: 'help',     title: 'Help & Support',    sub: 'FAQ and contact',       screen: 'help-support' },
+  { icon: 'logout',   title: 'Log Out',           sub: 'Return to welcome',     screen: 'log-out', danger: true },
+];
 
 export function ProfileScreen({ onNavigate }: Props) {
-  const menu = [
-    { icon: '📱', label: 'My Devices',        screen: 'devices' as Screen },
-    { icon: '📻', label: 'Listening History',  screen: 'history' as Screen },
-    { icon: '📊', label: 'Statistics',         screen: 'stats'   as Screen },
-    { icon: 'ℹ️', label: 'About',              screen: null },
-    { icon: '❓', label: 'Help & Support',     screen: null },
-  ];
-
+  const { theme } = useTheme();
   return (
-    <View className="flex-1 bg-[#0d0d0f]">
-      <StatusBar />
-
-      {/* Avatar + name */}
-      <View className="items-center pt-6 pb-4">
-        <View className="w-[72px] h-[72px] rounded-full bg-[#2563eb] items-center justify-center mb-2">
-          <Text className="text-3xl font-bold text-white">Z</Text>
+    <View style={{ flex: 1, backgroundColor: theme.bg }}>
+      <ScrollView style={{ flex: 1, paddingHorizontal: 16 }} contentContainerStyle={{ paddingTop: 16 }} showsVerticalScrollIndicator={false}>
+        <View style={{ backgroundColor: theme.card, borderRadius: 16, padding: 20, marginBottom: 12, borderWidth: 1, borderColor: theme.line, alignItems: 'center' }}>
+          <View style={{ width: 60, height: 60, borderRadius: 30, backgroundColor: theme.subBg, alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
+            <Icon name="profile" size={28} color={theme.blue} />
+          </View>
+          <Text style={{ fontSize: 18, fontWeight: '800', color: theme.text }}>Mehmet</Text>
+          <Text style={{ fontSize: 13, color: theme.muted, marginTop: 2 }}>Sound profile synced</Text>
         </View>
-        <Text className="text-lg font-bold text-white">Zeynep Ertuğrul</Text>
-        <Text className="text-sm text-[#9ca3af]">zeynep@gmail.com</Text>
-      </View>
-
-      <ScrollView className="flex-1 px-4" showsVerticalScrollIndicator={false}>
-        {/* Menu items — use index to skip border on last item */}
-        <View className="bg-[#1a1a1f] border border-[#2e2e38] rounded-2xl overflow-hidden mb-3">
+        <View style={{ backgroundColor: theme.card, borderRadius: 16, overflow: 'hidden', borderWidth: 1, borderColor: theme.line, marginBottom: 20 }}>
           {menu.map((item, i) => (
-            <TouchableOpacity
-              key={item.label}
-              onPress={() => item.screen && onNavigate(item.screen)}
-              style={{ borderBottomWidth: i < menu.length - 1 ? 1 : 0, borderBottomColor: '#2e2e38' }}
-              className="flex-row items-center gap-3.5 px-4 py-3.5"
-            >
-              <Text className="text-lg w-6 text-center">{item.icon}</Text>
-              <Text className="flex-1 text-[15px] font-medium text-white">{item.label}</Text>
-              <Text className="text-lg text-[#6b7280]">›</Text>
+            <TouchableOpacity key={item.title} onPress={() => onNavigate(item.screen)} style={{ flexDirection: 'row', alignItems: 'center', gap: 14, paddingHorizontal: 16, paddingVertical: 14, borderBottomWidth: i < menu.length - 1 ? 1 : 0, borderBottomColor: theme.line }}>
+              <View style={{ width: 36, height: 36, borderRadius: 9, backgroundColor: item.danger ? theme.dangerBg : theme.subBg, alignItems: 'center', justifyContent: 'center' }}>
+                <Icon name={item.icon} size={18} color={item.danger ? theme.danger : theme.blue} />
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={{ fontSize: 15, fontWeight: '600', color: item.danger ? theme.danger : theme.text }}>{item.title}</Text>
+                <Text style={{ fontSize: 12, color: theme.muted, marginTop: 1 }}>{item.sub}</Text>
+              </View>
+              <Icon name="chevron-right" size={18} color={item.danger ? theme.danger : theme.muted} />
             </TouchableOpacity>
           ))}
         </View>
-
-        {/* Log out */}
-        <View className="bg-[#1a1a1f] border border-[rgba(239,68,68,0.3)] rounded-2xl overflow-hidden mb-4">
-          <TouchableOpacity
-            onPress={() => onNavigate('welcome')}
-            className="flex-row items-center gap-3.5 px-4 py-3.5"
-          >
-            <Text className="text-lg w-6 text-center">🚪</Text>
-            <Text className="flex-1 text-[15px] font-medium text-[#ef4444]">Log Out</Text>
-            <Text className="text-lg text-[#ef4444]">›</Text>
-          </TouchableOpacity>
-        </View>
       </ScrollView>
-
       <NavBar active="profile" onNavigate={onNavigate} />
     </View>
   );

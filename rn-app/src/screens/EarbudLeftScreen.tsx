@@ -1,60 +1,60 @@
-import { View, Text, TouchableOpacity } from 'react-native';
-import { StatusBar } from '../components/StatusBar';
+import { useState } from 'react';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { NavBar } from '../components/NavBar';
+import { Icon } from '../components/Icon';
+import { useTheme } from '../ThemeContext';
 import type { Screen } from '../types';
 
 interface Props { onNavigate: (s: Screen) => void; }
-
-const gestures = [
-  { gesture: 'Single Tap',   action: 'Play / Pause' },
-  { gesture: 'Double Tap',   action: 'Next Track' },
-  { gesture: 'Triple Tap',   action: 'Previous Track' },
-  { gesture: 'Press & Hold', action: 'Noise Control' },
-];
+const ACTIONS = ['Play/Pause', 'Next Track', 'Prev Track', 'Vol Up', 'Vol Down', 'Voice Assistant', 'ANC Toggle'];
+const gestures = [{ label: 'Single Tap', default: 'Play/Pause' }, { label: 'Double Tap', default: 'Next Track' }, { label: 'Long Press', default: 'ANC Toggle' }];
 
 export function EarbudLeftScreen({ onNavigate }: Props) {
+  const { theme } = useTheme();
+  const [selected, setSelected] = useState(gestures.map(g => g.default));
+  const [open, setOpen] = useState<number | null>(null);
   return (
-    <View className="flex-1 bg-[#0d0d0f]">
-      <StatusBar />
-      <View className="flex-row items-center gap-3 px-4 py-2">
-        <TouchableOpacity onPress={() => onNavigate('home')} className="w-8 h-8 items-center justify-center bg-[#222228] rounded-full">
-          <Text className="text-white text-base">‹</Text>
+    <View style={{ flex: 1, backgroundColor: theme.bg }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingVertical: 16 }}>
+        <TouchableOpacity onPress={() => onNavigate('settings')} style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: theme.card, borderWidth: 1, borderColor: theme.line, alignItems: 'center', justifyContent: 'center' }}>
+          <Icon name="back" size={20} color={theme.text} />
         </TouchableOpacity>
-        <Text className="text-xl font-bold text-white">Earbud Controls</Text>
+        <Text style={{ fontSize: 22, fontWeight: '800', color: theme.text }}>Earbud Controls</Text>
       </View>
-
-      {/* Tab switcher */}
-      <View className="flex-row bg-[#1a1a1f] border border-[#2e2e38] rounded-xl p-1 gap-1 mx-4 mb-4">
-        <View className="flex-1 py-1.5 rounded-lg bg-[#2563eb] items-center">
-          <Text className="text-xs font-semibold text-white">Left Earbud</Text>
+      <View style={{ flexDirection: 'row', marginHorizontal: 16, backgroundColor: theme.segBg, borderRadius: 12, padding: 4, marginBottom: 16 }}>
+        <View style={{ flex: 1, paddingVertical: 9, borderRadius: 9, alignItems: 'center', backgroundColor: theme.card }}>
+          <Text style={{ fontSize: 13, fontWeight: '700', color: theme.text }}>Left</Text>
         </View>
-        <TouchableOpacity onPress={() => onNavigate('earbud-right')} className="flex-1 py-1.5 rounded-lg items-center">
-          <Text className="text-xs font-semibold text-[#9ca3af]">Right Earbud</Text>
+        <TouchableOpacity onPress={() => onNavigate('earbud-right')} style={{ flex: 1, paddingVertical: 9, borderRadius: 9, alignItems: 'center' }}>
+          <Text style={{ fontSize: 13, fontWeight: '600', color: theme.muted }}>Right</Text>
         </TouchableOpacity>
       </View>
-
-      <View className="flex-1 px-4">
-        <View className="items-center mb-6">
-          <View className="w-24 h-24 rounded-full bg-[#1a1a1f] border border-[#2e2e38] items-center justify-center">
-            <Text className="text-5xl">🎧</Text>
-          </View>
-        </View>
-
-        <View className="bg-[#1a1a1f] border border-[#2e2e38] rounded-2xl overflow-hidden">
+      <ScrollView style={{ flex: 1, paddingHorizontal: 16 }} showsVerticalScrollIndicator={false}>
+        <View style={{ backgroundColor: theme.card, borderRadius: 16, overflow: 'visible', borderWidth: 1, borderColor: theme.line, marginBottom: 20 }}>
           {gestures.map((g, i) => (
-            <View key={g.gesture} className={`flex-row items-center justify-between px-4 py-4 ${i < gestures.length - 1 ? 'border-b border-[#2e2e38]' : ''}`}>
-              <Text className="text-sm font-semibold text-white">{g.gesture}</Text>
-              <View className="flex-row items-center gap-2">
-                <Text className="text-sm text-[#9ca3af]">{g.action}</Text>
-                <Text className="text-lg text-[#6b7280]">›</Text>
-              </View>
+            <View key={g.label} style={{ borderBottomWidth: i < gestures.length - 1 ? 1 : 0, borderBottomColor: theme.line }}>
+              <TouchableOpacity onPress={() => setOpen(open === i ? null : i)} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, paddingVertical: 14 }}>
+                <View>
+                  <Text style={{ fontSize: 15, fontWeight: '600', color: theme.text }}>{g.label}</Text>
+                  <Text style={{ fontSize: 12, color: theme.blue, marginTop: 2 }}>{selected[i]}</Text>
+                </View>
+                <Icon name={open === i ? 'back' : 'chevron-right'} size={18} color={theme.muted} />
+              </TouchableOpacity>
+              {open === i && (
+                <View style={{ backgroundColor: theme.bg, borderTopWidth: 1, borderTopColor: theme.line }}>
+                  {ACTIONS.map(a => (
+                    <TouchableOpacity key={a} onPress={() => { const n = [...selected]; n[i] = a; setSelected(n); setOpen(null); }} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, paddingVertical: 12 }}>
+                      <Text style={{ fontSize: 14, color: theme.text }}>{a}</Text>
+                      {selected[i] === a && <Icon name="check" size={16} color={theme.blue} />}
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              )}
             </View>
           ))}
         </View>
-
-        <Text className="text-xs text-[#6b7280] text-center mt-4 px-4">
-          Tap each gesture to customize the action assigned to your left earbud.
-        </Text>
-      </View>
+      </ScrollView>
+      <NavBar active="settings" onNavigate={onNavigate} />
     </View>
   );
 }

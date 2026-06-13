@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Light theme (default) ─────────────────────────────────────────── */
+:root {
+  --color-bg:             #F8FAFC;
+  --color-surface:        #F3F6FA;
+  --color-surface-2:      #EEF5FF;
+  --color-surface-sel:    #EEF5FF;
+  --color-border:         #D9DEE8;
+  --color-border-sub:     #E3E7EF;
+  --color-text-primary:   #111827;
+  --color-text-secondary: #6C7482;
+  --color-accent:         #3478F6;
+  --color-accent-light:   #C7DAFF;
+  --color-success:        #24C26A;
+  --color-bezel:          #D9DEE8;
+  --color-bezel-stroke:   #CDD4DF;
+}
+
+/* ── Search screen animations ─────────────────────────────────────── */
+@keyframes spin-ring {
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse-scale {
+  0%, 100% { transform: scale(1);    opacity: 0.4; }
+  50%       { transform: scale(1.12); opacity: 0.15; }
+}
+
+/* ── Dark theme ────────────────────────────────────────────────────── */
+.dark {
+  --color-bg:             #0F172A;
+  --color-surface:        #131E30;
+  --color-surface-2:      #162A49;
+  --color-surface-sel:    #182438;
+  --color-border:         #2A3547;
+  --color-border-sub:     #2E3B52;
+  --color-text-primary:   #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-accent:         #3478F6;
+  --color-accent-light:   #1B2433;
+  --color-success:        #24C26A;
+  --color-bezel:          #1B2433;
+  --color-bezel-stroke:   #2A3547;
+}

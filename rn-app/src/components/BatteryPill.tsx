@@ -3,11 +3,11 @@ import { View, Text } from 'react-native';
 interface Props { label: string; color: 'green' | 'blue'; }
 
 export function BatteryPill({ label, color }: Props) {
-  const bg  = color === 'green' ? 'bg-[#166534]' : 'bg-[#1e3a5f]';
-  const txt = color === 'green' ? 'text-[#4ade80]' : 'text-[#60a5fa]';
+  const bg  = color === 'green' ? '#dcfce7' : '#dbeafe';
+  const txt = color === 'green' ? '#15803d' : '#1d4ed8';
   return (
-    <View className={`${bg} rounded-full px-2 py-0.5`}>
-      <Text className={`${txt} text-[10px] font-semibold`}>{label}</Text>
+    <View style={{ backgroundColor: bg, borderRadius: 99, paddingHorizontal: 8, paddingVertical: 3 }}>
+      <Text style={{ color: txt, fontSize: 10, fontWeight: '700' }}>{label}</Text>
     </View>
   );
 }
