@@ -121,13 +121,6 @@
   }\par
   \vspace{1.5cm}
 
-  \begin{highlight}
-    Assignment: Create a refined, working interface prototype for both smartphone
-    and smartwatch platforms. This process report details the convergent design thinking,
-    refined personas, experience maps, high-fidelity UI revisions, usability analysis,
-    and the alignment between physical product design and digital interfaces.
-  \end{highlight}
-
   \vfill
   {\large June 2026}
 \end{titlepage}
@@ -148,66 +141,43 @@ Following the divergent thinking approach in the first assignment (where we expl
 \section{Refined User Personas}
 Based on testing and feedback from our low-fidelity designs, we have updated and refined our primary user personas to better reflect their interaction challenges.
 
-\subsection{Persona 1: [Persona Name / e.g., The Commuter]}
-\begin{highlight}
-  \textbf{Instruction:} Define your first persona clearly. This persona should have been updated since Assignment I based on what you learned during low-fidelity testing.
-\end{highlight}
+\subsection{Persona 1: Duru Özen (The Creative Professional)}
 
-\textbf{Background:} [Provide a 2-3 sentence description of who the user is, their typical day, and the environment where they use the earphones (e.g., crowded public transport, noisy streets).]
-
-\textbf{Core Needs \& Pain Points:}
-\begin{highlight}
-  \textbf{Instruction:} List 3-4 specific needs or problems this persona faces. Focus on their interaction with the companion app, not just the physical earphones.
-\end{highlight}
-\begin{itemize}
-  \item \textit{Example:} Needs immediate access to Noise Cancellation modes when boarding a loud train.
-  \item \textit{Example:} Struggles to accurately tap small buttons on the screen while walking fast.
-  \item \textit{Example:} Wants to quickly check battery level before leaving the house without navigating through multiple menus.
-\end{itemize}
-
-\textbf{Mapping to High-Fidelity UI:}
-\begin{highlight}
-  \textbf{Instruction:} Explain exactly which features in your new high-fidelity design solve the pain points listed above. How does the UI accommodate this specific user?
-\end{highlight}
-[Write your explanation here. E.g., "To address the commuter's need for rapid mode switching, we placed the ANC toggle directly on the Home dashboard widget as a large, primary action..."]
-
-\subsection{Persona 2: [Persona Name / e.g., The Active Listener]}
-\begin{highlight}
-  \textbf{Instruction:} Define your second persona. This persona should ideally highlight the need for the \textbf{smartwatch} interface.
-\end{highlight}
-
-\textbf{Background:} [Describe a user in a fitness, sports, or active lifestyle context where pulling out a smartphone is inconvenient.]
+\textbf{Background:} Duru is a 23-year-old photographer living in Istanbul. She leads a dynamic lifestyle where aesthetic expression and creativity are central to both her work and her daily life. She frequently listens to music while editing photos in cafes or studios, requiring fine-tuned audio control.
 
 \textbf{Core Needs \& Pain Points:}
 \begin{itemize}
-  \item \textit{Example:} Needs hands-free or glanceable controls while running.
-  \item \textit{Example:} Finds it hazardous to pull out a smartphone to skip a track during a cycling session.
-  \item \textit{Example:} Requires large touch targets on the smartwatch due to hand movement while exercising.
+  \item Requires a visually appealing interface that matches her high aesthetic standards as a creative professional.
+  \item Needs precise control over her audio profile (Equalizer) to hear subtle details in the music while working.
+  \item Wants a clear, organized way to map her earbud touch gestures without getting lost in complex menus.
 \end{itemize}
 
 \textbf{Mapping to High-Fidelity UI:}
-\begin{highlight}
-  \textbf{Instruction:} Describe how the smartwatch UI and the earbud gesture configurations address this persona's specific challenges.
-\end{highlight}
-[Write your explanation here.]
+To address Duru's needs, we designed the smartphone app with a premium, dark aesthetic and a clean visual hierarchy. The Custom Equalizer screen provides a 9-band visual curve with intuitive sliders, empowering her to fine-tune her audio. Additionally, the Settings section uses progressive disclosure to keep gesture re-mapping simple and visually clean, preventing cognitive overload.
 
+\subsection{Persona 2: Duru Özen (The Active Mover)}
+
+\textbf{Background:} In addition to her creative work, dancing and running are essential parts of Duru's daily life. Whether she is expressing herself through dance or running along the Bosphorus, she relies heavily on her music but cannot constantly interact with her smartphone.
+
+\textbf{Core Needs \& Pain Points:}
+\begin{itemize}
+  \item Needs hands-free or highly glanceable controls to adjust volume or skip tracks while dancing or running.
+  \item Finds it disruptive to pull out her smartphone to switch Noise Cancellation modes when moving between quiet streets and loud traffic.
+  \item Requires large, forgiving touch targets on her smartwatch due to the constant movement of her hands and body.
+\end{itemize}
+
+\textbf{Mapping to High-Fidelity UI:}
+The smartwatch interface was heavily tailored for Duru's active context. The home screen features a massive, glanceable device card that allows her to immediately switch her ANC mode in a single tap. Furthermore, the volume control widget is dominated by a massive 72-point numeric display and large cyclic step buttons (+/-), ensuring she can quickly and accurately adjust her volume while in motion without breaking her rhythm.
+
+\clearpage
 \section{Mood Boards}
-To strengthen our personas and match the product's visual language design, we prepared mood boards highlighting color schemes, materials, shapes, and typographies.
+To strengthen our persona and ensure the digital interface reflects Duru's dynamic lifestyle, we prepared a mood board that captures the intersection of "Creative" and "Sporty" themes. It features vibrant lighting, dynamic movement, and a premium aesthetic that guided our UI color schemes and typography.
 
 \begin{figure}[H]
   \centering
-  % \includegraphics[width=0.8\textwidth]{mood_board_smartphone.png}
-  \rule{0.8\linewidth}{5cm} % Placeholder for image
-  \caption{Smartphone App Mood Board (Visual guidelines, harmony, and style references).}
-  \label{fig:mood-board-phone}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  % \includegraphics[width=0.8\textwidth]{mood_board_smartwatch.png}
-  \rule{0.8\linewidth}{5cm} % Placeholder for image
-  \caption{Smartwatch App Mood Board (Micro-interaction styles, extreme glanceability, and dark mode accents).}
-  \label{fig:mood-board-watch}
+  \includegraphics[width=0.8\textwidth]{images/mood-board.png}
+  \caption{Mood Board highlighting the "Creative" and "Sporty" aesthetics (dynamic lighting, motion, and modern visuals).}
+  \label{fig:mood-board}
 \end{figure}
 
 
@@ -216,9 +186,6 @@ To strengthen our personas and match the product's visual language design, we pr
 % ============================================================
 
 \section{User Experience Maps}
-\begin{highlight}
-  \textbf{Instruction:} Revisit the experience maps you created in Assignment I. Restructure and present them here in a clean, readable format. You can insert an image of your map, or summarize the key touchpoints in a table like the one below. Ensure you highlight the emotional state of the user at each step and how your UI mitigates negative emotions (friction).
-\end{highlight}
 
 This section documents the end-to-end journey of users interacting with the system, highlighting touchpoints, emotional status, and areas of friction.
 
@@ -242,8 +209,7 @@ We have updated our application flows to support the transition from low-fidelit
 
 \begin{figure}[H]
   \centering
-  % \includegraphics[width=\textwidth]{refined_interaction_flow.png}
-  \rule{\linewidth}{6cm} % Placeholder for image
+  \includegraphics[width=\textwidth]{images/page-flow-updated.png}
   \caption{Refined Interaction Map and Complete System Navigation Flow.}
   \label{fig:interaction-flow}
 \end{figure}
@@ -274,20 +240,14 @@ This section tracks and justifies the changes made between the Version 1/2 wiref
 \end{table}
 
 \section{Usability Principles (Norman \& Nielsen)}
-\begin{highlight}
-  \textbf{Instruction:} The assignment asks you to "focus on the user experience... try to enhance user experience by fostering Norman and Nielsen's usability rules i.e. reduce the workload of the users." 
-  
-  Use the list below as a starting point. \textbf{Rewrite these examples} to specifically reference actual screens and buttons in your Figma prototype. Provide concrete examples of how you reduced the user's cognitive and physical workload.
-\end{highlight}
-
 We aligned the high-fidelity UI refinements with standard usability rules to minimize user workload and improve interaction clarity:
 
 \begin{itemize}
-  \item \textbf{Visibility of System Status:} [Explain how your design shows battery, connection, and ANC status clearly. E.g., "Real-time connection feedback and active state highlights..."]
-  \item \textbf{Match between System and Real World:} [Explain how your digital controls map to physical expectations. E.g., "Visual representations of the physical earbuds map tap controls directly..."]
-  \item \textbf{User Control and Freedom:} [Explain how users can undo actions or escape unwanted states. E.g., "Dedicated back buttons, confirmation dialogs before disconnecting..."]
-  \item \textbf{Consistency and Standards:} [Explain the familiar patterns you used. E.g., "Standard bottom tab-bar navigation consistent with iOS/Android guidelines..."]
-  \item \textbf{Workload Reduction (Norman's Rules):} [Explain how you minimized clicks. E.g., "Placed the most frequent actions like pairing and listening mode selection on the Home screen to reduce required taps..."]
+  \item \textbf{Visibility of System Status:} Real-time connection feedback is prominently displayed on the Home dashboard with a green "Connected" indicator and individual battery percentage pills (L 100\%, R 100\%, Case 80\%) for clear, immediate status.
+  \item \textbf{Match between System and Real World:} The custom Equalizer screen uses a visual multi-band curve with frequency sliders that mimic professional audio mixing hardware, mapping digital sound adjustments to familiar physical expectations.
+  \item \textbf{User Control and Freedom:} The interface includes dedicated back navigation buttons ("‹") on all secondary screens, such as the Equalizer and Settings menus, allowing users to safely escape states without getting lost.
+  \item \textbf{Consistency and Standards:} Standard bottom tab-bar navigation (Home, Sound, Profile, Settings) is consistently applied across the smartphone app, adhering to standard iOS/Android guidelines for predictable wayfinding.
+  \item \textbf{Workload Reduction (Norman's Rules):} The smartwatch application significantly reduces physical workload by introducing a tile-based "Menu" and a quick "Device" shortcut on the home screen, allowing the most frequent action---changing the ANC mode---to be performed in a single glance and tap without requiring the user to open their smartphone.
 \end{itemize}
 
 
@@ -296,59 +256,48 @@ We aligned the high-fidelity UI refinements with standard usability rules to min
 % ============================================================
 
 \section{Working Prototype Access Links}
-The interactive, high-fidelity prototypes can be accessed and evaluated at:
+The interactive, high-fidelity prototypes and deployed applications can be accessed and evaluated at:
 \begin{itemize}
-  \item \textbf{Figma Interactive Prototype (Smartphone):} \url{https://figma.com/file/your_smartphone_prototype_link}
-  \item \textbf{Figma Interactive Prototype (Smartwatch):} \url{https://figma.com/file/your_smartwatch_prototype_link}
+  \item \textbf{Figma Design Source:} \url{https://www.figma.com/design/pabfCxixRcEJjb6rGrWJxZ/Group16_ID322-CENG318?node-id=2064-2&p=f&t=5MoJ8SxIAHyjkIVK-0}
+  \item \textbf{Smartphone Prototype (React Deployment):} \url{https://rn-app-eight.vercel.app/}
+  \item \textbf{Smartwatch Prototype (React Deployment):} \url{https://watch-app-beryl.vercel.app/}
 \end{itemize}
 
 \section{Smartphone Interface Showcase}
 The smartphone interface is structured across four primary tabs to ensure predictable wayfinding and comfortable one-handed navigation.
 
 \subsection{Dashboard \& Home Screen}
-\begin{highlight}
-  \textbf{Instruction:} Provide a high-quality screenshot of your final Home Screen from Figma. Below the image, write a paragraph describing its layout. Explain why you chose the specific visual hierarchy (e.g., why battery is at the top, why ANC is prominent). Mention how it improves upon the low-fidelity version.
-\end{highlight}
 
-[Write your descriptive paragraph here.]
+The Home Screen acts as the central hub, designed with a dark, premium aesthetic and clear visual hierarchy. At the top, the primary hero card displays the earbud model name, a green "Connected" status indicator, and color-coded battery pills for both earbuds and the charging case, ensuring the most critical information is immediately visible. Below this, prominent toggle buttons are provided for Ambient Sound control (Noise Cancellation, Off, Transparency) alongside a dedicated volume slider. This represents a significant improvement over our low-fidelity wireframes by avoiding a crowded "device control" screen and instead surfacing only the most frequently used settings (status, ANC, and volume) on the top-level view.
 
 \begin{figure}[H]
   \centering
   % Uncomment the line below and replace 'smartphone_home.png' with your actual image file
-  % \includegraphics[width=0.45\textwidth]{smartphone_home.png}
-  \rule{0.45\linewidth}{7cm} % Remove this placeholder rule when you add your image
+  \includegraphics[width=0.45\textwidth]{images/phone-home.png}
   \caption{High-Fidelity Smartphone Home Dashboard Screen.}
   \label{fig:phone-home}
 \end{figure}
 
 \subsection{Sound Customization \& Equalizer}
-\begin{highlight}
-  \textbf{Instruction:} Insert the screenshot of your Sound / Equalizer screen. Describe how users interact with the presets vs. the custom sliders. Explain the visual cues used (e.g., color changes, slider thumbs) to provide feedback.
-\end{highlight}
 
-[Write your descriptive paragraph here.]
+The Custom Equalizer interface enables fine-grained audio tuning. It features an interactive 9-band curve visualization at the top that dynamically reflects adjustments. Below the canvas, simplified sliders are grouped by Bass, Mid, and Treble, rather than overwhelming the user with raw frequency bands. Visual cues are present throughout, with sliders adopting a bright accent color to indicate active manipulation, and clear textual feedback indicating positive or negative decibel increments. A prominent "Save as Preset" button encourages users to safely retain their custom configurations.
 
 \begin{figure}[H]
   \centering
   % Uncomment the line below and replace 'smartphone_sound.png' with your actual image file
-  % \includegraphics[width=0.45\textwidth]{smartphone_sound.png}
-  \rule{0.45\linewidth}{7cm} % Remove this placeholder rule when you add your image
+  \includegraphics[width=0.45\textwidth]{images/phone-sound.png}
   \caption{High-Fidelity Smartphone Sound \& EQ Screen.}
   \label{fig:phone-sound}
 \end{figure}
 
 \subsection{Settings \& Device Configuration}
-\begin{highlight}
-  \textbf{Instruction:} Insert screenshots showing the settings and gesture re-mapping (Left/Right earbud) screens. Discuss how these pages are organized to prevent clutter and how they empower the user to customize their experience safely.
-\end{highlight}
 
-[Write your descriptive paragraph here.]
+The Settings and Device Configuration area handles detailed preferences without cluttering the primary tabs. Users can navigate into dedicated screens for Left and Right Earbud gesture mapping (e.g., assigning Next Song or Pause to specific double-taps). The settings are organized hierarchically using progressive disclosure---presenting simple list items initially that only reveal deeper configuration dialogs when tapped. This structure empowers the user to customize their experience safely without feeling overwhelmed by an extensive, continuous list of options.
 
 \begin{figure}[H]
   \centering
   % Uncomment the line below and replace 'smartphone_settings.png' with your actual image file
-  % \includegraphics[width=0.45\textwidth]{smartphone_settings.png}
-  \rule{0.45\linewidth}{7cm} % Remove this placeholder rule when you add your image
+  \includegraphics[width=0.45\textwidth]{images/phone-settings.png}
   \caption{High-Fidelity Smartphone Settings Screen.}
   \label{fig:phone-settings}
 \end{figure}
@@ -357,33 +306,25 @@ The smartphone interface is structured across four primary tabs to ensure predic
 As required by the assignment guidelines, the smartwatch UI is documented here in its own dedicated section. The design emphasizes immediate glanceability and easy touch targets for small screens.
 
 \subsection{Smartwatch Home \& Quick Controls}
-\begin{highlight}
-  \textbf{Instruction:} The assignment explicitly requires smartwatch interfaces to be presented in a separate section. Insert your smartwatch home screen design here. Describe how the circular (or squircle) display constrained your design and how you adapted the UI elements (e.g., curved text, radial progress bars) to fit the watch face perfectly.
-\end{highlight}
 
-[Write your descriptive paragraph here.]
+The Smartwatch Home interface is tailored for extreme glanceability and constrained, squircle displays. At its core, it features a primary device card that immediately communicates the connected earbud name and current noise control mode. The layout utilizes a prominent grid of large, tap-friendly tiles, specifically separating the "Menu" and "Device" shortcuts. To accommodate the small screen size, text labels are kept minimal and accompanied by distinct, high-contrast iconography, ensuring users can tap accurately even while moving or exercising.
 
 \begin{figure}[H]
   \centering
   % Uncomment the line below and replace 'smartwatch_home.png' with your actual image file
-  % \includegraphics[width=0.4\textwidth]{smartwatch_home.png}
-  \rule{0.4\linewidth}{4cm} % Remove this placeholder rule when you add your image
+  \includegraphics[width=0.4\textwidth]{images/watch-home.png}
   \caption{High-Fidelity Smartwatch Home Controls Screen.}
   \label{fig:watch-home}
 \end{figure}
 
 \subsection{Smartwatch Volume Control Widget}
-\begin{highlight}
-  \textbf{Instruction:} Insert the screenshot of your smartwatch volume interaction. Explain how the user controls the volume (e.g., tapping `+`/`-`, turning the digital crown, or rotating the bezel) and how visual feedback is provided on the small screen.
-\end{highlight}
 
-[Write your descriptive paragraph here.]
+The Smartwatch Volume interface centers around a massive, 72-point numeric display that dominates the screen, providing instant visual feedback. Users adjust the volume through a dedicated control row positioned at the bottom, which supports cyclic step increments (e.g., adjusting by 1, 5, or 10 steps at a time). This setup allows the user to either quickly tap the plus or minus buttons or hold them for rapid adjustments, ensuring the volume can be confidently managed without taking focus away from an ongoing activity.
 
 \begin{figure}[H]
   \centering
   % Uncomment the line below and replace 'smartwatch_volume.png' with your actual image file
-  % \includegraphics[width=0.4\textwidth]{smartwatch_volume.png}
-  \rule{0.4\linewidth}{4cm} % Remove this placeholder rule when you add your image
+  \includegraphics[width=0.4\textwidth]{images/watch-volume.png}
   \caption{High-Fidelity Smartwatch Volume Interface.}
   \label{fig:watch-volume}
 \end{figure}
@@ -412,46 +353,23 @@ This section represents the physical design work developed by the Industrial Des
   \label{fig:id-rendering}
 \end{figure}
 
+\clearpage
 \section{Storyboard for Physical Use \& Interaction}
-The storyboard conveys the physical use of the product, showcasing how the user experiences the combination of physical earphone touch zones, smartwatch widgets, and smartphone configurations in everyday environments.
+The storyboard illustrates Duru's interaction with the product during a typical run. It highlights how she seamlessly transitions from using the smartphone app for initial setup to relying entirely on the smartwatch interface and earbud touch gestures to adjust volume and control playback while staying active and focused on her workout.
 
 \begin{figure}[H]
   \centering
-  % \includegraphics[width=\textwidth]{storyboard.png}
-  \rule{\linewidth}{6cm} % Placeholder for storyboard drawings
+  \includegraphics[width=\textwidth]{images/storyboard.png}
   \caption{Storyboard: Everyday User-Product-App Interaction Journey.}
   \label{fig:storyboard}
 \end{figure}
 
 
-% ============================================================
-\chapter{Video Demonstration \& Narrative Outline}
-% ============================================================
-
-\section{Smartphone Demo Video Outline}
-\begin{enumerate}
-  \item \textbf{Narrative Intro:} Introduction of the user persona and their problem.
-  \item \textbf{Pairing Demonstration:} Visual onboarding, pairing flow.
-  \item \textbf{Sound Adjustments:} Changing ANC presets and customizing the equalizer.
-  \item \textbf{Gesture Configuration:} Modifying double-tap on Left/Right buds.
-\end{enumerate}
-
-Link to Smartphone Demo Video: \url{https://drive.google.com/file/your_smartphone_video_link}
-
-\section{Smartwatch Demo Video Outline}
-\begin{enumerate}
-  \item \textbf{Narrative Intro:} Highlighting active/exercise use cases.
-  \item \textbf{Quick Controls:} Adjusting listening modes from the wrist.
-  \item \textbf{Glanceable Battery \& Volume:} Fast tracking controls.
-\end{enumerate}
-
-Link to Smartwatch Demo Video: \url{https://drive.google.com/file/your_smartwatch_video_link}
-
 
 % ============================================================
 \chapter{Conclusion}
 % ============================================================
-This process report summarizes the transition from our early exploratory wireframe concepts to a coherent, usability-tested high-fidelity interface prototype for both smartphone and smartwatch platforms. By aligning with Nielsen and Norman's usability principles, implementing proper touch padding, and collaborating with Industrial Design on the physical product integration, we have achieved a refined and unified digital companion app experience.
+This process report summarizes the transition from our early exploratory concepts to a coherent, usability-tested high-fidelity interface and physical prototype for both smartphone and smartwatch platforms. By aligning with Nielsen and Norman's usability principles, implementing proper touch padding, and seamlessly integrating the physical earphone design with the digital UI, we have achieved a refined and unified product experience as a collaborative, cross-disciplinary team.
 
 % ============================================================
 \end{document}
