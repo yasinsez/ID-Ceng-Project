@@ -3,3 +3,4 @@ dist/
 .vite-temp/
 *.tsbuildinfo
 .DS_Store
+.vercel

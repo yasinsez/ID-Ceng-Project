@@ -1,9 +1,10 @@
 import './global.css';
 import { useState } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, Platform, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { ThemeProvider, useTheme } from './src/ThemeContext';
 import type { Screen, AmbientMode, Preset, EQValues } from './src/types';
+
 
 import { SplashScreen }       from './src/screens/SplashScreen';
 import { WelcomeScreen }      from './src/screens/WelcomeScreen';
@@ -94,11 +95,39 @@ function AppInner() {
 
 
 export default function App() {
-  return (
+  const content = (
     <SafeAreaProvider>
       <ThemeProvider>
         <AppInner />
       </ThemeProvider>
     </SafeAreaProvider>
   );
+
+  if (Platform.OS === 'web') {
+    return (
+      <View style={{ flex: 1, backgroundColor: '#000', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
+        <View
+          style={{
+            width: 390,
+            height: 844,
+            borderRadius: 44,
+            backgroundColor: '#0d0d0f',
+            overflow: 'hidden',
+            borderWidth: 10,
+            borderColor: '#1a1a1f',
+            // Simple shadow/border for phone look on web
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 30 },
+            shadowOpacity: 0.8,
+            shadowRadius: 80,
+          }}
+        >
+          {content}
+        </View>
+      </View>
+    );
+  }
+
+  return content;
 }
+
