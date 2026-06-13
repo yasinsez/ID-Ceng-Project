@@ -13,7 +13,7 @@ export function WelcomeScreen({ onNavigate }: Props) {
         <View style={{ width: 80, height: 80, borderRadius: 22, backgroundColor: theme.blue, alignItems: 'center', justifyContent: 'center', marginBottom: 8 }}>
           <Icon name="wave" size={40} color="#fff" />
         </View>
-        <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain', tintColor: theme.muted }} />
+        <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain' }} />
         <Text style={{ fontSize: 30, fontWeight: '800', color: theme.text, letterSpacing: -0.5 }}>SoundWave</Text>
         <Text style={{ fontSize: 15, color: theme.muted }}>Sound. Your Way.</Text>
       </View>

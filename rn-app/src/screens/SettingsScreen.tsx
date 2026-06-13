@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Switch, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, Switch, ScrollView, Image } from 'react-native';
 import { NavBar } from '../components/NavBar';
 import { Icon } from '../components/Icon';
 import { useTheme } from '../ThemeContext';
@@ -28,7 +28,10 @@ export function SettingsScreen({ onNavigate }: Props) {
   const { theme, isDark, toggleDark } = useTheme();
   return (
     <View style={{ flex: 1, backgroundColor: theme.bg }}>
-      <View style={{ paddingHorizontal: 16, paddingVertical: 16 }}>
+      <View style={{ alignItems: 'center', paddingTop: 16, paddingBottom: 8 }}>
+        <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain' }} />
+      </View>
+      <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
         <Text style={{ fontSize: 22, fontWeight: '800', color: theme.text }}>Settings</Text>
         <Text style={{ fontSize: 13, color: theme.muted, marginTop: 2 }}>Manage device and app preferences.</Text>
       </View>

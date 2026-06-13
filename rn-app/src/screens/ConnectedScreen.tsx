@@ -9,7 +9,6 @@ export function ConnectedScreen({ onNavigate }: Props) {
   const { theme } = useTheme();
   return (
     <View style={{ flex: 1, backgroundColor: theme.bg, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32 }}>
-      <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain', marginBottom: 32, tintColor: theme.muted }} />
       <View style={{ width: 90, height: 90, borderRadius: 45, borderWidth: 3, borderColor: theme.green, alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
         <Icon name="check" size={44} color={theme.green} />
       </View>

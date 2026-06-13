@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { Icon } from '../components/Icon';
 import { useTheme } from '../ThemeContext';
 import type { Screen } from '../types';
@@ -11,9 +11,9 @@ export function LoginScreen({ onNavigate }: Props) {
   const [password, setPassword] = useState('');
   return (
     <View style={{ flex: 1, backgroundColor: theme.bg, paddingHorizontal: 24 }}>
-      <TouchableOpacity onPress={() => onNavigate('welcome')} style={{ marginTop: 12, width: 36, height: 36, borderRadius: 18, backgroundColor: theme.card, borderWidth: 1, borderColor: theme.line, alignItems: 'center', justifyContent: 'center' }}>
-        <Icon name="back" size={20} color={theme.text} />
-      </TouchableOpacity>
+      <View style={{ alignItems: 'center', paddingTop: 16, paddingBottom: 8 }}>
+        <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain' }} />
+      </View>
       <View style={{ marginTop: 24, marginBottom: 32 }}>
         <Text style={{ fontSize: 26, fontWeight: '800', color: theme.text }}>Welcome back</Text>
         <Text style={{ fontSize: 14, color: theme.muted, marginTop: 4 }}>Sign in to your account</Text>

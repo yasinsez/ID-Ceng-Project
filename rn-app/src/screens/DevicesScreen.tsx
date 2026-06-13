@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { NavBar } from '../components/NavBar';
 import { BatteryPill } from '../components/BatteryPill';
 import { Icon } from '../components/Icon';
@@ -16,7 +16,10 @@ export function DevicesScreen({ onNavigate }: Props) {
   const { theme } = useTheme();
   return (
     <View style={{ flex: 1, backgroundColor: theme.bg }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, paddingVertical: 16 }}>
+      <View style={{ alignItems: 'center', paddingTop: 16, paddingBottom: 8 }}>
+        <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain' }} />
+      </View>
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, paddingBottom: 16 }}>
         <Text style={{ fontSize: 22, fontWeight: '800', color: theme.text }}>My Devices</Text>
         <TouchableOpacity onPress={() => onNavigate('add-device')} style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: theme.blue, alignItems: 'center', justifyContent: 'center' }}>
           <Icon name="plus" size={18} color="#fff" />

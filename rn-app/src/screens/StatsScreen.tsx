@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { NavBar } from '../components/NavBar';
 import { Icon } from '../components/Icon';
 import { useTheme } from '../ThemeContext';
@@ -23,11 +23,14 @@ export function StatsScreen({ onNavigate }: Props) {
   const maxH = Math.max(...d.bars.map(b => b.h));
   return (
     <View style={{ flex: 1, backgroundColor: theme.bg }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingVertical: 16 }}>
-        <TouchableOpacity onPress={() => onNavigate('profile')} style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: theme.card, borderWidth: 1, borderColor: theme.line, alignItems: 'center', justifyContent: 'center' }}>
-          <Icon name="back" size={20} color={theme.text} />
-        </TouchableOpacity>
-        <Text style={{ fontSize: 22, fontWeight: '800', color: theme.text }}>Statistics</Text>
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, paddingVertical: 16 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <TouchableOpacity onPress={() => onNavigate('profile')} style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: theme.card, borderWidth: 1, borderColor: theme.line, alignItems: 'center', justifyContent: 'center' }}>
+            <Icon name="back" size={20} color={theme.text} />
+          </TouchableOpacity>
+          <Text style={{ fontSize: 22, fontWeight: '800', color: theme.text }}>Statistics</Text>
+        </View>
+        <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain' }} />
       </View>
       <View style={{ flexDirection: 'row', marginHorizontal: 16, backgroundColor: theme.segBg, borderRadius: 12, padding: 4, marginBottom: 16 }}>
         {TABS.map(t => (

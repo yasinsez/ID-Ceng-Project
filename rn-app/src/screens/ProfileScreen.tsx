@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { NavBar } from '../components/NavBar';
 import { Icon } from '../components/Icon';
 import { useTheme } from '../ThemeContext';
@@ -20,6 +20,9 @@ export function ProfileScreen({ onNavigate }: Props) {
   const { theme } = useTheme();
   return (
     <View style={{ flex: 1, backgroundColor: theme.bg }}>
+      <View style={{ alignItems: 'center', paddingTop: 16, paddingBottom: 8 }}>
+        <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain' }} />
+      </View>
       <ScrollView style={{ flex: 1, paddingHorizontal: 16 }} contentContainerStyle={{ paddingTop: 16 }} showsVerticalScrollIndicator={false}>
         <View style={{ backgroundColor: theme.card, borderRadius: 16, padding: 20, marginBottom: 12, borderWidth: 1, borderColor: theme.line, alignItems: 'center' }}>
           <View style={{ width: 60, height: 60, borderRadius: 30, backgroundColor: theme.subBg, alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>

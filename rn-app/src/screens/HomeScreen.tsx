@@ -18,11 +18,8 @@ export function HomeScreen({ onNavigate, volume, onVolumeChange, ambient, onAmbi
   const ambientLabel = ambient === 'nc' ? 'Noise Cancellation On' : ambient === 'transparency' ? 'Transparency Mode On' : 'Off';
   return (
     <View style={{ flex: 1, backgroundColor: theme.bg }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, paddingVertical: 16 }}>
-        <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 24, resizeMode: 'contain', tintColor: theme.muted }} />
-        <TouchableOpacity onPress={() => onNavigate('profile')}>
-          <Icon name="profile" size={22} color={theme.muted} />
-        </TouchableOpacity>
+      <View style={{ alignItems: 'center', paddingTop: 16, paddingBottom: 8 }}>
+        <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain' }} />
       </View>
       <View style={{ paddingHorizontal: 16, marginBottom: 16 }}>
         <Text style={{ fontSize: 22, fontWeight: '800', color: theme.text }}>My Earbuds</Text>

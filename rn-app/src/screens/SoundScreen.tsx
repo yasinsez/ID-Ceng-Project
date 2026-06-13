@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { NavBar } from '../components/NavBar';
 import { Icon } from '../components/Icon';
 import { useTheme } from '../ThemeContext';
@@ -15,7 +15,10 @@ export function SoundScreen({ onNavigate, preset, onPresetChange, isPlaying, onP
   const { theme } = useTheme();
   return (
     <View style={{ flex: 1, backgroundColor: theme.bg }}>
-      <View style={{ paddingHorizontal: 16, paddingVertical: 16 }}>
+      <View style={{ alignItems: 'center', paddingTop: 16, paddingBottom: 8 }}>
+        <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain' }} />
+      </View>
+      <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
         <Text style={{ fontSize: 22, fontWeight: '800', color: theme.text }}>Sound</Text>
       </View>
       <ScrollView style={{ flex: 1, paddingHorizontal: 16 }} showsVerticalScrollIndicator={false}>

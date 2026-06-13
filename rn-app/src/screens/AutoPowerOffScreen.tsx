@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { NavBar } from '../components/NavBar';
 import { Icon } from '../components/Icon';
 import { useTheme } from '../ThemeContext';
@@ -13,14 +13,17 @@ export function AutoPowerOffScreen({ onNavigate }: Props) {
   const [selected, setSelected] = useState('30 min');
   return (
     <View style={{ flex: 1, backgroundColor: theme.bg }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingVertical: 16 }}>
-        <TouchableOpacity onPress={() => onNavigate('settings')} style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: theme.card, borderWidth: 1, borderColor: theme.line, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 12, height: 36, zIndex: 1, paddingHorizontal: 16 }}>
+        <TouchableOpacity onPress={() => onNavigate('settings')} style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: theme.card, borderWidth: 1, borderColor: theme.line, alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
           <Icon name="back" size={20} color={theme.text} />
         </TouchableOpacity>
-        <View>
-          <Text style={{ fontSize: 22, fontWeight: '800', color: theme.text }}>Auto Power-Off</Text>
-          <Text style={{ fontSize: 13, color: theme.muted, marginTop: 2 }}>Earbuds will turn off after idle time.</Text>
+        <View style={{ position: 'absolute', left: 0, right: 0, alignItems: 'center', justifyContent: 'center', zIndex: 0 }}>
+          <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain' }} />
         </View>
+      </View>
+      <View style={{ paddingHorizontal: 16, marginTop: 16, marginBottom: 16 }}>
+        <Text style={{ fontSize: 22, fontWeight: '800', color: theme.text }}>Auto Power-Off</Text>
+        <Text style={{ fontSize: 13, color: theme.muted, marginTop: 2 }}>Earbuds will turn off after idle time.</Text>
       </View>
       <View style={{ paddingHorizontal: 16 }}>
         {OPTIONS.map(opt => (

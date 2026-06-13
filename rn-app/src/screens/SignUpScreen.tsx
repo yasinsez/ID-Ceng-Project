@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { Icon } from '../components/Icon';
 import { useTheme } from '../ThemeContext';
 import type { Screen } from '../types';
@@ -12,9 +12,14 @@ export function SignUpScreen({ onNavigate }: Props) {
   const [password, setPassword] = useState('');
   return (
     <View style={{ flex: 1, backgroundColor: theme.bg, paddingHorizontal: 24 }}>
-      <TouchableOpacity onPress={() => onNavigate('welcome')} style={{ marginTop: 12, width: 36, height: 36, borderRadius: 18, backgroundColor: theme.card, borderWidth: 1, borderColor: theme.line, alignItems: 'center', justifyContent: 'center' }}>
-        <Icon name="back" size={20} color={theme.text} />
-      </TouchableOpacity>
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 12, height: 36, zIndex: 1 }}>
+        <TouchableOpacity onPress={() => onNavigate('welcome')} style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: theme.card, borderWidth: 1, borderColor: theme.line, alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
+          <Icon name="back" size={20} color={theme.text} />
+        </TouchableOpacity>
+        <View style={{ position: 'absolute', left: 0, right: 0, alignItems: 'center', justifyContent: 'center', zIndex: 0 }}>
+          <Image source={require('../../assets/vestel-logo.png')} style={{ width: 80, height: 22, resizeMode: 'contain' }} />
+        </View>
+      </View>
       <View style={{ marginTop: 24, marginBottom: 32 }}>
         <Text style={{ fontSize: 26, fontWeight: '800', color: theme.text }}>Create account</Text>
         <Text style={{ fontSize: 14, color: theme.muted, marginTop: 4 }}>Join SoundWave today</Text>
