@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "rn-app",
-    "slug": "rn-app",
+    "name": "Vybex",
+    "slug": "vybex",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
