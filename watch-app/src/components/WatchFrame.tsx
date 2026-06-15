@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
 import { VestelLogo } from './VestelLogo';
 
 interface Props {
@@ -15,6 +16,9 @@ const R_INNER  = 77;
 const BEZEL    = 9;
 
 export function WatchFrame({ children }: Props) {
+  const location = useLocation();
+  const isHomeScreen = location.pathname === '/';
+
   return (
     <div
       style={{ width: W, height: H, borderRadius: R_OUTER, flexShrink: 0 }}
@@ -35,10 +39,12 @@ export function WatchFrame({ children }: Props) {
           </span>
         </div>
 
-        {/* Vestel logo row — centered below status bar */}
-        <div className="flex items-center justify-center py-1 flex-shrink-0">
-          <VestelLogo />
-        </div>
+        {/* Vestel logo row — centered below status bar, hidden on home screen */}
+        {!isHomeScreen && (
+          <div className="flex items-center justify-center py-1 flex-shrink-0">
+            <VestelLogo />
+          </div>
+        )}
 
         {/* Screen slot */}
         <div className="flex-1 min-h-0 overflow-hidden">
