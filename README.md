@@ -8,7 +8,7 @@ Joint project for **Industrial Design** and **Computer Engineering**: we will **
 
 Deliver a coherent product where hardware and software feel like one system: comfortable, reliable audio hardware paired with a clear mobile experience for pairing, controls, battery status, and (optionally) personalization.
 
----
+--- 
 
 ## Objectives
 
