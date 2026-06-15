@@ -15,7 +15,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col h-full">
-      <BrandHeader hideInDark />
+      <BrandHeader onBack={() => navigate('/')} />
 
       <div className="flex flex-col items-center px-3 pt-2 gap-3">
 
