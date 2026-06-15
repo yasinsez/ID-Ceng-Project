@@ -3,7 +3,7 @@ import { ThemeProvider }    from './context/ThemeContext';
 import { AppStateProvider } from './context/AppStateContext';
 import { WatchLayout }      from './layouts/WatchLayout';
 
-import LoadingPage       from './pages/LoadingPage';
+import WatchHomePage     from './pages/WatchHomePage';
 import SearchPage        from './pages/SearchPage';
 import ConnectedPage     from './pages/ConnectedPage';
 import HomePage          from './pages/HomePage';
@@ -31,7 +31,7 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route element={<WatchLayout />}>
-              <Route path="/"                          element={<LoadingPage />} />
+              <Route path="/"                          element={<WatchHomePage />} />
               <Route path="/search"                    element={<SearchPage />} />
               <Route path="/connected"                 element={<ConnectedPage />} />
               <Route path="/home"                      element={<HomePage />} />
